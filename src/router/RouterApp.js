@@ -9,16 +9,21 @@ import Home from '../pages/home/Home'
 const RouterApp = () => {
   return (
     <Router>
-      <div>
-        <Switch>
-          <Route exact path="/">
-            <Login/>
-          </Route>
+      <div style={{
+        minHeight: '100vh',
+        minWidth: '100vw'
+      }}>
 
-          <Route path="/home">
-            <Home/>
-          </Route>
-        </Switch>
+          <Switch>
+            <Route exact path="/">
+              <Login/>
+            </Route>
+
+            <Route path="/home">
+              <Home/>
+            </Route>
+          </Switch>
+
       </div>
     </Router>
   )

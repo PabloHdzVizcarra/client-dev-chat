@@ -2,8 +2,11 @@
 body {
   margin: 0;
     font-family: 'JetBrains Mono', monospace;
+    font-weight: lighter;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    min-width: 100vw;
 }
 
 code {

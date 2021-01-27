@@ -1,6 +1,18 @@
+import Form from './home/styles'
+
 const Login = () => {
   return (
-    <h1>Login Page</h1>
+    <div>
+      <p>Crea un usuario</p>
+      <Form>
+        <label htmlFor="">
+          Username
+        </label>
+        <input type="text"/>
+        <button type="submit" > comenzar </button>
+      </Form>
+    </div>
+
   )
 }
 
