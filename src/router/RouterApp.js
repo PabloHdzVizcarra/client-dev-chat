@@ -27,6 +27,12 @@ const RouterApp = () => {
             </Route>
 
             <Route path="/home">
+              {
+                username === "" ?
+                  <Redirect to={'/'} />
+                  :
+                  <Home username={username} roomID={room}/>
+              }
               <Home username={username} roomID={room}/>
             </Route>
           </Switch>
