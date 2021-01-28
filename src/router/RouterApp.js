@@ -10,13 +10,11 @@ import { useState } from 'react'
 
 const RouterApp = () => {
   const [username, setUsername] = useState('')
+  const [room, setRoom] = useState('')
 
   return (
     <Router>
-      <div style={{
-        minHeight: '100vh',
-        minWidth: '100vw'
-      }}>
+      <div>
 
           <Switch>
             <Route exact path="/">
@@ -24,12 +22,12 @@ const RouterApp = () => {
                 username !== "" ?
                   <Redirect to={'/home'} />
                   :
-                  <Login setUsername={setUsername}/>
+                  <Login setUsername={setUsername} setRoom={setRoom}/>
               }
             </Route>
 
             <Route path="/home">
-              <Home/>
+              <Home username={username} roomID={room}/>
             </Route>
           </Switch>
 
