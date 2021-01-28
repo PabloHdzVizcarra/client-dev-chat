@@ -26,6 +26,13 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
           value={values.username}
           handleChange={handleChange}
         />
+        <Label text='Nombre de la sala de chat'/>
+        <Input
+          name='room'
+          type='text'
+          value={values.room}
+          handleChange={handleChange}
+        />
         <Button
           textButton='Registrar'
         />
