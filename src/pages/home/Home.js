@@ -1,8 +1,8 @@
-const Home = () => {
-  return (
-    <div>
+import HomeTemplate from '../../components/templates/HomeTemplate'
 
-    </div>
+const Home = ({username, roomID}) => {
+  return (
+    <HomeTemplate roomID={roomID} username={username}/>
   )
 }
 
