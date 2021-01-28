@@ -35,7 +35,7 @@ const useForm = ({ initialValues, onSubmit }) => {
     const {username} = values
 
     if (username.length < 3) {
-      setErrors({username: 'must be greater than 3 characters'})
+      setErrors({username: 'the username must be greater than 3 characters'})
       onSubmit({errors})
       return
     }
