@@ -33,7 +33,6 @@ const RouterApp = () => {
                   :
                   <Home username={username} roomID={room}/>
               }
-              <Home username={username} roomID={room}/>
             </Route>
           </Switch>
 
