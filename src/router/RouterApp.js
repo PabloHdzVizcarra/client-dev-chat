@@ -2,11 +2,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from 'react-router-dom'
-import Login from '../pages/Login'
+import Login from '../pages/login/Login'
 import Home from '../pages/home/Home'
+import { useState } from 'react'
 
 const RouterApp = () => {
+  const [username, setUsername] = useState('')
+
   return (
     <Router>
       <div style={{
@@ -16,7 +20,12 @@ const RouterApp = () => {
 
           <Switch>
             <Route exact path="/">
-              <Login/>
+              {
+                username !== "" ?
+                  <Redirect to={'/home'} />
+                  :
+                  <Login setUsername={setUsername}/>
+              }
             </Route>
 
             <Route path="/home">
