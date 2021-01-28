@@ -1,15 +1,17 @@
 
 body {
-  margin: 0;
+    margin: 0;
     font-family: 'JetBrains Mono', monospace;
     font-weight: lighter;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
     min-height: 100vh;
-    min-width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
