@@ -2,6 +2,7 @@ import useForm from '../../../hooks/useForm/useForm'
 import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 import FormRegister from '../../organisms/FormRegister/FormRegister'
 import styled from 'styled-components'
+import AlertError from '../../atoms/alert_error/AlertError'
 
 const Container = styled.div`
   display: grid;
@@ -10,21 +11,28 @@ const Container = styled.div`
   justify-content: center;
 `
 
-const RegisterTemplate = ({submitForm}) => {
+const RegisterTemplate = ({ submitForm }) => {
   const initialValues = {
-    username: ''
+    username: '',
+    room: ''
   }
   const {
     values,
+    errors,
     handleChange,
     handleSubmit
   } = useForm({
     initialValues,
     onSubmit: submitForm
   })
+
   return (
     <Container>
-      <HeaderH1 text={`Registro de Usuarios`} />
+      <HeaderH1 text={`Registro de Usuarios`}/>
+      {Object.keys(errors).length !== 0
+        ? <AlertError message={errors.username}/>
+        : null
+      }
       <FormRegister
         values={values}
         handleChange={handleChange}
