@@ -5,10 +5,9 @@ import styled from 'styled-components'
 import AlertError from '../../atoms/alert_error/AlertError'
 
 const Container = styled.div`
-  display: grid;
+  display: flex;
   padding: 0 1rem;
   flex-direction: column;
-  justify-content: center;
 `
 
 const RegisterTemplate = ({ submitForm }) => {
