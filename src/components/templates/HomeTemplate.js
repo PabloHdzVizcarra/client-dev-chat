@@ -51,9 +51,9 @@ const Message = styled.div`
   width: max-content;
 `
 
-const HomeTemplate = ({ roomID}) => {
+const HomeTemplate = ({ roomID }) => {
 
-  const { messages, sendMessage} = useChat(roomID)
+  const { messages, sendMessage } = useChat(roomID)
   const [newMessage, setNewMessage] = useState('')
 
   const handleNewMessage = event => {
@@ -92,7 +92,7 @@ const HomeTemplate = ({ roomID}) => {
         </Button>
       </FlexContainer>
     </Container>
-    )
+  )
 }
 
 export default HomeTemplate
