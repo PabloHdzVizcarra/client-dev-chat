@@ -1,10 +1,8 @@
 import { io } from 'socket.io-client'
-import { useState, useEffect } from 'react'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const NEW_CHAT_MESSAGE_EVENT = 'newMessage'
-const SOCKET_SERVER_URL = "http://0.0.0.0:3002"
-
+const SOCKET_SERVER_URL = 'http://0.0.0.0:3002'
 
 const useChat = (roomId) => {
   const [messages, setMessages] = useState([])
@@ -12,7 +10,7 @@ const useChat = (roomId) => {
 
   useEffect(() => {
     socket.current = io(SOCKET_SERVER_URL, {
-      query: {roomId}
+      query: { roomId }
     })
 
     socket.current.on(NEW_CHAT_MESSAGE_EVENT, message => {
@@ -32,7 +30,7 @@ const useChat = (roomId) => {
     })
   }
 
-  return {messages, sendMessage}
+  return { messages, sendMessage }
 }
 
 export default useChat
