@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
 const useForm = ({ initialValues, onSubmit }) => {
-
   const [values, setValues] = useState(initialValues || {})
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
@@ -25,23 +24,23 @@ const useForm = ({ initialValues, onSubmit }) => {
   }
 
   const handleBlur = (event) => {
-    const {name} = event.target
-    setTouched({...touched, [name]: true})
-    setErrors({...errors})
+    const { name } = event.target
+    setTouched({ ...touched, [name]: true })
+    setErrors({ ...errors })
   }
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     if (event) event.preventDefault()
-    const {username} = values
+    const { username } = values
 
     if (username.length < 3) {
-      setErrors({username: 'the username must be greater than 3 characters'})
-      onSubmit({errors})
+      setErrors({ username: 'the username must be greater than 3 characters' })
+      onSubmit({ errors })
       return
     }
 
     setErrors({})
-    onSubmit({values, errors})
+    onSubmit({ values, errors })
   }
 
   return {
@@ -50,7 +49,7 @@ const useForm = ({ initialValues, onSubmit }) => {
     touched,
     handleChange,
     handleBlur,
-    handleSubmit
+    handleSubmit,
   }
 }
 

@@ -5,8 +5,11 @@
     "jest": true
   },
   "extends": [
+    "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
     "plugin:prettier/recommended"
   ],
   "parserOptions": {
@@ -17,7 +20,9 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "testing-library",
+    "jest"
   ],
   "settings": {
     "react": {
@@ -29,5 +34,13 @@
     "/build/**"
   ],
   "rules": {
+    "testing-library/await-async-query": "error",
+    "testing-library/no-await-sync-query": "error",
+    "testing-library/no-debug": "warn",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   }
 }

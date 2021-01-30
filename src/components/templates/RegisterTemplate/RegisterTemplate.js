@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import useForm from '../../../hooks/useForm/useForm'
 import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 import FormRegister from '../../organisms/FormRegister/FormRegister'
@@ -13,25 +15,19 @@ const Container = styled.div`
 const RegisterTemplate = ({ submitForm }) => {
   const initialValues = {
     username: '',
-    room: ''
+    room: '',
   }
-  const {
-    values,
-    errors,
-    handleChange,
-    handleSubmit
-  } = useForm({
+  const { values, errors, handleChange, handleSubmit } = useForm({
     initialValues,
-    onSubmit: submitForm
+    onSubmit: submitForm,
   })
 
   return (
     <Container>
-      <HeaderH1 text={`Registro de Usuarios`}/>
-      {Object.keys(errors).length !== 0
-        ? <AlertError message={errors.username}/>
-        : null
-      }
+      <HeaderH1 text={`Registro de Usuarios`} />
+      {Object.keys(errors).length !== 0 ? (
+        <AlertError message={errors.username} />
+      ) : null}
       <FormRegister
         values={values}
         handleChange={handleChange}
@@ -39,6 +35,10 @@ const RegisterTemplate = ({ submitForm }) => {
       />
     </Container>
   )
+}
+
+RegisterTemplate.propTypes = {
+  submitForm: PropTypes.func.isRequired,
 }
 
 export default RegisterTemplate

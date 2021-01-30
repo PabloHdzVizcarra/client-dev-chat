@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Container = styled.div`
   padding: 15px;
@@ -13,12 +15,16 @@ const Paragraph = styled.p`
   margin: 0;
 `
 
-const AlertError = ({message}) => {
-  return(
+const AlertError = ({ message }) => {
+  return (
     <Container>
       <Paragraph>{message}</Paragraph>
     </Container>
   )
+}
+
+AlertError.propTypes = {
+  message: PropTypes.string.isRequired,
 }
 
 export default AlertError

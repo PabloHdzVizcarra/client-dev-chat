@@ -16,7 +16,6 @@ let socket
 
 const HomeTemplate = ({ roomID, username }) => {
   const host = 'http://localhost:3010'
-  const NEW_CHAT_MESSAGE_EVENT = 'newMessage'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
   const [users, setUsers] = React.useState('')
@@ -49,8 +48,8 @@ const HomeTemplate = ({ roomID, username }) => {
     console.log(message)
 
     if (message) {
-      socket.emit(NEW_CHAT_MESSAGE_EVENT, message, () => {
-        setMessage('')
+      socket.emit('sendMessage', message, () => {
+        console.log(message)
       })
       setMessage('')
     }

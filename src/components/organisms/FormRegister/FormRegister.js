@@ -1,7 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
 import Input from '../../atoms/input/Input'
 import Label from '../../atoms/label/Label'
 import Button from '../../atoms/button/Button'
+import PropTypes from 'prop-types'
 
 const Form = styled.form`
   padding: 10px;
@@ -18,7 +20,7 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Container>
-        <Label text={`Username`}/>
+        <Label text={`Username`} />
         <Input
           name='username'
           type='text'
@@ -26,19 +28,24 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
           value={values.username}
           handleChange={handleChange}
         />
-        <Label text='Nombre de la sala de chat'/>
+        <Label text='Nombre de la sala de chat' />
+
         <Input
           name='room'
           type='text'
           value={values.room}
           handleChange={handleChange}
         />
-        <Button
-          textButton='Registrar'
-        />
+        <Button textButton='Registrar' />
       </Container>
     </Form>
   )
+}
+
+FormRegister.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  values: PropTypes.object.isRequired,
 }
 
 export default FormRegister
