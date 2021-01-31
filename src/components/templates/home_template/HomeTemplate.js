@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import { io } from 'socket.io-client'
 import {
   Button,
@@ -8,7 +8,7 @@ import {
   ContainerMessages,
   FlexContainer,
   InputText,
-  // Message,
+  Message,
   Paragraph,
 } from './styles'
 import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
@@ -59,8 +59,8 @@ const HomeTemplate = ({ roomID, username }) => {
 
   const sendMessage = () => {
     if (message) {
-      console.log(message)
-      socket.emit('sendMessage', message, () => {
+      console.log(`Message send ${message}`)
+      socket.emit('text-message', message, () => {
         setMessage('')
       })
     }
@@ -77,9 +77,9 @@ const HomeTemplate = ({ roomID, username }) => {
         <Paragraph>{`Room: ${roomID}`}</Paragraph>
       </FlexContainer>
       <ContainerMessages>
-        {/*{messages.map((message) => (*/}
-        {/*  <Message key={uuidv4()}>{message}</Message>*/}
-        {/*))}*/}
+        {messages.map((message) => (
+          <Message key={uuidv4()}>{message.text}</Message>
+        ))}
       </ContainerMessages>
       <FlexContainer>
         <InputText

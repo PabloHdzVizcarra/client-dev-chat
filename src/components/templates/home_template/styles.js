@@ -19,12 +19,13 @@ const FlexContainer = styled.div`
   padding: 5px;
 `
 
-const ContainerMessages = styled.div`
+const ContainerMessages = styled.ul`
   display: flex;
   flex-direction: column;
   background-color: #0a8086;
   overflow: auto;
   padding: 10px;
+  margin: 0;
 `
 
 const InputText = styled.input`
@@ -41,12 +42,13 @@ const Button = styled.button`
   border: none;
 `
 
-const Message = styled.div`
+const Message = styled.li`
   padding: 5px;
   background-color: beige;
   margin: 2px 0;
   border-radius: 6px;
   width: max-content;
+  list-style: none;
 `
 
 export {
