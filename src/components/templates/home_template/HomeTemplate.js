@@ -70,7 +70,7 @@ const HomeTemplate = ({ roomID, username }) => {
 
   console.log(infoMessage)
 
-  //TODO: Test-mostrar mensaje de alerta cuando no se recibe el mensaje correctamente desde el servidor
+  //TODO: show alert message when server not send message correctly
   return (
     <Container>
       {infoMessage !== '' ? (

@@ -36,7 +36,7 @@ describe('test in HomeTemplate', () => {
     expect(screen.queryByText(/welcome/)).not.toBeInTheDocument()
   })
 
-  test('the input to send messages should be cleared, when the message is succesfully sent to the server', async () => {
+  test('the input to send messages should be cleared, when the message is successfully sent to the server', async () => {
     const username = 'john'
     const room = 'developer'
     render(<HomeTemplate roomID={room} username={username} />)
@@ -48,24 +48,21 @@ describe('test in HomeTemplate', () => {
     expect(screen.getByRole('textbox')).toHaveTextContent('')
   })
 
-  // TODO: Test-test pending
   test('the message should be displayed on the screen when it it sent to the server', async () => {
     const username = 'john'
     const room = 'developer'
     render(<HomeTemplate roomID={room} username={username} />)
 
-    // we verify that the message is displayed on the screen
-    const infoMessage = await screen.findByText(
-      /john, welcome to room developer/,
-    )
-    expect(infoMessage).toBeInTheDocument()
+    // we verify that the info message is displayed on the screen
+    expect(
+      await screen.findByText(/john, welcome to room developer/),
+    ).toBeInTheDocument()
 
-    fireEvent.change(screen.getByRole('textbox'), {
-      target: { value: 'hello world' },
-    })
-    fireEvent.click(screen.getByRole('button'))
+    // add value to input and send message
+    userEvent.type(screen.getByRole('textbox'), 'hello world')
+    userEvent.click(screen.getByRole('button'))
 
-    //expect(await screen.findByText(/hello world/)).toBeInTheDocument()
+    expect(await screen.findByText(/hello world/)).toBeInTheDocument()
   })
 
   test('should display an error message when a message is successfully sent to the server, but the server does not correctly return the message', async () => {
