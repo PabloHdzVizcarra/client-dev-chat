@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { v4 as uuidv4 } from 'uuid'
+// import { v4 as uuidv4 } from 'uuid'
 import { io } from 'socket.io-client'
 import {
   Button,
@@ -8,18 +8,19 @@ import {
   ContainerMessages,
   FlexContainer,
   InputText,
-  Message,
+  // Message,
   Paragraph,
 } from './styles'
 
 let socket
+let countRender = 0
 
 const HomeTemplate = ({ roomID, username }) => {
   const host = 'http://localhost:3010'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
-  const [users, setUsers] = React.useState('')
-  console.log(users)
+  // const [users, setUsers] = React.useState('')
+  console.log(`El componente se renderiza ${(countRender += 1)} vez`)
 
   React.useEffect(() => {
     socket = io(host)
@@ -33,27 +34,32 @@ const HomeTemplate = ({ roomID, username }) => {
   }, [roomID, username])
 
   React.useEffect(() => {
-    socket.on('sendMessage', (msg) => {
+    socket.on('message', (msg) => {
+      console.log(msg)
       setMessages((messages) => [...messages, msg])
     })
 
     socket.on('roomData', ({ users }) => {
       console.log(users)
-      setUsers(users)
+      // setUsers(users)
+    })
+
+    socket.on('info', (data) => {
+      console.log(data)
     })
     return () => {}
   }, [])
 
   const sendMessage = () => {
-    console.log(message)
-
     if (message) {
+      console.log(message)
       socket.emit('sendMessage', message, () => {
-        console.log(message)
+        setMessage('')
       })
-      setMessage('')
     }
   }
+
+  console.log(messages)
 
   return (
     <Container>
@@ -61,9 +67,9 @@ const HomeTemplate = ({ roomID, username }) => {
         <Paragraph>{`Room: ${roomID}`}</Paragraph>
       </FlexContainer>
       <ContainerMessages>
-        {messages.map((message) => (
-          <Message key={uuidv4()}>{message}</Message>
-        ))}
+        {/*{messages.map((message) => (*/}
+        {/*  <Message key={uuidv4()}>{message}</Message>*/}
+        {/*))}*/}
       </ContainerMessages>
       <FlexContainer>
         <InputText
