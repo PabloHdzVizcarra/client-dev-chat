@@ -11,6 +11,7 @@ import {
   // Message,
   Paragraph,
 } from './styles'
+import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
 
 let socket
 let countRender = 0
@@ -19,6 +20,7 @@ const HomeTemplate = ({ roomID, username }) => {
   const host = 'http://localhost:3010'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
+  const [infoMessage, setInfoMessage] = React.useState('')
   // const [users, setUsers] = React.useState('')
   console.log(`El componente se renderiza ${(countRender += 1)} vez`)
 
@@ -35,17 +37,22 @@ const HomeTemplate = ({ roomID, username }) => {
 
   React.useEffect(() => {
     socket.on('message', (msg) => {
+      console.log('MESSAGE')
       console.log(msg)
       setMessages((messages) => [...messages, msg])
     })
 
-    socket.on('roomData', ({ users }) => {
-      console.log(users)
+    socket.on('roomData', (data) => {
+      console.log('ROOMDATA')
+      console.log(data)
       // setUsers(users)
     })
 
     socket.on('info', (data) => {
+      console.log('INFO')
       console.log(data)
+      const { text } = data
+      setInfoMessage(text)
     })
     return () => {}
   }, [])
@@ -63,6 +70,7 @@ const HomeTemplate = ({ roomID, username }) => {
 
   return (
     <Container>
+      {infoMessage !== '' ? <InfoMessage text={infoMessage} /> : null}
       <FlexContainer>
         <Paragraph>{`Room: ${roomID}`}</Paragraph>
       </FlexContainer>
