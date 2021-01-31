@@ -21,7 +21,17 @@ const Paragraph = styled.p`
   font-size: 1rem;
 `
 
-function InfoMessage({ text }) {
+function InfoMessage({ text, displayTime }) {
+  const [display, setDisplay] = React.useState(true)
+
+  setTimeout(() => {
+    setDisplay(false)
+  }, displayTime)
+
+  if (!display) {
+    return null
+  }
+
   return (
     <Container>
       <Paragraph>{text}</Paragraph>
@@ -31,6 +41,7 @@ function InfoMessage({ text }) {
 
 InfoMessage.propTypes = {
   text: PropTypes.string.isRequired,
+  displayTime: PropTypes.number,
 }
 
 export default InfoMessage

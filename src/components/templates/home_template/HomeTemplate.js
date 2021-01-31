@@ -70,7 +70,9 @@ const HomeTemplate = ({ roomID, username }) => {
 
   return (
     <Container>
-      {infoMessage !== '' ? <InfoMessage text={infoMessage} /> : null}
+      {infoMessage !== '' ? (
+        <InfoMessage text={infoMessage} displayTime={3000} />
+      ) : null}
       <FlexContainer>
         <Paragraph>{`Room: ${roomID}`}</Paragraph>
       </FlexContainer>
