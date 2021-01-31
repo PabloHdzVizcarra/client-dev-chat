@@ -49,12 +49,12 @@ const HomeTemplate = ({ roomID, username }) => {
     })
 
     socket.on('info', (data) => {
-      console.log('INFO')
-      console.log(data)
       const { text } = data
       setInfoMessage(text)
     })
-    return () => {}
+    return () => {
+      setInfoMessage('')
+    }
   }, [])
 
   const sendMessage = () => {

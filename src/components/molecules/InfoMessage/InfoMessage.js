@@ -24,9 +24,14 @@ const Paragraph = styled.p`
 function InfoMessage({ text, displayTime }) {
   const [display, setDisplay] = React.useState(true)
 
-  setTimeout(() => {
-    setDisplay(false)
-  }, displayTime)
+  React.useEffect(() => {
+    setTimeout(() => {
+      setDisplay(false)
+    }, displayTime)
+    return () => {
+      setDisplay(false)
+    }
+  }, [displayTime])
 
   if (!display) {
     return null
