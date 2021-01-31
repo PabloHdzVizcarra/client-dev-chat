@@ -21,7 +21,7 @@ const Paragraph = styled.p`
   font-size: 1rem;
 `
 
-function InfoMessage({ text, displayTime }) {
+function InfoMessage({ text, displayTime = 1000 }) {
   const [display, setDisplay] = React.useState(true)
 
   React.useEffect(() => {
