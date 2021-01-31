@@ -37,9 +37,13 @@ const HomeTemplate = ({ roomID, username }) => {
 
   React.useEffect(() => {
     socket.on('message', (msg) => {
-      console.log('MESSAGE')
       console.log(msg)
-      setMessages((messages) => [...messages, msg])
+      if (msg && msg?.text) {
+        setMessages((messages) => [...messages, msg])
+        return
+      }
+      console.log('no se recibio ningun mensaje')
+      setInfoMessage('lo sentimos ocurrio un error al mandar el mensaje')
     })
 
     socket.on('roomData', (data) => {
@@ -59,19 +63,18 @@ const HomeTemplate = ({ roomID, username }) => {
 
   const sendMessage = () => {
     if (message) {
-      console.log(`Message send ${message}`)
-      socket.emit('text-message', message, () => {
-        setMessage('')
-      })
+      socket.emit('text-message', message)
+      setMessage('')
     }
   }
 
-  console.log(messages)
+  console.log(infoMessage)
 
+  //TODO: Test-mostrar mensaje de alerta cuando no se recibe el mensaje correctamente desde el servidor
   return (
     <Container>
       {infoMessage !== '' ? (
-        <InfoMessage text={infoMessage} displayTime={3000} />
+        <InfoMessage text={infoMessage} displayTime={1500} />
       ) : null}
       <FlexContainer>
         <Paragraph>{`Room: ${roomID}`}</Paragraph>
