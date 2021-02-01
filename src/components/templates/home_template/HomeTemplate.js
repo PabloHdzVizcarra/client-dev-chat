@@ -5,7 +5,9 @@ import { io } from 'socket.io-client'
 import {
   Button,
   Container,
+  ContainerData,
   ContainerMessages,
+  ContainerUsers,
   FlexContainer,
   InputText,
   Message,
@@ -89,13 +91,16 @@ const HomeTemplate = ({ roomID, username }) => {
         </Expire>
       ) : null}
       <FlexContainer>
-        <Paragraph>{`Room: ${roomID}`}</Paragraph>
+        <Paragraph>{`Chat Room: ${roomID}`}</Paragraph>
       </FlexContainer>
-      <ContainerMessages>
-        {messages.map((message) => (
-          <Message key={uuidv4()}>{message.text}</Message>
-        ))}
-      </ContainerMessages>
+      <ContainerData>
+        <ContainerMessages>
+          {messages.map((message) => (
+            <Message key={uuidv4()}>{message.text}</Message>
+          ))}
+        </ContainerMessages>
+        <ContainerUsers />
+      </ContainerData>
       <FlexContainer>
         <InputText
           value={message}

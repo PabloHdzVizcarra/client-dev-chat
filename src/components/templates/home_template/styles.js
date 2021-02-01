@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 15% 80% 5%;
+  grid-template-rows: 5% 90% 5%;
   height: 100vh;
   background-color: #a0dbde;
 `
@@ -10,13 +10,18 @@ const Container = styled.div`
 const Paragraph = styled.p`
   text-align: center;
   font-size: 1.5rem;
-  margin: 20px 0 0 0;
+  margin: 0;
 `
 
 const FlexContainer = styled.div`
   display: flex;
   background-color: #32bdc4;
   padding: 5px;
+`
+
+const ContainerData = styled.div`
+  display: grid;
+  grid-template-columns: 80% 20%;
 `
 
 const ContainerMessages = styled.ul`
@@ -26,6 +31,11 @@ const ContainerMessages = styled.ul`
   overflow: auto;
   padding: 10px;
   margin: 0;
+`
+
+const ContainerUsers = styled.div`
+  padding: 10px;
+  overflow: auto;
 `
 
 const InputText = styled.input`
@@ -59,4 +69,6 @@ export {
   InputText,
   Button,
   Message,
+  ContainerData,
+  ContainerUsers,
 }
