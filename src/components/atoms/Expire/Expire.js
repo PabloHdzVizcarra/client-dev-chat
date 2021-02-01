@@ -9,6 +9,10 @@ function Expire(props) {
     setChildren(props.children)
     setIsVisible(true)
     setTimer(props.delay)
+
+    return () => {
+      setIsVisible(false)
+    }
   }, [props.children, props.delay])
 
   const setTimer = (delay) => {
