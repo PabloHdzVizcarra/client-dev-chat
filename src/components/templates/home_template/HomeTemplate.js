@@ -12,17 +12,16 @@ import {
   Paragraph,
 } from './styles'
 import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
+import Expire from '../../atoms/Expire/Expire'
 
 let socket
-let countRender = 0
 
 const HomeTemplate = ({ roomID, username }) => {
   const host = 'http://localhost:3010'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
   const [infoMessage, setInfoMessage] = React.useState('')
-  // const [users, setUsers] = React.useState('')
-  console.log(`El componente se renderiza ${(countRender += 1)} vez`)
+  const [appear, setAppear] = React.useState(false)
 
   React.useEffect(() => {
     socket = io(host)
@@ -43,7 +42,8 @@ const HomeTemplate = ({ roomID, username }) => {
         return
       }
       console.log('no se recibio ningun mensaje')
-      setInfoMessage('lo sentimos ocurrio un error al mandar el mensaje')
+      setInfoMessage('lo sentimos ocurrió un error al mandar el mensaje')
+      setAppear(true)
     })
 
     socket.on('roomData', (data) => {
@@ -55,11 +55,16 @@ const HomeTemplate = ({ roomID, username }) => {
     socket.on('info', (data) => {
       const { text } = data
       setInfoMessage(text)
+      setAppear(true)
     })
     return () => {
       setInfoMessage('')
     }
   }, [])
+
+  React.useEffect(() => {
+    setAppear(false)
+  }, [message])
 
   const sendMessage = () => {
     if (message) {
@@ -68,13 +73,12 @@ const HomeTemplate = ({ roomID, username }) => {
     }
   }
 
-  console.log(infoMessage)
-
-  //TODO: show alert message when server not send message correctly
   return (
     <Container>
-      {infoMessage !== '' ? (
-        <InfoMessage text={infoMessage} displayTime={1500} />
+      {appear ? (
+        <Expire delay={1500}>
+          <InfoMessage text={infoMessage} />
+        </Expire>
       ) : null}
       <FlexContainer>
         <Paragraph>{`Room: ${roomID}`}</Paragraph>
