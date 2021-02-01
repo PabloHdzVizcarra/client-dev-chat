@@ -18,14 +18,13 @@ import Expire from '../../atoms/Expire/Expire'
 
 let socket
 
-//TODO: cuando 2 usuarios comienzan a charlar se sigue mostrando en pantalla el mensaje de "user {name} has joined"
-
 const HomeTemplate = ({ roomID, username }) => {
   const host = 'http://localhost:3010'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
+  const [usersConnected, setUsersConnected] = React.useState([])
 
   React.useEffect(() => {
     socket = io(host)
@@ -51,8 +50,7 @@ const HomeTemplate = ({ roomID, username }) => {
     })
 
     socket.on('roomData', (data) => {
-      console.log(data)
-      // setUsers(users)
+      setUsersConnected(data.users)
     })
 
     socket.on('info', (data) => {
@@ -83,6 +81,8 @@ const HomeTemplate = ({ roomID, username }) => {
     }
   }
 
+  console.log(usersConnected)
+
   return (
     <Container>
       {appear ? (
@@ -99,7 +99,11 @@ const HomeTemplate = ({ roomID, username }) => {
             <Message key={uuidv4()}>{message.text}</Message>
           ))}
         </ContainerMessages>
-        <ContainerUsers />
+        <ContainerUsers>
+          {usersConnected.map((user) => (
+            <li key={uuidv4()}>{user.name}</li>
+          ))}
+        </ContainerUsers>
       </ContainerData>
       <FlexContainer>
         <InputText
