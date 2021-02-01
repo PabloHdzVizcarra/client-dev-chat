@@ -16,6 +16,8 @@ import Expire from '../../atoms/Expire/Expire'
 
 let socket
 
+//TODO: cuando 2 usuarios comienzan a charlar se sigue mostrando en pantalla el mensaje de "user {name} has joined"
+
 const HomeTemplate = ({ roomID, username }) => {
   const host = 'http://localhost:3010'
   const [message, setMessage] = React.useState('')
@@ -39,15 +41,14 @@ const HomeTemplate = ({ roomID, username }) => {
       console.log(msg)
       if (msg && msg?.text) {
         setMessages((messages) => [...messages, msg])
+        setInfoMessage('')
         return
       }
-      console.log('no se recibio ningun mensaje')
       setInfoMessage('lo sentimos ocurrió un error al mandar el mensaje')
       setAppear(true)
     })
 
     socket.on('roomData', (data) => {
-      console.log('ROOMDATA')
       console.log(data)
       // setUsers(users)
     })
@@ -70,6 +71,13 @@ const HomeTemplate = ({ roomID, username }) => {
     if (message) {
       socket.emit('text-message', message)
       setMessage('')
+      setInfoMessage('')
+    }
+  }
+
+  function handleKeyPress(event) {
+    if (event.charCode === 13) {
+      sendMessage(message)
     }
   }
 
@@ -93,6 +101,7 @@ const HomeTemplate = ({ roomID, username }) => {
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           placeholder='Write message...'
+          onKeyPress={(event) => handleKeyPress(event)}
         />
         <Button onClick={sendMessage}>Send</Button>
       </FlexContainer>
