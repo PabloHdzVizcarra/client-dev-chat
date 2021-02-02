@@ -24,7 +24,7 @@ const HomeTemplate = ({ roomID, username }) => {
   const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
-  const [user, setUser] = React.useState({})
+  const [user, setUser] = React.useState('')
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
   const [usersConnected, setUsersConnected] = React.useState([])
@@ -47,6 +47,8 @@ const HomeTemplate = ({ roomID, username }) => {
     socket.on('message', (msg) => {
       console.log(msg)
       if (msg && msg?.text) {
+        console.log(msg)
+        setUser(msg.user)
         setMessages((messages) => [...messages, msg])
         setInfoMessage('')
         return
@@ -89,6 +91,10 @@ const HomeTemplate = ({ roomID, username }) => {
     }
   }
 
+  function checkAdminUser(user, userToServer) {
+    return user === userToServer
+  }
+
   console.log(user)
   return (
     <Container>
@@ -103,7 +109,10 @@ const HomeTemplate = ({ roomID, username }) => {
       <ContainerData>
         <ContainerMessages>
           {messages.map((message) => (
-            <WrapperMessage key={uuidv4()} admin={user.user.admin}>
+            <WrapperMessage
+              key={uuidv4()}
+              admin={checkAdminUser(username, message.user)}
+            >
               <Message key={uuidv4()}>{message.text}</Message>
             </WrapperMessage>
           ))}
