@@ -81,8 +81,6 @@ const HomeTemplate = ({ roomID, username }) => {
     }
   }
 
-  console.log(usersConnected)
-
   return (
     <Container>
       {appear ? (

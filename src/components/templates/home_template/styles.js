@@ -4,30 +4,33 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 5% 90% 5%;
   height: 100vh;
-  background-color: #a0dbde;
+  background-color: #fff;
 `
 
 const Paragraph = styled.p`
   text-align: center;
   font-size: 1.5rem;
   margin: 0;
+  font-weight: bold;
 `
 
 const FlexContainer = styled.div`
   display: flex;
-  background-color: #32bdc4;
+  background-color: #fff;
   padding: 5px;
+  color: #12a8ff;
 `
 
 const ContainerData = styled.div`
   display: grid;
   grid-template-columns: 80% 20%;
+  background-color: #f0f0f0;
 `
 
 const ContainerMessages = styled.ul`
   display: flex;
   flex-direction: column;
-  background-color: #0a8086;
+  background-color: #fff;
   overflow: auto;
   padding: 10px;
   margin: 0;
