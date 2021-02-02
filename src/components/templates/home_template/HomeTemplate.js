@@ -15,6 +15,7 @@ import {
 } from './styles'
 import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
 import Expire from '../../atoms/Expire/Expire'
+import ListItem from '../../atoms/ListItem/ListItem'
 
 let socket
 
@@ -99,7 +100,7 @@ const HomeTemplate = ({ roomID, username }) => {
         </ContainerMessages>
         <ContainerUsers>
           {usersConnected.map((user) => (
-            <li key={uuidv4()}>{user.name}</li>
+            <ListItem key={uuidv4()} text={user.name} />
           ))}
         </ContainerUsers>
       </ContainerData>

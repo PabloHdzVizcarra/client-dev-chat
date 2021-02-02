@@ -19,6 +19,7 @@ const FlexContainer = styled.div`
   background-color: #fff;
   padding: 5px;
   color: #12a8ff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `
 
 const ContainerData = styled.div`
@@ -56,10 +57,10 @@ const Button = styled.button`
 `
 
 const Message = styled.li`
-  padding: 5px;
-  background-color: beige;
-  margin: 2px 0;
+  padding: 10px;
+  margin: 5px;
   border-radius: 6px;
+  border: 0.5px solid #ededed;
   width: max-content;
   list-style: none;
 `
