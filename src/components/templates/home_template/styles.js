@@ -65,6 +65,12 @@ const Message = styled.li`
   list-style: none;
 `
 
+const WrapperMessage = styled.div`
+  display: flex;
+  justify-content: ${(props) =>
+    props.admin === true ? 'flex-end' : 'flex-start'};
+`
+
 export {
   Container,
   Paragraph,
@@ -75,4 +81,5 @@ export {
   Message,
   ContainerData,
   ContainerUsers,
+  WrapperMessage,
 }

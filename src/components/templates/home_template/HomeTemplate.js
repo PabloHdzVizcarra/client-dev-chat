@@ -12,6 +12,7 @@ import {
   InputText,
   Message,
   Paragraph,
+  WrapperMessage,
 } from './styles'
 import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
 import Expire from '../../atoms/Expire/Expire'
@@ -23,6 +24,7 @@ const HomeTemplate = ({ roomID, username }) => {
   const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
+  const [user, setUser] = React.useState({})
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
   const [usersConnected, setUsersConnected] = React.useState([])
@@ -39,6 +41,9 @@ const HomeTemplate = ({ roomID, username }) => {
   }, [roomID, username])
 
   React.useEffect(() => {
+    socket.on('new_user', (user) => {
+      setUser(user)
+    })
     socket.on('message', (msg) => {
       console.log(msg)
       if (msg && msg?.text) {
@@ -84,6 +89,7 @@ const HomeTemplate = ({ roomID, username }) => {
     }
   }
 
+  console.log(user)
   return (
     <Container>
       {appear ? (
@@ -97,7 +103,9 @@ const HomeTemplate = ({ roomID, username }) => {
       <ContainerData>
         <ContainerMessages>
           {messages.map((message) => (
-            <Message key={uuidv4()}>{message.text}</Message>
+            <WrapperMessage key={uuidv4()} admin={user.user.admin}>
+              <Message key={uuidv4()}>{message.text}</Message>
+            </WrapperMessage>
           ))}
         </ContainerMessages>
         <ContainerUsers>
