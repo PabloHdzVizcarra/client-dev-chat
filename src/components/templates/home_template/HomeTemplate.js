@@ -17,6 +17,7 @@ import {
 import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
 import Expire from '../../atoms/Expire/Expire'
 import ListItem from '../../atoms/ListItem/ListItem'
+import checkAdminUser from './helpers/check_admim_user'
 
 let socket
 
@@ -89,10 +90,6 @@ const HomeTemplate = ({ roomID, username }) => {
     if (event.charCode === 13) {
       sendMessage(message)
     }
-  }
-
-  function checkAdminUser(user, userToServer) {
-    return user === userToServer
   }
 
   console.log(user)
