@@ -30,7 +30,7 @@ const HomeTemplate = ({ roomID, username }) => {
   React.useEffect(() => {
     socket = io(host)
 
-    socket.emit('join', { username, roomID }, (error) => {
+    socket.emit('user_join', { username, roomID }, (error) => {
       if (error) {
         alert(error)
       }
@@ -50,11 +50,13 @@ const HomeTemplate = ({ roomID, username }) => {
       setAppear(true)
     })
 
-    socket.on('roomData', (data) => {
+    socket.on('room_data', (data) => {
+      console.log(data)
       setUsersConnected(data.users)
     })
 
-    socket.on('info', (data) => {
+    socket.on('info_message', (data) => {
+      console.log(data)
       const { text } = data
       setInfoMessage(text)
       setAppear(true)
