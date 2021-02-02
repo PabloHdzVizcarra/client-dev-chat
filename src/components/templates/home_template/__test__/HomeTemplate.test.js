@@ -18,7 +18,7 @@ describe('test in HomeTemplate', () => {
     ).toBeInTheDocument()
   })
 
-  test('the user information message should disappear after 3 seconds when entering the HomePage', async () => {
+  test('the user information message should disappear after 1.5 seconds when entering the HomePage', async () => {
     jest.setTimeout(6000)
     const username = 'john'
     const room = 'developer'
@@ -45,5 +45,15 @@ describe('test in HomeTemplate', () => {
     userEvent.click(screen.getByRole('button'))
 
     expect(screen.getByRole('textbox')).toHaveTextContent('')
+  })
+
+  test('the names of the users connected to the chat room should be displayed on the screen', async () => {
+    render(<HomeTemplate roomID='devs' username='john' />)
+
+    // the user's welcome message is displayed
+    expect(await screen.findByText(/welcome to room/)).toBeInTheDocument()
+
+    // the user name connected display on the screen
+    expect(await screen.findByText('john')).toBeInTheDocument()
   })
 })

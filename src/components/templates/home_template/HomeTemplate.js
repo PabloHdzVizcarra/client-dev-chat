@@ -19,7 +19,7 @@ import Expire from '../../atoms/Expire/Expire'
 let socket
 
 const HomeTemplate = ({ roomID, username }) => {
-  const host = 'http://localhost:3010'
+  const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
   const [infoMessage, setInfoMessage] = React.useState('')
