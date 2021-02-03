@@ -8,8 +8,10 @@ import AlertError from '../../atoms/alert_error/AlertError'
 
 const Container = styled.div`
   display: flex;
-  padding: 0 1rem;
   flex-direction: column;
+  padding: 10%;
+  justify-items: center;
+  align-items: center;
 `
 
 const RegisterTemplate = ({ submitForm }) => {

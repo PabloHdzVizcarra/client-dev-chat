@@ -9,11 +9,13 @@ const Form = styled.form`
   padding: 10px;
   background-color: aliceblue;
   margin-top: 1rem;
+  width: 60%;
 `
 
 const Container = styled.div`
   display: grid;
   gap: 10px;
+  grid-auto-rows: min-content;
 `
 
 const FormRegister = ({ values, handleChange, handleSubmit }) => {
@@ -24,9 +26,12 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
         <Input
           name='username'
           type='text'
-          inputColor='#212121'
           value={values.username}
           handleChange={handleChange}
+          styles={{
+            height: '25px',
+            inputColor: '#212121',
+          }}
         />
         <Label text='Nombre de la sala de chat' />
 
@@ -35,6 +40,9 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
           type='text'
           value={values.room}
           handleChange={handleChange}
+          styles={{
+            height: '25px',
+          }}
         />
         <Button textButton='Registrar' />
       </Container>
