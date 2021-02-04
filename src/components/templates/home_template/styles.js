@@ -46,16 +46,6 @@ const InputText = styled.input`
   height: 100%;
   width: 90%;
 `
-
-const Button = styled.button`
-  width: 10%;
-  height: 110%;
-  border-radius: 6px;
-  margin-left: 5px;
-  padding: 0;
-  border: none;
-`
-
 const Message = styled.li`
   padding: 10px;
   margin: 5px;
@@ -77,7 +67,6 @@ export {
   FlexContainer,
   ContainerMessages,
   InputText,
-  Button,
   Message,
   ContainerData,
   ContainerUsers,

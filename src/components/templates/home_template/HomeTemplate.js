@@ -1,23 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { v4 as uuidv4 } from 'uuid'
 import { io } from 'socket.io-client'
-import {
-  Container,
-  ContainerData,
-  ContainerMessages,
-  ContainerUsers,
-  FlexContainer,
-  InputText,
-  Message,
-  WrapperMessage,
-} from './styles'
+import { Container, FlexContainer, InputText } from './styles'
 import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
 import Expire from '../../atoms/Expire/Expire'
-import ListItem from '../../atoms/ListItem/ListItem'
-import checkAdminUser from './helpers/check_admim_user'
 import Button from '../../atoms/button/Button'
 import H1AndButton from '../../molecules/H1AndButton/H1AndButton'
+import MessagesArea from '../../organisms/MessagesArea/MessagesArea'
 
 let socket
 
@@ -101,23 +90,11 @@ const HomeTemplate = ({ roomID, username }) => {
         </Expire>
       ) : null}
       <H1AndButton room={roomID} />
-      <ContainerData>
-        <ContainerMessages>
-          {messages.map((message) => (
-            <WrapperMessage
-              key={uuidv4()}
-              admin={checkAdminUser(username, message.user)}
-            >
-              <Message key={uuidv4()}>{message.text}</Message>
-            </WrapperMessage>
-          ))}
-        </ContainerMessages>
-        <ContainerUsers>
-          {usersConnected.map((user) => (
-            <ListItem key={uuidv4()} text={user.name} />
-          ))}
-        </ContainerUsers>
-      </ContainerData>
+      <MessagesArea
+        messages={messages}
+        users={usersConnected}
+        adminUser={username}
+      />
       <FlexContainer>
         <InputText
           value={message}
