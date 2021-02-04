@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const H1 = styled.h1`
-  margin: 1rem 0 0 0;
-  font-size: 2rem;
-  font-weight: lighter;
+  font-size: 1.7rem;
+  font-weight: normal;
   text-align: center;
+  margin: 0;
 `
 
 const HeaderH1 = ({ text }) => {
