@@ -14,7 +14,7 @@ const Container = styled.div`
   justify-content: space-between;
 `
 
-const H1AndButton = ({ room }) => {
+const H1AndButton = ({ room, handleClick }) => {
   return (
     <Container>
       <HeaderH1 text={`Chat Room: ${room}`} />
@@ -26,6 +26,7 @@ const H1AndButton = ({ room }) => {
           HBColor: '#b32222',
           fontSize: '.9rem',
         }}
+        handleClick={handleClick}
       />
     </Container>
   )
@@ -33,6 +34,7 @@ const H1AndButton = ({ room }) => {
 
 H1AndButton.propTypes = {
   room: PropTypes.string.isRequired,
+  handleClick: PropTypes.func,
 }
 
 export default H1AndButton

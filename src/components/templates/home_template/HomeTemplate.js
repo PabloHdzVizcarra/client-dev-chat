@@ -10,7 +10,7 @@ import MessagesArea from '../../organisms/MessagesArea/MessagesArea'
 
 let socket
 
-const HomeTemplate = ({ roomID, username }) => {
+const HomeTemplate = ({ roomID, username, handleCloseSession }) => {
   const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
@@ -89,7 +89,7 @@ const HomeTemplate = ({ roomID, username }) => {
           <InfoMessage text={infoMessage} />
         </Expire>
       ) : null}
-      <H1AndButton room={roomID} />
+      <H1AndButton room={roomID} handleClick={handleCloseSession} />
       <MessagesArea
         messages={messages}
         users={usersConnected}
@@ -121,6 +121,7 @@ const HomeTemplate = ({ roomID, username }) => {
 HomeTemplate.propTypes = {
   roomID: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
+  handleCloseSession: PropTypes.func.isRequired,
 }
 
 export default HomeTemplate
