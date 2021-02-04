@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { v4 as uuidv4 } from 'uuid'
 import { io } from 'socket.io-client'
 import {
-  Button,
   Container,
   ContainerData,
   ContainerMessages,
@@ -18,6 +17,7 @@ import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
 import Expire from '../../atoms/Expire/Expire'
 import ListItem from '../../atoms/ListItem/ListItem'
 import checkAdminUser from './helpers/check_admim_user'
+import Button from '../../atoms/button/Button'
 
 let socket
 
@@ -102,6 +102,14 @@ const HomeTemplate = ({ roomID, username }) => {
       ) : null}
       <FlexContainer>
         <Paragraph>{`Chat Room: ${roomID}`}</Paragraph>
+        <Button
+          textButton={'close'}
+          buttonStyles={{
+            backgroundColor: '#e62c2c',
+            color: '#ffffff',
+            HBColor: '#b32222',
+          }}
+        />
       </FlexContainer>
       <ContainerData>
         <ContainerMessages>
@@ -127,7 +135,17 @@ const HomeTemplate = ({ roomID, username }) => {
           placeholder='Write message...'
           onKeyPress={(event) => handleKeyPress(event)}
         />
-        <Button onClick={sendMessage}>Send</Button>
+        <Button
+          onClick={sendMessage}
+          textButton={'Send'}
+          buttonStyles={{
+            width: '100%',
+            margin: '1px',
+            backgroundColor: '#0f91db',
+            color: '#fff',
+            HBColor: '#0e79b6',
+          }}
+        />
       </FlexContainer>
     </Container>
   )
