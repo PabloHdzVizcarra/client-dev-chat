@@ -6,12 +6,18 @@ const ElementButton = styled.button`
   padding: 5px;
 `
 
-const Button = ({ textButton }) => {
-  return <ElementButton type='submit'>{textButton}</ElementButton>
+const Button = ({ textButton, handleClick, styles }) => {
+  return (
+    <ElementButton onClick={handleClick} {...styles}>
+      {textButton}
+    </ElementButton>
+  )
 }
 
 Button.propTypes = {
   textButton: PropTypes.string.isRequired,
+  handleClick: PropTypes.func,
+  styles: PropTypes.object,
 }
 
 export default Button
