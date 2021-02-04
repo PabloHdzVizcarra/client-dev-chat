@@ -5,13 +5,14 @@ import styled from 'styled-components'
 const ElementButton = styled.button`
   background-color: ${(props) => props.backgroundColor || '#dedede'};
   border: none;
+  padding: 0 15px;
   color: ${(props) => props.color || '#000000'};
-  width: 10%;
+  width: max-content;
   margin: 0 2px;
   height: 100%;
   text-transform: uppercase;
   border-radius: 4px;
-  font-size: 1.1rem;
+  font-size: ${(props) => props.fontSize || '1rem'};
   cursor: pointer;
 
   &:hover {

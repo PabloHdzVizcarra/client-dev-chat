@@ -17,7 +17,7 @@ import Expire from '../../atoms/Expire/Expire'
 import ListItem from '../../atoms/ListItem/ListItem'
 import checkAdminUser from './helpers/check_admim_user'
 import Button from '../../atoms/button/Button'
-import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
+import H1AndButton from '../../molecules/H1AndButton/H1AndButton'
 
 let socket
 
@@ -100,17 +100,7 @@ const HomeTemplate = ({ roomID, username }) => {
           <InfoMessage text={infoMessage} />
         </Expire>
       ) : null}
-      <FlexContainer>
-        <HeaderH1 text={`Chat Room: ${roomID}`} />
-        <Button
-          textButton={'close'}
-          buttonStyles={{
-            backgroundColor: '#e62c2c',
-            color: '#ffffff',
-            HBColor: '#b32222',
-          }}
-        />
-      </FlexContainer>
+      <H1AndButton room={roomID} />
       <ContainerData>
         <ContainerMessages>
           {messages.map((message) => (
