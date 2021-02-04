@@ -10,7 +10,6 @@ import {
   FlexContainer,
   InputText,
   Message,
-  Paragraph,
   WrapperMessage,
 } from './styles'
 import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
@@ -18,6 +17,7 @@ import Expire from '../../atoms/Expire/Expire'
 import ListItem from '../../atoms/ListItem/ListItem'
 import checkAdminUser from './helpers/check_admim_user'
 import Button from '../../atoms/button/Button'
+import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 
 let socket
 
@@ -101,7 +101,7 @@ const HomeTemplate = ({ roomID, username }) => {
         </Expire>
       ) : null}
       <FlexContainer>
-        <Paragraph>{`Chat Room: ${roomID}`}</Paragraph>
+        <HeaderH1 text={`Chat Room: ${roomID}`} />
         <Button
           textButton={'close'}
           buttonStyles={{

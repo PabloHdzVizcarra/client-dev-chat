@@ -1,59 +1,21 @@
 import React from 'react'
-import {
-  render,
-  waitForElementToBeRemoved,
-  screen,
-} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import HomeTemplate from '../HomeTemplate'
-import userEvent from '@testing-library/user-event'
 
-describe('test in HomeTemplate', () => {
-  test('should display an information message, when the user enters the chat room, with his or her chosen username', async () => {
-    const username = 'john'
-    const { findByText } = render(
-      <HomeTemplate roomID='developer' username={username} />,
-    )
-    expect(
-      await findByText(/john, welcome to room developer/),
-    ).toBeInTheDocument()
+describe('when the HomeTemplate component is rendered for the first time', () => {
+  it('should shows header and button elements in top', () => {
+    render(<HomeTemplate roomID={'webs'} username={'developer'} />)
+    expect(screen.getByRole('heading')).toBeInTheDocument()
+    expect(screen.getAllByRole('button')[0]).toBeInTheDocument()
   })
-
-  test('the user information message should disappear after 1.5 seconds when entering the HomePage', async () => {
-    jest.setTimeout(6000)
-    const username = 'john'
-    const room = 'developer'
-    render(<HomeTemplate roomID={room} username={username} />)
-
-    const infoMessage = await screen.findByText(
-      /john, welcome to room developer/,
-    )
-    expect(infoMessage).toBeInTheDocument()
-
-    await waitForElementToBeRemoved(screen.queryByText(/welcome to room/), {
-      timeout: 6000,
-    })
-    expect(screen.queryByText(/welcome/)).not.toBeInTheDocument()
+  it('must show list and div element in the middle of the component', () => {
+    render(<HomeTemplate roomID={'webs'} username={'developer'} />)
+    expect(screen.getByRole('list')).toBeInTheDocument()
+    expect(screen.getByRole('list').nextSibling.nodeName).toBe('DIV')
   })
-
-  test('the input to send messages should be cleared, when the message is successfully sent to the server', async () => {
-    const username = 'john'
-    const room = 'developer'
-    render(<HomeTemplate roomID={room} username={username} />)
-
-    // change input value
-    userEvent.type(screen.getByRole('textbox'), 'hello world')
-    userEvent.click(screen.getByRole('button'))
-
-    expect(screen.getByRole('textbox')).toHaveTextContent('')
-  })
-
-  test('the names of the users connected to the chat room should be displayed on the screen', async () => {
-    render(<HomeTemplate roomID='devs' username='john' />)
-
-    // the user's welcome message is displayed
-    expect(await screen.findByText(/welcome to room/)).toBeInTheDocument()
-
-    // the user name connected display on the screen
-    expect(await screen.findByText('john')).toBeInTheDocument()
+  it('must have a button and an inputat the bottom of the component', () => {
+    render(<HomeTemplate roomID={'webs'} username={'developer'} />)
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
+    expect(screen.getAllByRole('button')[1]).toBeInTheDocument()
   })
 })
