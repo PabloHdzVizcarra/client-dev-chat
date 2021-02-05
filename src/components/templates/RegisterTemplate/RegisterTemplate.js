@@ -4,12 +4,12 @@ import useForm from '../../../hooks/useForm/useForm'
 import FormRegister from '../../organisms/FormRegister/FormRegister'
 import styled from 'styled-components'
 import AlertError from '../../atoms/alert_error/AlertError'
-import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
+import IconAndHeader from '../../molecules/IconAndHeader/IconAndHeader'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 80px;
 `
 
 const RegisterTemplate = ({ submitForm }) => {
@@ -21,17 +21,10 @@ const RegisterTemplate = ({ submitForm }) => {
     initialValues,
     onSubmit: submitForm,
   })
-  console.log(errors)
 
   return (
     <Container>
-      <HeaderH1
-        text={'Solo Chatea'}
-        styles={{
-          fontFamily: 'Patrick Hand',
-          fontSize: '4rem',
-        }}
-      />
+      <IconAndHeader />
       {Object.keys(errors).length !== 0 ? (
         <AlertError message={errors.username || errors.room} />
       ) : null}

@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 
 const H1 = styled.h1`
   font-size: ${(props) => props.fontSize || 'auto'};
-  font-weight: bold;
-  text-align: center;
+  font-weight: normal;
   margin: 0;
   font-family: ${(props) => props.fontFamily || 'JetBrains Mono'};
 `
