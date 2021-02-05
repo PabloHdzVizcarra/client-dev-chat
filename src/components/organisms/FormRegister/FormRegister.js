@@ -4,24 +4,29 @@ import Input from '../../atoms/input/Input'
 import Label from '../../atoms/label/Label'
 import Button from '../../atoms/button/Button'
 import PropTypes from 'prop-types'
+import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 
 const Form = styled.form`
-  padding: 10px;
-  background-color: aliceblue;
-  margin-top: 1rem;
-  width: 60%;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 1rem 0 0 2rem;
+  width: 40%;
+  height: 50%;
+  border-radius: 8px;
 `
 
 const Container = styled.div`
   display: grid;
   gap: 10px;
-  grid-auto-rows: min-content;
+  height: 100%;
+  grid-auto-rows: 1fr;
 `
 
 const FormRegister = ({ values, handleChange, handleSubmit }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Container>
+        <HeaderH1 text={'Registro de usuarios'} />
         <Label text={`Username`} />
         <Input
           name='username'
@@ -44,7 +49,13 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
             height: '25px',
           }}
         />
-        <Button textButton='Registrar' />
+        <Button
+          textButton='Registrar'
+          buttonStyles={{
+            backgroundColor: '#EFCB68',
+            height: '45px',
+          }}
+        />
       </Container>
     </Form>
   )

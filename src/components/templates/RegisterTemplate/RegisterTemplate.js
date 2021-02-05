@@ -1,17 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import useForm from '../../../hooks/useForm/useForm'
-import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 import FormRegister from '../../organisms/FormRegister/FormRegister'
 import styled from 'styled-components'
 import AlertError from '../../atoms/alert_error/AlertError'
+import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10%;
-  justify-items: center;
-  align-items: center;
+  padding: 0 20px;
 `
 
 const RegisterTemplate = ({ submitForm }) => {
@@ -26,7 +24,13 @@ const RegisterTemplate = ({ submitForm }) => {
 
   return (
     <Container>
-      <HeaderH1 text={`Registro de Usuarios`} />
+      <HeaderH1
+        text={'Solo Chatea'}
+        styles={{
+          fontFamily: 'Patrick Hand',
+          fontSize: '4rem',
+        }}
+      />
       {Object.keys(errors).length !== 0 ? (
         <AlertError message={errors.username} />
       ) : null}

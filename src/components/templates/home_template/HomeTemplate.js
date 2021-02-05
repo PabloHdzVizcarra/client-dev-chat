@@ -106,7 +106,7 @@ const HomeTemplate = ({ roomID, username, handleCloseSession }) => {
           onClick={sendMessage}
           textButton={'Send'}
           buttonStyles={{
-            width: '100%',
+            width: '10%',
             margin: '1px',
             backgroundColor: '#0f91db',
             color: '#fff',

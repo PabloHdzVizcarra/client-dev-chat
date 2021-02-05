@@ -15,7 +15,11 @@ const RouterApp = () => {
 
   return (
     <Router>
-      <div>
+      <div
+        style={{
+          height: '100vh',
+        }}
+      >
         <Switch>
           <Route exact path='/'>
             {username !== '' ? (

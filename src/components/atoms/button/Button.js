@@ -7,9 +7,9 @@ const ElementButton = styled.button`
   border: none;
   padding: 0 15px;
   color: ${(props) => props.color || '#000000'};
-  width: max-content;
+  width: ${(props) => props.width || 'max-content'};
   margin: 0 2px;
-  height: 100%;
+  height: ${(props) => props.height || 'auto'};
   text-transform: uppercase;
   border-radius: 4px;
   font-size: ${(props) => props.fontSize || '1rem'};
