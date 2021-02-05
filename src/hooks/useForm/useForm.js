@@ -31,14 +31,20 @@ const useForm = ({ initialValues, onSubmit }) => {
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault()
-    const { username } = values
+    const { username, room } = values
 
     if (username.length < 3) {
       setErrors({ username: 'the username must be greater than 3 characters' })
       onSubmit({ errors })
       return
     }
-
+    if (room.length < 3) {
+      setErrors({
+        room: 'the chat room name must be greater than 3 characters',
+      })
+      onSubmit({ errors })
+      return
+    }
     setErrors({})
     onSubmit({ values, errors })
   }
