@@ -21,6 +21,7 @@ const RegisterTemplate = ({ submitForm }) => {
     initialValues,
     onSubmit: submitForm,
   })
+  console.log(errors)
 
   return (
     <Container>
@@ -32,7 +33,7 @@ const RegisterTemplate = ({ submitForm }) => {
         }}
       />
       {Object.keys(errors).length !== 0 ? (
-        <AlertError message={errors.username} />
+        <AlertError message={errors.username || errors.room} />
       ) : null}
       <FormRegister
         values={values}
