@@ -8,11 +8,12 @@ const ElementButton = styled.button`
   padding: 0 15px;
   color: ${(props) => props.color || '#000000'};
   width: ${(props) => props.width || 'max-content'};
-  margin: 0 2px;
+  margin: ${(props) => props.margin || '0'};
   height: ${(props) => props.height || 'auto'};
   text-transform: uppercase;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: ${(props) => props.fontSize || '1rem'};
+  font-weight: ${(props) => props.fontWeight || 'normal'};
   cursor: pointer;
 
   &:hover {

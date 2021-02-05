@@ -17,7 +17,7 @@ const RouterApp = () => {
     <Router>
       <div
         style={{
-          height: '100vh',
+          height: '100%',
         }}
       >
         <Switch>

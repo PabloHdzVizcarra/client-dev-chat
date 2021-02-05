@@ -5,16 +5,17 @@ import styled from 'styled-components'
 const ElementLabel = styled.label`
   color: #000411;
   margin: 10px 0 0 0;
-  font-size: 1.2rem;
+  font-size: ${(props) => props.fontSize || '1rem'};
   font-weight: normal;
 `
 
-const Label = ({ text }) => {
-  return <ElementLabel>{text}</ElementLabel>
+const Label = ({ text, styles }) => {
+  return <ElementLabel {...styles}>{text}</ElementLabel>
 }
 
 Label.propTypes = {
   text: PropTypes.string.isRequired,
+  styles: PropTypes.object,
 }
 
 export default Label

@@ -9,7 +9,7 @@ import IconAndHeader from '../../molecules/IconAndHeader/IconAndHeader'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 80px;
+  height: 100%;
 `
 
 const RegisterTemplate = ({ submitForm }) => {

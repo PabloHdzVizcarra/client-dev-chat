@@ -8,25 +8,33 @@ import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 
 const Form = styled.form`
   padding: 16px;
-  background-color: rgba(0, 0, 0, 0.1);
-  margin: 1rem 0 0 2rem;
+  margin: 10% 0;
   width: 40%;
   height: 50%;
   border-radius: 8px;
+  align-self: center;
+  justify-self: center;
 `
 
 const Container = styled.div`
   display: grid;
-  gap: 10px;
   height: 100%;
-  grid-auto-rows: 1fr;
+  gap: 5px;
+  grid-auto-rows: min-content;
 `
 
 const FormRegister = ({ values, handleChange, handleSubmit }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Container>
-        <HeaderH1 text={'Registro de usuarios'} />
+        <HeaderH1
+          text={'Registro de usuarios'}
+          styles={{
+            textAlign: 'center',
+            fontFamily: 'Arvo',
+            margin: '0 0 30px 0',
+          }}
+        />
         <Label text={`Username`} />
         <Input
           name='username'
@@ -52,8 +60,12 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
         <Button
           textButton='Registrar'
           buttonStyles={{
-            backgroundColor: '#EFCB68',
-            height: '45px',
+            backgroundColor: 'rgb(65, 199, 199)',
+            height: '40px',
+            color: '#ffffff',
+            fontWeight: 'bold',
+            width: '100%',
+            margin: '10px 0 0 0',
           }}
         />
       </Container>

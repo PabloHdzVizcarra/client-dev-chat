@@ -7,6 +7,7 @@ const Container = styled.div`
   border-radius: 6px;
   background-color: #c73954;
   margin: 10px 0;
+  position: fixed;
 `
 
 const Paragraph = styled.p`
