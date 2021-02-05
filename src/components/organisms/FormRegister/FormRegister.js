@@ -60,12 +60,13 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
         <Button
           textButton='Registrar'
           buttonStyles={{
-            backgroundColor: 'rgb(65, 199, 199)',
+            backgroundColor: 'rgb(65,199,199)',
             height: '40px',
             color: '#ffffff',
             fontWeight: 'bold',
             width: '100%',
             margin: '10px 0 0 0',
+            HBColor: 'rgb(62,189,189)',
           }}
         />
       </Container>

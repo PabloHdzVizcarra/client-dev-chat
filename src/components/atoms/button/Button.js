@@ -16,6 +16,8 @@ const ElementButton = styled.button`
   font-weight: ${(props) => props.fontWeight || 'normal'};
   cursor: pointer;
 
+  transition: background-color 300ms ease;
+
   &:hover {
     background-color: ${(props) => props.HBColor || '#fff'};
   }

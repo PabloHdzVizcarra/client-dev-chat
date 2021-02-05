@@ -3,16 +3,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Container = styled.div`
-  padding: 15px;
-  border-radius: 6px;
-  background-color: #c73954;
-  margin: 10px 0;
   position: fixed;
+  margin: 10px;
+  border-radius: 3px;
+  padding: 10px;
+  right: 10px;
+  border: 1px solid rgb(238, 211, 215);
+  background-color: rgb(242, 222, 222);
 `
 
 const Paragraph = styled.p`
   font-weight: normal;
-  color: #ffffff;
+  color: rgb(185, 74, 72);
   margin: 0;
 `
 
