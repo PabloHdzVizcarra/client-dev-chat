@@ -6,10 +6,12 @@ const ElementInput = styled.input`
   color: ${(props) => props.inputColor || 'black'};
   font-size: ${(props) => props.inputFontSize || '1rem'};
   height: ${(props) => props.height || 'auto'};
-  padding: 5px;
+  width: ${(props) => props.width || 'auto'};
+  margin: ${(props) => props.margin || 'auto'};
+  padding: ${(props) => props.padding || 'auto'};
+  border: ${(props) => props.border || 'auto'};
   border-radius: 6px;
-  border: none;
-  background-color: #ededed;
+  background-color: ${(props) => props.backgroundColor || '#ffffff'};
 
   &:focus {
     outline: none;
