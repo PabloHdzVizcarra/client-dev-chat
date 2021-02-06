@@ -1,23 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { io } from 'socket.io-client'
-import { Container, FlexContainer, InputText } from './styles'
+import { ContainerMessages, Message, WrapperMessage } from './styles'
 import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
 import Expire from '../../atoms/Expire/Expire'
-import Button from '../../atoms/button/Button'
-import H1AndButton from '../../molecules/H1AndButton/H1AndButton'
-import MessagesArea from '../../organisms/MessagesArea/MessagesArea'
+import styled from 'styled-components'
+import { v4 as uuidv4 } from 'uuid'
+import checkAdminUser from './helpers/check_admim_user'
+import UsersArea from '../../organisms/users-area/UsersArea'
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 25% 75%;
+  background-color: #ffffff;
+  height: 100%;
+`
 
 let socket
 
-const HomeTemplate = ({ roomID, username, handleCloseSession }) => {
+const HomeTemplate = ({ roomID, username }) => {
   const host = 'http://localhost:3100'
-  const [message, setMessage] = React.useState('')
+  // const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
   const [user, setUser] = React.useState('')
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
-  const [usersConnected, setUsersConnected] = React.useState([])
+  // const [usersConnected, setUsersConnected] = React.useState([])
 
   React.useEffect(() => {
     socket = io(host)
@@ -49,7 +57,7 @@ const HomeTemplate = ({ roomID, username, handleCloseSession }) => {
 
     socket.on('room_data', (data) => {
       console.log(data)
-      setUsersConnected(data.users)
+      //setUsersConnected(data.users)
     })
 
     socket.on('info_message', (data) => {
@@ -63,23 +71,23 @@ const HomeTemplate = ({ roomID, username, handleCloseSession }) => {
     }
   }, [])
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     setAppear(false)
-  }, [message])
+  }, [message])*/
 
-  const sendMessage = () => {
-    if (message) {
-      socket.emit('text-message', message)
-      setMessage('')
-      setInfoMessage('')
-    }
-  }
+  // const sendMessage = () => {
+  //   if (message) {
+  //     socket.emit('text-message', message)
+  //     setMessage('')
+  //     setInfoMessage('')
+  //   }
+  // }
 
-  function handleKeyPress(event) {
-    if (event.charCode === 13) {
-      sendMessage(message)
-    }
-  }
+  // function handleKeyPress(event) {
+  //   if (event.charCode === 13) {
+  //     sendMessage(message)
+  //   }
+  // }
 
   console.log(user)
   return (
@@ -89,31 +97,19 @@ const HomeTemplate = ({ roomID, username, handleCloseSession }) => {
           <InfoMessage text={infoMessage} />
         </Expire>
       ) : null}
-      <H1AndButton room={roomID} handleClick={handleCloseSession} />
-      <MessagesArea
-        messages={messages}
-        users={usersConnected}
-        adminUser={username}
-      />
-      <FlexContainer>
-        <InputText
-          value={message}
-          onChange={(event) => setMessage(event.target.value)}
-          placeholder='Write message...'
-          onKeyPress={(event) => handleKeyPress(event)}
-        />
-        <Button
-          onClick={sendMessage}
-          textButton={'Send'}
-          buttonStyles={{
-            width: '10%',
-            margin: '1px',
-            backgroundColor: '#0f91db',
-            color: '#fff',
-            HBColor: '#0e79b6',
-          }}
-        />
-      </FlexContainer>
+
+      <UsersArea nameChatRoom={roomID} />
+
+      <ContainerMessages>
+        {messages.map((message) => (
+          <WrapperMessage
+            key={uuidv4()}
+            admin={checkAdminUser(username, message.user)}
+          >
+            <Message key={uuidv4()}>{message.text}</Message>
+          </WrapperMessage>
+        ))}
+      </ContainerMessages>
     </Container>
   )
 }
