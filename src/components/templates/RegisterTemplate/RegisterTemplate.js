@@ -5,6 +5,7 @@ import FormRegister from '../../organisms/FormRegister/FormRegister'
 import styled from 'styled-components'
 import AlertError from '../../atoms/alert_error/AlertError'
 import IconAndHeader from '../../molecules/IconAndHeader/IconAndHeader'
+import Disappear from '../../atoms/disappear/Disappear'
 
 const Container = styled.div`
   display: flex;
@@ -13,6 +14,7 @@ const Container = styled.div`
 `
 
 const RegisterTemplate = ({ submitForm }) => {
+  const [entered, setEntered] = React.useState(false)
   const initialValues = {
     username: '',
     room: '',
@@ -22,12 +24,18 @@ const RegisterTemplate = ({ submitForm }) => {
     onSubmit: submitForm,
   })
 
+  React.useEffect(() => {
+    if (Object.keys(errors).length !== 0) {
+      setEntered(true)
+    }
+  }, [errors])
+
   return (
     <Container>
       <IconAndHeader />
-      {Object.keys(errors).length !== 0 ? (
+      <Disappear in={entered} valueOf={true}>
         <AlertError message={errors.username || errors.room} />
-      ) : null}
+      </Disappear>
       <FormRegister
         values={values}
         handleChange={handleChange}
