@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 import { v4 as uuidv4 } from 'uuid'
 import { AiOutlineMessage } from 'react-icons/ai'
+import UserInfo from '../../molecules/user-info/UserInfo'
 
 const Container = styled.div`
   display: grid;
@@ -36,7 +37,7 @@ const UsersArea = ({ nameChatRoom, adminUserName, usersConnected }) => {
         />
       </FlexContainer>
 
-      <div>{adminUserName}</div>
+      <UserInfo username={adminUserName} />
 
       <div>
         {usersConnected.map((user) => (
