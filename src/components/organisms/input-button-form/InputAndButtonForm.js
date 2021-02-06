@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-//import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import Input from '../../atoms/input/Input'
 import { FiChevronRight } from 'react-icons/fi'
 import IconAndButton from '../../molecules/icon-and-button/IconAndButton'
@@ -13,9 +13,9 @@ const Form = styled.form`
   align-items: center;
 `
 
-const InputAndButtonForm = () => {
+const InputAndButtonForm = ({ handleChange, valueInput, handleSubmit }) => {
   return (
-    <Form>
+    <Form onSubmit={(event) => handleSubmit(event)}>
       <FiChevronRight
         style={{
           fontSize: '2rem',
@@ -23,7 +23,7 @@ const InputAndButtonForm = () => {
         }}
       />
       <Input
-        handleChange={() => {}}
+        handleChange={(event) => handleChange(event.target.value)}
         type='text'
         styles={{
           width: '100%',
@@ -33,7 +33,7 @@ const InputAndButtonForm = () => {
           height: '90%',
         }}
         name='message'
-        value=''
+        value={valueInput}
         placeholder='message'
       />
 
@@ -42,6 +42,10 @@ const InputAndButtonForm = () => {
   )
 }
 
-//InputAndButtonForm.propTypes = {}
+InputAndButtonForm.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  valueInput: PropTypes.string.isRequired,
+}
 
 export default InputAndButtonForm

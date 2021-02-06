@@ -15,7 +15,13 @@ const Container = styled.div`
   border-radius: 10px;
 `
 
-const MessagesArea = ({ messages, username }) => {
+const MessagesArea = ({
+  messages,
+  username,
+  setMessage,
+  message,
+  handleSubmitForm,
+}) => {
   return (
     <Container>
       <p>messages</p>
@@ -28,7 +34,11 @@ const MessagesArea = ({ messages, username }) => {
         </WrapperMessage>
       ))}
 
-      <InputAndButtonForm />
+      <InputAndButtonForm
+        handleChange={setMessage}
+        valueInput={message}
+        handleSubmit={handleSubmitForm}
+      />
     </Container>
   )
 }
@@ -36,6 +46,9 @@ const MessagesArea = ({ messages, username }) => {
 MessagesArea.propTypes = {
   messages: PropTypes.array.isRequired,
   username: PropTypes.string.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  message: PropTypes.string.isRequired,
+  handleSubmitForm: PropTypes.func.isRequired,
 }
 
 export default MessagesArea

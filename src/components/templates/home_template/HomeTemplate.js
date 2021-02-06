@@ -18,12 +18,13 @@ let socket
 
 const HomeTemplate = ({ roomID, username }) => {
   const host = 'http://localhost:3100'
-  // const [message, setMessage] = React.useState('')
+  const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
   const [user, setUser] = React.useState('')
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
   const [usersConnected, setUsersConnected] = React.useState([])
+  console.log(message)
 
   React.useEffect(() => {
     socket = io(host)
@@ -73,19 +74,14 @@ const HomeTemplate = ({ roomID, username }) => {
     setAppear(false)
   }, [message])*/
 
-  // const sendMessage = () => {
-  //   if (message) {
-  //     socket.emit('text-message', message)
-  //     setMessage('')
-  //     setInfoMessage('')
-  //   }
-  // }
-
-  // function handleKeyPress(event) {
-  //   if (event.charCode === 13) {
-  //     sendMessage(message)
-  //   }
-  // }
+  function handleSubmitForm(event) {
+    event.preventDefault()
+    if (message) {
+      socket.emit('text-message', message)
+      setMessage('')
+      setInfoMessage('')
+    }
+  }
 
   console.log(user)
   return (
@@ -102,7 +98,13 @@ const HomeTemplate = ({ roomID, username }) => {
         usersConnected={usersConnected}
       />
 
-      <MessagesArea messages={messages} username={username} />
+      <MessagesArea
+        messages={messages}
+        username={username}
+        setMessage={setMessage}
+        message={message}
+        handleSubmitForm={handleSubmitForm}
+      />
     </Container>
   )
 }
