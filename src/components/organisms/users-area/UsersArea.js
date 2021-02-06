@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
-import { v4 as uuidv4 } from 'uuid'
 import { AiOutlineMessage } from 'react-icons/ai'
 import UserInfo from '../../molecules/user-info/UserInfo'
+import UserList from '../../molecules/user-list/UserList'
 
 const Container = styled.div`
   display: grid;
@@ -39,11 +39,7 @@ const UsersArea = ({ nameChatRoom, adminUserName, usersConnected }) => {
 
       <UserInfo username={adminUserName} />
 
-      <div>
-        {usersConnected.map((user) => (
-          <h3 key={uuidv4()}>{user.name}</h3>
-        ))}
-      </div>
+      <UserList users={usersConnected} />
     </Container>
   )
 }
