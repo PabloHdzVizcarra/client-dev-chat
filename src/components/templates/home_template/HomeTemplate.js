@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { io } from 'socket.io-client'
-import { ContainerMessages, Message, WrapperMessage } from './styles'
 import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
 import Expire from '../../atoms/Expire/Expire'
 import styled from 'styled-components'
-import { v4 as uuidv4 } from 'uuid'
-import checkAdminUser from './helpers/check_admim_user'
 import UsersArea from '../../organisms/users-area/UsersArea'
+import MessagesArea from '../../organisms/messages-area/MessagesArea'
 
 const Container = styled.div`
   display: grid;
@@ -25,7 +23,7 @@ const HomeTemplate = ({ roomID, username }) => {
   const [user, setUser] = React.useState('')
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
-  // const [usersConnected, setUsersConnected] = React.useState([])
+  const [usersConnected, setUsersConnected] = React.useState([])
 
   React.useEffect(() => {
     socket = io(host)
@@ -57,7 +55,7 @@ const HomeTemplate = ({ roomID, username }) => {
 
     socket.on('room_data', (data) => {
       console.log(data)
-      //setUsersConnected(data.users)
+      setUsersConnected(data.users)
     })
 
     socket.on('info_message', (data) => {
@@ -98,18 +96,13 @@ const HomeTemplate = ({ roomID, username }) => {
         </Expire>
       ) : null}
 
-      <UsersArea nameChatRoom={roomID} />
+      <UsersArea
+        nameChatRoom={roomID}
+        adminUserName={username}
+        usersConnected={usersConnected}
+      />
 
-      <ContainerMessages>
-        {messages.map((message) => (
-          <WrapperMessage
-            key={uuidv4()}
-            admin={checkAdminUser(username, message.user)}
-          >
-            <Message key={uuidv4()}>{message.text}</Message>
-          </WrapperMessage>
-        ))}
-      </ContainerMessages>
+      <MessagesArea messages={messages} username={username} />
     </Container>
   )
 }
