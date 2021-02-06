@@ -1,9 +1,9 @@
 import React from 'react'
-//import PropTypes from 'prop-types'
 import styled from 'styled-components'
+//import PropTypes from 'prop-types'
 import Input from '../../atoms/input/Input'
-import Button from '../../atoms/button/Button'
 import { FiChevronRight } from 'react-icons/fi'
+import IconAndButton from '../../molecules/icon-and-button/IconAndButton'
 
 const Form = styled.form`
   display: flex;
@@ -36,17 +36,8 @@ const InputAndButtonForm = () => {
         value=''
         placeholder='message'
       />
-      <Button
-        textButton='Enviar'
-        buttonStyles={{
-          width: 'max-content',
-          color: '#ffffff',
-          fontWeight: 'bold',
-          backgroundColor: '#41C7C7',
-          padding: '0 10px',
-          height: '100%',
-        }}
-      />
+
+      <IconAndButton />
     </Form>
   )
 }
