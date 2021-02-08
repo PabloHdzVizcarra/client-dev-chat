@@ -6,10 +6,10 @@ import Button from '../../atoms/button/Button'
 import PropTypes from 'prop-types'
 import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 import { BlockPicker } from 'react-color'
+import Paragraph from '../../atoms/Paragraph/Paragraph'
 
 const Form = styled.form`
   padding: 16px;
-  margin: 10% 0;
   width: 40%;
   height: 50%;
   border-radius: 8px;
@@ -22,6 +22,10 @@ const Container = styled.div`
   height: 100%;
   gap: 5px;
   grid-auto-rows: min-content;
+`
+
+const ColorPickerContainer = styled.div`
+  display: flex;
 `
 
 const FormRegister = ({ values, handleChange, handleSubmit, setColorUser }) => {
@@ -68,9 +72,18 @@ const FormRegister = ({ values, handleChange, handleSubmit, setColorUser }) => {
             height: '30px',
             width: '100%',
             border: '1px solid rgb(0, 0, 0, 0.2)',
+            margin: '0 0 20px 0',
           }}
         />
-        <BlockPicker onChangeComplete={handleChangeComplete} color={color} />
+        <ColorPickerContainer>
+          <BlockPicker onChangeComplete={handleChangeComplete} color={color} />
+          <Paragraph
+            text='Escoge tu color de usuario'
+            styles={{
+              fontSize: '1.2rem',
+            }}
+          />
+        </ColorPickerContainer>
         <Button
           textButton='Registrar'
           buttonStyles={{

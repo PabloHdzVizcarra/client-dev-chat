@@ -5,8 +5,13 @@ import PropTypes from 'prop-types'
 const P = styled.p`
   text-align: center;
   font-size: ${(props) => props.fontSize || '1rem'};
-  margin: 0;
-  font-weight: bold;
+  font-weight: ${(props) => props.fontweight || 'normal'};
+  color: ${(props) => props.color || 'black'};
+  font-size: ${(props) => props.fontSize || '1rem'};
+  height: ${(props) => props.height || 'auto'};
+  width: ${(props) => props.width || 'auto'};
+  margin: ${(props) => props.margin || 'auto'};
+  padding: ${(props) => props.padding || 'auto'};
 `
 
 const Paragraph = ({ text, styles }) => {
