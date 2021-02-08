@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { io } from 'socket.io-client'
-import InfoMessage from '../../molecules/InfoMessage/InfoMessage'
 import Expire from '../../atoms/Expire/Expire'
 import styled from 'styled-components'
 import UsersArea from '../../organisms/users-area/UsersArea'
 import MessagesArea from '../../organisms/messages-area/MessagesArea'
+import AlertInfo from '../../molecules/alert-info/AlertInfo'
 
 const Container = styled.div`
   display: grid;
@@ -88,7 +88,7 @@ const HomeTemplate = ({ roomID, username }) => {
     <Container>
       {appear ? (
         <Expire delay={1500}>
-          <InfoMessage text={infoMessage} />
+          <AlertInfo text={infoMessage} />
         </Expire>
       ) : null}
 

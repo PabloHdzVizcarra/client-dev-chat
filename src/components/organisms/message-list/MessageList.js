@@ -8,6 +8,8 @@ import Message from '../../molecules/message/Message'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  max-height: 79vh;
 `
 
 const WrapperMessage = styled.div`

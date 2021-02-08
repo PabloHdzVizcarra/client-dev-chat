@@ -11,7 +11,7 @@ const Container = styled.div`
 `
 
 const Paragraph = styled.p`
-  margin: 5px;
+  margin: 5px 15px;
   border-radius: 10px;
   width: max-content;
   list-style: none;
@@ -19,6 +19,7 @@ const Paragraph = styled.p`
   padding: 15px 15px;
   color: #fff;
   display: flex;
+  //border: 1.5px solid #9e9e9e;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `
 
