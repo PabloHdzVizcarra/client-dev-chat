@@ -1,13 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { Message, WrapperMessage } from '../../templates/home_template/styles'
 import { v4 as uuidv4 } from 'uuid'
 import checkAdminUser from '../../templates/home_template/helpers/check_admim_user'
+import Message from '../../molecules/message/Message'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+`
+
+const WrapperMessage = styled.div`
+  display: flex;
+  justify-content: ${(props) =>
+    props.admin === true ? 'flex-end' : 'flex-start'};
 `
 
 function MessageList({ messages, username }) {
@@ -18,7 +24,7 @@ function MessageList({ messages, username }) {
           key={uuidv4()}
           admin={checkAdminUser(username, message.user)}
         >
-          <Message>{message.text}</Message>
+          <Message text={message.text} />
         </WrapperMessage>
       ))}
     </Container>
