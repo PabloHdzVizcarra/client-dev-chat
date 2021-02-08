@@ -7,11 +7,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px;
+  margin-top: 20px;
 `
 
 const User = styled.div`
   display: flex;
-  padding: 2px;
+  padding: 0 20px 0 20px;
   align-items: center;
   height: min-content;
   margin-bottom: 10px;

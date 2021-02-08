@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Paragraph from '../../atoms/Paragraph/Paragraph'
 
 const Container = styled.div`
   display: flex;
-  background-color: #ededed;
+  background-color: #e4eaf7;
   border-radius: 10px;
   padding: 5px;
   align-items: center;
@@ -24,11 +25,18 @@ function UserInfo({ username }) {
           padding: '20px',
           borderRadius: '100%',
           textTransform: 'capitalize',
+          fontSize: '3rem',
+          margin: '5px 0 10px 0',
         }}
       >
         {shortName(username)}
       </h2>
-      <p>{username}</p>
+      <Paragraph
+        text={username}
+        styles={{
+          fontSize: '2rem',
+        }}
+      />
     </Container>
   )
 }

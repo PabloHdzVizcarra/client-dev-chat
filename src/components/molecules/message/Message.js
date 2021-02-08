@@ -5,12 +5,12 @@ import PropTypes from 'prop-types'
 const Container = styled.div`
   margin: 5px;
   border-radius: 10px;
-  border: 0.5px solid #ededed;
   width: max-content;
   list-style: none;
   background-color: #436fc7;
   padding: 10px;
   color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `
 
 function Message({ text }) {
