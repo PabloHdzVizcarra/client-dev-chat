@@ -7,7 +7,7 @@ const Container = styled.div`
   display: flex;
   width: max-content;
   align-items: center;
-  // flex-direction: row-reverse;
+  flex-direction: ${(props) => (props.admin ? 'none' : 'row-reverse')};
 `
 
 const Paragraph = styled.p`
@@ -22,9 +22,12 @@ const Paragraph = styled.p`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `
 
-function Message({ text, user }) {
+function Message({ text, user, adminUser }) {
+  function checkAdminUser(user, nameAdminUser) {
+    return user === nameAdminUser
+  }
   return (
-    <Container>
+    <Container admin={checkAdminUser(user, adminUser)}>
       <Paragraph>{text}</Paragraph>
       <h2
         style={{
@@ -51,6 +54,7 @@ function Message({ text, user }) {
 Message.propTypes = {
   text: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
+  adminUser: PropTypes.string.isRequired,
 }
 
 export default Message
