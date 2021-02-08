@@ -14,6 +14,12 @@ const ElementButton = styled.button`
   font-size: ${(props) => props.fontSize || '1rem'};
   font-weight: ${(props) => props.fontWeight || 'normal'};
   cursor: pointer;
+
+  transition: 300ms ease background-color;
+
+  &:hover {
+    background-color: ${(props) => props.hoverBColor || 'none'};
+  }
 `
 
 const Button = ({ textButton, handleClick, buttonStyles }) => {

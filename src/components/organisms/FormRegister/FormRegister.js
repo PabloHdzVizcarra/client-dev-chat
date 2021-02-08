@@ -42,8 +42,10 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
           value={values.username}
           handleChange={handleChange}
           styles={{
-            height: '25px',
-            inputColor: '#212121',
+            height: '30px',
+            color: '#212121',
+            width: '100%',
+            border: '1px solid rgb(0, 0, 0, 0.2)',
           }}
         />
         <Label text='Nombre de la sala de chat' />
@@ -54,7 +56,10 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
           value={values.room}
           handleChange={handleChange}
           styles={{
-            height: '25px',
+            color: '#212121',
+            height: '30px',
+            width: '100%',
+            border: '1px solid rgb(0, 0, 0, 0.2)',
           }}
         />
         <Button
@@ -66,7 +71,7 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
             fontWeight: 'bold',
             width: '100%',
             margin: '10px 0 0 0',
-            HBColor: 'rgb(62,189,189)',
+            hoverBColor: 'rgb(62,189,189)',
           }}
         />
       </Container>
