@@ -12,7 +12,6 @@ const RouterApp = () => {
   const [username, setUsername] = React.useState('')
   const [colorUser, setColorUser] = React.useState('')
   const [room, setRoom] = React.useState('')
-  console.log(colorUser)
 
   return (
     <Router>
@@ -38,7 +37,7 @@ const RouterApp = () => {
             {username === '' ? (
               <Redirect to={'/'} />
             ) : (
-              <Home username={username} roomID={room} />
+              <Home username={username} roomID={room} userColor={colorUser} />
             )}
           </Route>
         </Switch>

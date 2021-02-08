@@ -32,7 +32,7 @@ const FormRegister = ({ values, handleChange, handleSubmit, setColorUser }) => {
   const [color, setColor] = React.useState('#41C7C7')
 
   function handleChangeComplete(color) {
-    setColorUser({ background: color.hex })
+    setColorUser(color.hex)
     setColor(color)
   }
   console.log(setColorUser)

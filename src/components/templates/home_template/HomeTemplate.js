@@ -16,7 +16,7 @@ const Container = styled.div`
 
 let socket
 
-const HomeTemplate = ({ roomID, username }) => {
+const HomeTemplate = ({ roomID, username, userColor }) => {
   const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
@@ -24,7 +24,6 @@ const HomeTemplate = ({ roomID, username }) => {
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
   const [usersConnected, setUsersConnected] = React.useState([])
-  console.log(message)
 
   React.useEffect(() => {
     socket = io(host)
@@ -70,10 +69,6 @@ const HomeTemplate = ({ roomID, username }) => {
     }
   }, [])
 
-  /*React.useEffect(() => {
-    setAppear(false)
-  }, [message])*/
-
   function handleSubmitForm(event) {
     event.preventDefault()
     if (message) {
@@ -96,6 +91,7 @@ const HomeTemplate = ({ roomID, username }) => {
         nameChatRoom={roomID}
         adminUserName={username}
         usersConnected={usersConnected}
+        userColor={userColor}
       />
 
       <MessagesArea
@@ -113,6 +109,7 @@ HomeTemplate.propTypes = {
   roomID: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   handleCloseSession: PropTypes.func.isRequired,
+  userColor: PropTypes.string.isRequired,
 }
 
 export default HomeTemplate

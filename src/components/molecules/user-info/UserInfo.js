@@ -13,7 +13,7 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-function UserInfo({ username }) {
+function UserInfo({ username, userColor }) {
   function shortName(name) {
     return name.slice(0, 2)
   }
@@ -21,7 +21,7 @@ function UserInfo({ username }) {
     <Container>
       <h2
         style={{
-          backgroundColor: '#fff',
+          backgroundColor: userColor,
           padding: '20px',
           borderRadius: '100%',
           textTransform: 'capitalize',
@@ -43,6 +43,7 @@ function UserInfo({ username }) {
 
 UserInfo.propTypes = {
   username: PropTypes.string.isRequired,
+  userColor: PropTypes.string.isRequired,
 }
 
 export default UserInfo

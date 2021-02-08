@@ -18,7 +18,12 @@ const FlexContainer = styled.div`
   justify-content: center;
 `
 
-const UsersArea = ({ nameChatRoom, adminUserName, usersConnected }) => {
+const UsersArea = ({
+  nameChatRoom,
+  adminUserName,
+  usersConnected,
+  userColor,
+}) => {
   return (
     <Container>
       <FlexContainer>
@@ -37,7 +42,7 @@ const UsersArea = ({ nameChatRoom, adminUserName, usersConnected }) => {
         />
       </FlexContainer>
 
-      <UserInfo username={adminUserName} />
+      <UserInfo username={adminUserName} userColor={userColor} />
 
       <UserList users={usersConnected} />
     </Container>
@@ -48,6 +53,7 @@ UsersArea.propTypes = {
   nameChatRoom: PropTypes.string.isRequired,
   adminUserName: PropTypes.string.isRequired,
   usersConnected: PropTypes.array.isRequired,
+  userColor: PropTypes.string.isRequired,
 }
 
 export default UsersArea
