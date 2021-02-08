@@ -14,40 +14,14 @@ const Paragraph = styled.p`
   font-weight: bold;
 `
 
-const FlexContainer = styled.div`
-  display: flex;
-  background-color: #fff;
-  padding: 5px;
-  color: #12a8ff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-`
-
 const ContainerData = styled.div`
   display: grid;
   grid-template-columns: 80% 20%;
   background-color: #f0f0f0;
 `
 
-const ContainerMessages = styled.ul`
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  overflow: auto;
-  padding: 10px;
-  margin: 0;
-`
-
-const ContainerUsers = styled.div`
-  padding: 10px;
-  overflow: auto;
-`
-
-const InputText = styled.input`
-  height: 100%;
-  width: 90%;
-`
 const Message = styled.li`
-  padding: 10px;
+  padding: 5px;
   margin: 5px;
   border-radius: 6px;
   border: 0.5px solid #ededed;
@@ -61,14 +35,4 @@ const WrapperMessage = styled.div`
     props.admin === true ? 'flex-end' : 'flex-start'};
 `
 
-export {
-  Container,
-  Paragraph,
-  FlexContainer,
-  ContainerMessages,
-  InputText,
-  Message,
-  ContainerData,
-  ContainerUsers,
-  WrapperMessage,
-}
+export { Container, Paragraph, Message, ContainerData, WrapperMessage }
