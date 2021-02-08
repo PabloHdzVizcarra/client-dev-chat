@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { v4 as uuidv4 } from 'uuid'
+import shortName from '../../templates/home_template/helpers/shortName'
 
 const Container = styled.div`
   display: flex;
@@ -19,9 +20,6 @@ const User = styled.div`
 `
 
 function UserList({ users }) {
-  function shortName(name) {
-    return name.slice(0, 2)
-  }
   return (
     <Container>
       {users.map((user) => (

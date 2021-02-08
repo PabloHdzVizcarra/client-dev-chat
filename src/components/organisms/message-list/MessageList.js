@@ -24,7 +24,7 @@ function MessageList({ messages, username }) {
           key={uuidv4()}
           admin={checkAdminUser(username, message.user)}
         >
-          <Message text={message.text} />
+          <Message text={message.text} user={message.user} />
         </WrapperMessage>
       ))}
     </Container>
