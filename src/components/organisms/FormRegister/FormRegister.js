@@ -5,6 +5,7 @@ import Label from '../../atoms/label/Label'
 import Button from '../../atoms/button/Button'
 import PropTypes from 'prop-types'
 import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
+import { BlockPicker } from 'react-color'
 
 const Form = styled.form`
   padding: 16px;
@@ -23,7 +24,14 @@ const Container = styled.div`
   grid-auto-rows: min-content;
 `
 
-const FormRegister = ({ values, handleChange, handleSubmit }) => {
+const FormRegister = ({ values, handleChange, handleSubmit, setColorUser }) => {
+  const [color, setColor] = React.useState('#41C7C7')
+
+  function handleChangeComplete(color) {
+    setColorUser({ background: color.hex })
+    setColor(color)
+  }
+  console.log(setColorUser)
   return (
     <Form onSubmit={handleSubmit}>
       <Container>
@@ -62,6 +70,7 @@ const FormRegister = ({ values, handleChange, handleSubmit }) => {
             border: '1px solid rgb(0, 0, 0, 0.2)',
           }}
         />
+        <BlockPicker onChangeComplete={handleChangeComplete} color={color} />
         <Button
           textButton='Registrar'
           buttonStyles={{
@@ -83,6 +92,7 @@ FormRegister.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
+  setColorUser: PropTypes.func.isRequired,
 }
 
 export default FormRegister

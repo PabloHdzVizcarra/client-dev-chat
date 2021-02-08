@@ -7,11 +7,12 @@ import {
 } from 'react-router-dom'
 import Login from '../pages/login/Login'
 import Home from '../pages/home/Home'
-import { useState } from 'react'
 
 const RouterApp = () => {
-  const [username, setUsername] = useState('')
-  const [room, setRoom] = useState('')
+  const [username, setUsername] = React.useState('')
+  const [colorUser, setColorUser] = React.useState('')
+  const [room, setRoom] = React.useState('')
+  console.log(colorUser)
 
   return (
     <Router>
@@ -25,7 +26,11 @@ const RouterApp = () => {
             {username !== '' ? (
               <Redirect to={'/home'} />
             ) : (
-              <Login setUsername={setUsername} setRoom={setRoom} />
+              <Login
+                setUsername={setUsername}
+                setRoom={setRoom}
+                setColorUser={setColorUser}
+              />
             )}
           </Route>
 
