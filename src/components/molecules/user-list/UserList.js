@@ -19,18 +19,19 @@ const User = styled.div`
   margin-bottom: 10px;
 `
 
-function UserList({ users }) {
+function UserList({ users, userColor }) {
   return (
     <Container>
       {users.map((user) => (
         <User key={uuidv4()}>
           <h2
             style={{
-              backgroundColor: '#ededed',
-              padding: '5px',
+              backgroundColor: userColor,
+              padding: '7px',
               borderRadius: '100%',
               textTransform: 'capitalize',
               margin: '0 10px 0 0',
+              color: '#fff',
             }}
           >
             {shortName(user.name)}
@@ -50,6 +51,7 @@ function UserList({ users }) {
 
 UserList.propTypes = {
   users: PropTypes.array.isRequired,
+  userColor: PropTypes.string.isRequired,
 }
 
 export default UserList

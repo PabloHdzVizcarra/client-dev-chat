@@ -27,6 +27,7 @@ function UserInfo({ username, userColor }) {
           textTransform: 'capitalize',
           fontSize: '3rem',
           margin: '5px 0 10px 0',
+          color: '#fff',
         }}
       >
         {shortName(username)}

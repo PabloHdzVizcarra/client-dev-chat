@@ -44,7 +44,7 @@ const UsersArea = ({
 
       <UserInfo username={adminUserName} userColor={userColor} />
 
-      <UserList users={usersConnected} />
+      <UserList users={usersConnected} userColor={userColor} />
     </Container>
   )
 }
