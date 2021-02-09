@@ -12,6 +12,8 @@ const RouterApp = () => {
   const [username, setUsername] = React.useState('')
   const [colorUser, setColorUser] = React.useState('')
   const [room, setRoom] = React.useState('')
+  const [userData, setUserData] = React.useState({})
+  console.log(userData)
 
   return (
     <Router>
@@ -29,6 +31,7 @@ const RouterApp = () => {
                 setUsername={setUsername}
                 setRoom={setRoom}
                 setColorUser={setColorUser}
+                setUserData={setUserData}
               />
             )}
           </Route>
