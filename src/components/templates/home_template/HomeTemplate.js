@@ -24,7 +24,7 @@ const HomeTemplate = ({ userData }) => {
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
   const [usersConnected, setUsersConnected] = React.useState([])
-  const { username, userColor, room: roomID } = userData
+  const { username, room: roomID } = userData
 
   React.useEffect(() => {
     socket = io(host)
@@ -88,12 +88,7 @@ const HomeTemplate = ({ userData }) => {
         </Expire>
       ) : null}
 
-      <UsersArea
-        nameChatRoom={roomID}
-        adminUserName={username}
-        usersConnected={usersConnected}
-        userColor={userColor}
-      />
+      <UsersArea usersConnected={usersConnected} userData={userData} />
 
       <MessagesArea
         messages={messages}
