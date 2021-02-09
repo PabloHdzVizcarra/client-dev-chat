@@ -4,20 +4,22 @@ import userEvent from '@testing-library/user-event'
 import FormRegister from './FormRegister'
 
 describe('test FormRegister component', () => {
+  const values = {
+    username: '',
+    room: '',
+  }
+  const handleSubmit = jest.fn()
+  const setColorUser = jest.fn()
+  const handleChange = jest.fn()
+  const handleChangeOneValue = jest.fn()
   test('should contain the required HTML elements', () => {
-    const values = {
-      username: '',
-      room: '',
-    }
-    const handleSubmit = jest.fn()
-    const setColorUser = jest.fn()
-    const handleChange = jest.fn()
     render(
       <FormRegister
         handleSubmit={handleSubmit}
         setColorUser={setColorUser}
         handleChange={handleChange}
         values={values}
+        handleChangeOneValue={handleChangeOneValue}
       />,
     )
 
@@ -27,19 +29,13 @@ describe('test FormRegister component', () => {
   })
 
   test('function handleChange must be called when the change event of inputs is triggered, because the user changes its value', () => {
-    const values = {
-      username: '',
-      room: '',
-    }
-    const handleSubmit = jest.fn()
-    const setColorUser = jest.fn()
-    const handleChange = jest.fn()
     render(
       <FormRegister
         handleSubmit={handleSubmit}
         setColorUser={setColorUser}
         handleChange={handleChange}
         values={values}
+        handleChangeOneValue={handleChangeOneValue}
       />,
     )
 
@@ -55,19 +51,13 @@ describe('test FormRegister component', () => {
     expect(handleChange).toHaveBeenCalled()
   })
   test('you must call handleSubmit function when you press the form button', () => {
-    const values = {
-      username: '',
-      room: '',
-    }
-    const handleSubmit = jest.fn((e) => e.preventDefault())
-    const setColorUser = jest.fn()
-    const handleChange = jest.fn()
     render(
       <FormRegister
         handleSubmit={handleSubmit}
         setColorUser={setColorUser}
         handleChange={handleChange}
         values={values}
+        handleChangeOneValue={handleChangeOneValue}
       />,
     )
 
