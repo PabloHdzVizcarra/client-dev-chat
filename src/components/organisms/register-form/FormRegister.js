@@ -35,7 +35,6 @@ const FormRegister = ({ values, handleChange, handleSubmit, setColorUser }) => {
     setColorUser(color.hex)
     setColor(color)
   }
-  console.log(setColorUser)
   return (
     <Form onSubmit={handleSubmit}>
       <Container>
