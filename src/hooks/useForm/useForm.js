@@ -34,13 +34,16 @@ const useForm = ({ initialValues, onSubmit }) => {
     const { username, room } = values
 
     if (username.length < 3) {
-      setErrors({ username: 'the username must be greater than 3 characters' })
+      setErrors({
+        username: 'El username debe tener una longitud mayor a 3 caracteres',
+      })
       onSubmit({ errors })
       return
     }
     if (room.length < 3) {
       setErrors({
-        room: 'the chat room name must be greater than 3 characters',
+        room:
+          'El nombre de la sala de chat debe ser mayor o igual 4 caracteres',
       })
       onSubmit({ errors })
       return
