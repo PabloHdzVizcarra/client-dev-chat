@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { BlockPicker } from 'react-color'
+import { TwitterPicker } from 'react-color'
 import Input from '../../atoms/input/Input'
 import Label from '../../atoms/label/Label'
 import Button from '../../atoms/button/Button'
@@ -82,7 +82,10 @@ const FormRegister = ({
           }}
         />
         <ColorPickerContainer>
-          <BlockPicker onChangeComplete={handleChangeComplete} color={color} />
+          <TwitterPicker
+            onChangeComplete={handleChangeComplete}
+            color={color}
+          />
           <Paragraph
             text='Escoge tu color de usuario'
             styles={{
