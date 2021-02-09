@@ -35,7 +35,7 @@ const useForm = ({ initialValues, onSubmit }) => {
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault()
-    const { username, room } = values
+    const { username, room, colorUser } = values
     console.log(values)
 
     if (username.length < 3) {
@@ -51,6 +51,12 @@ const useForm = ({ initialValues, onSubmit }) => {
           'El nombre de la sala de chat debe ser mayor o igual 4 caracteres',
       })
       onSubmit({ errors })
+      return
+    }
+    if (!colorUser) {
+      setErrors({
+        colorUser: 'no seleccionaste ningún color de usuario',
+      })
       return
     }
     setErrors({})

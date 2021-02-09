@@ -38,12 +38,15 @@ const RegisterTemplate = ({ submitForm, setColorUser }) => {
     }
   }, [errors])
 
+  console.log(errors)
   //TODO: should show alert when occurs error from useForm
   return (
     <Container>
       <IconAndHeader />
       <Disappear in={entered} valueOf={true}>
-        <AlertError message={errors.username || errors.room} />
+        <AlertError
+          message={errors.username || errors.room || errors.colorUser}
+        />
       </Disappear>
       <FormRegister
         values={values}

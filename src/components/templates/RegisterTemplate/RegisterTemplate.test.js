@@ -62,6 +62,7 @@ describe('Test RegisterTemplate component', () => {
     )
     userEvent.type(screen.getAllByRole('textbox')[0], 'john')
     userEvent.type(screen.getAllByRole('textbox')[1], 'devs')
+    userEvent.click(screen.getByRole('button'))
 
     expect(screen.getByRole('alert')).toBeInTheDocument()
   })
