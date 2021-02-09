@@ -16,7 +16,7 @@ const Container = styled.div`
 
 let socket
 
-const HomeTemplate = ({ roomID, username, userColor }) => {
+const HomeTemplate = ({ userData }) => {
   const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
@@ -24,6 +24,7 @@ const HomeTemplate = ({ roomID, username, userColor }) => {
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
   const [usersConnected, setUsersConnected] = React.useState([])
+  const { username, userColor, room: roomID } = userData
 
   React.useEffect(() => {
     socket = io(host)
@@ -106,10 +107,7 @@ const HomeTemplate = ({ roomID, username, userColor }) => {
 }
 
 HomeTemplate.propTypes = {
-  roomID: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  handleCloseSession: PropTypes.func.isRequired,
-  userColor: PropTypes.string.isRequired,
+  userData: PropTypes.object.isRequired,
 }
 
 export default HomeTemplate

@@ -13,7 +13,7 @@ const Container = styled.div`
   height: 100%;
 `
 
-const RegisterTemplate = ({ submitForm, setColorUser }) => {
+const RegisterTemplate = ({ submitForm }) => {
   const [entered, setEntered] = React.useState(false)
   const initialValues = {
     username: '',
@@ -49,7 +49,6 @@ const RegisterTemplate = ({ submitForm, setColorUser }) => {
         values={values}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        setColorUser={setColorUser}
         handleChangeOneValue={handleChangeOneValue}
       />
     </Container>
@@ -58,7 +57,6 @@ const RegisterTemplate = ({ submitForm, setColorUser }) => {
 
 RegisterTemplate.propTypes = {
   submitForm: PropTypes.func.isRequired,
-  setColorUser: PropTypes.func.isRequired,
 }
 
 export default RegisterTemplate

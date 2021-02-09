@@ -32,13 +32,11 @@ const FormRegister = ({
   values,
   handleChange,
   handleSubmit,
-  setColorUser,
   handleChangeOneValue,
 }) => {
   const [color, setColor] = React.useState('#41C7C7')
 
   function handleChangeComplete(color) {
-    setColorUser(color.hex)
     setColor(color)
     handleChangeOneValue(color)
   }
@@ -114,7 +112,6 @@ FormRegister.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
-  setColorUser: PropTypes.func.isRequired,
   handleChangeOneValue: PropTypes.func.isRequired,
 }
 
