@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const Container = styled.div`
   display: block;
-  padding: 6px 10px;
+  padding: 12px 10px;
   margin: 6px;
   border-radius: 3px;
   border: 1px solid rgb(214, 233, 198);

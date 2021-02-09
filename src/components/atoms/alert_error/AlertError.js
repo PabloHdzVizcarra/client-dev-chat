@@ -21,7 +21,7 @@ const Paragraph = styled.p`
 const AlertError = ({ message }) => {
   return (
     <Container>
-      <Paragraph>{message}</Paragraph>
+      <Paragraph role='alert'>{message}</Paragraph>
     </Container>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import useForm from '../../../hooks/useForm/useForm'
-import FormRegister from '../../organisms/FormRegister/FormRegister'
+import FormRegister from '../../organisms/register-form/FormRegister'
 import styled from 'styled-components'
 import AlertError from '../../atoms/alert_error/AlertError'
 import IconAndHeader from '../../molecules/IconAndHeader/IconAndHeader'
@@ -19,6 +19,7 @@ const RegisterTemplate = ({ submitForm, setColorUser }) => {
     username: '',
     room: '',
   }
+  //TODO: new rule validation for user color
   const { values, errors, handleChange, handleSubmit } = useForm({
     initialValues,
     onSubmit: submitForm,
@@ -30,6 +31,7 @@ const RegisterTemplate = ({ submitForm, setColorUser }) => {
     }
   }, [errors])
 
+  //TODO: should show alert when occurs error from useForm
   return (
     <Container>
       <IconAndHeader />
