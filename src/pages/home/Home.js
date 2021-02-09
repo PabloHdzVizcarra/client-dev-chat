@@ -2,24 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import HomeTemplate from '../../components/templates/home_template/HomeTemplate'
 
-const Home = ({ username, roomID, userColor }) => {
+const Home = ({ userData }) => {
   function closeSession() {
     window.location.href = window.origin
   }
+
+  console.log(userData)
   return (
     <HomeTemplate
-      roomID={roomID}
-      username={username}
+      roomID={userData.room}
+      username={userData.username}
       handleCloseSession={closeSession}
-      userColor={userColor}
+      userColor={userData.colorUser}
     />
   )
 }
 
 Home.propTypes = {
-  username: PropTypes.string.isRequired,
-  roomID: PropTypes.string.isRequired,
-  userColor: PropTypes.string.isRequired,
+  userData: PropTypes.object.isRequired,
 }
 
 export default Home

@@ -10,8 +10,6 @@ import Home from '../pages/home/Home'
 
 const RouterApp = () => {
   const [username, setUsername] = React.useState('')
-  const [colorUser, setColorUser] = React.useState('')
-  const [room, setRoom] = React.useState('')
   const [userData, setUserData] = React.useState({})
   console.log(userData)
 
@@ -29,8 +27,8 @@ const RouterApp = () => {
             ) : (
               <Login
                 setUsername={setUsername}
-                setRoom={setRoom}
-                setColorUser={setColorUser}
+                setRoom={() => {}}
+                setColorUser={() => {}}
                 setUserData={setUserData}
               />
             )}
@@ -40,7 +38,7 @@ const RouterApp = () => {
             {username === '' ? (
               <Redirect to={'/'} />
             ) : (
-              <Home username={username} roomID={room} userColor={colorUser} />
+              <Home userData={userData} />
             )}
           </Route>
         </Switch>
