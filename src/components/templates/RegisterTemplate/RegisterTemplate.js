@@ -18,9 +18,16 @@ const RegisterTemplate = ({ submitForm, setColorUser }) => {
   const initialValues = {
     username: '',
     room: '',
+    colorUser: '',
   }
   //TODO: new rule validation for user color
-  const { values, errors, handleChange, handleSubmit } = useForm({
+  const {
+    values,
+    errors,
+    handleChange,
+    handleSubmit,
+    handleChangeOneValue,
+  } = useForm({
     initialValues,
     onSubmit: submitForm,
   })
@@ -43,6 +50,7 @@ const RegisterTemplate = ({ submitForm, setColorUser }) => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         setColorUser={setColorUser}
+        handleChangeOneValue={handleChangeOneValue}
       />
     </Container>
   )

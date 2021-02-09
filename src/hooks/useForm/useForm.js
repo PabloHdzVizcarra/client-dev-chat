@@ -17,6 +17,10 @@ const useForm = ({ initialValues, onSubmit }) => {
     formRendered.current = false
   }, [initialValues])
 
+  const handleChangeOneValue = (value) => {
+    setValues({ ...values, colorUser: value.hex })
+  }
+
   const handleChange = (event) => {
     const { name, value } = event.target
     event.persist()
@@ -32,6 +36,7 @@ const useForm = ({ initialValues, onSubmit }) => {
   const handleSubmit = (event) => {
     if (event) event.preventDefault()
     const { username, room } = values
+    console.log(values)
 
     if (username.length < 3) {
       setErrors({
@@ -59,6 +64,7 @@ const useForm = ({ initialValues, onSubmit }) => {
     handleChange,
     handleBlur,
     handleSubmit,
+    handleChangeOneValue,
   }
 }
 

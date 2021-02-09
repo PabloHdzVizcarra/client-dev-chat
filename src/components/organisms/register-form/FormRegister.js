@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { BlockPicker } from 'react-color'
 import Input from '../../atoms/input/Input'
 import Label from '../../atoms/label/Label'
 import Button from '../../atoms/button/Button'
-import PropTypes from 'prop-types'
 import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
-import { BlockPicker } from 'react-color'
 import Paragraph from '../../atoms/Paragraph/Paragraph'
 
 const Form = styled.form`
@@ -28,12 +28,19 @@ const ColorPickerContainer = styled.div`
   display: flex;
 `
 
-const FormRegister = ({ values, handleChange, handleSubmit, setColorUser }) => {
+const FormRegister = ({
+  values,
+  handleChange,
+  handleSubmit,
+  setColorUser,
+  handleChangeOneValue,
+}) => {
   const [color, setColor] = React.useState('#41C7C7')
 
   function handleChangeComplete(color) {
     setColorUser(color.hex)
     setColor(color)
+    handleChangeOneValue(color)
   }
   return (
     <Form onSubmit={handleSubmit}>
@@ -105,6 +112,7 @@ FormRegister.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
   setColorUser: PropTypes.func.isRequired,
+  handleChangeOneValue: PropTypes.func.isRequired,
 }
 
 export default FormRegister
