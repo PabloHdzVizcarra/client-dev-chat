@@ -20,7 +20,6 @@ const RegisterTemplate = ({ submitForm, setColorUser }) => {
     room: '',
     colorUser: '',
   }
-  //TODO: new rule validation for user color
   const {
     values,
     errors,
@@ -38,8 +37,6 @@ const RegisterTemplate = ({ submitForm, setColorUser }) => {
     }
   }, [errors])
 
-  console.log(errors)
-  //TODO: should show alert when occurs error from useForm
   return (
     <Container>
       <IconAndHeader />

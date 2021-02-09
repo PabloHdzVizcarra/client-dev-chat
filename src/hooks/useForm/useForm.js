@@ -36,7 +36,6 @@ const useForm = ({ initialValues, onSubmit }) => {
   const handleSubmit = (event) => {
     if (event) event.preventDefault()
     const { username, room, colorUser } = values
-    console.log(values)
 
     if (username.length < 3) {
       setErrors({
