@@ -19,11 +19,10 @@ const Paragraph = styled.p`
   padding: 15px 15px;
   color: #fff;
   display: flex;
-  //border: 1.5px solid #9e9e9e;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `
 
-function Message({ text, user, adminUser }) {
+function Message({ text, user, adminUser, color }) {
   function checkAdminUser(user, nameAdminUser) {
     return user === nameAdminUser
   }
@@ -32,18 +31,18 @@ function Message({ text, user, adminUser }) {
       <Paragraph>{text}</Paragraph>
       <h2
         style={{
-          backgroundColor: '#ededed',
-          padding: '5px',
-          borderRadius: '100%',
-          textTransform: 'capitalize',
-          margin: '0 0 0 5px',
-          display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '1.2rem',
-          width: '35px',
-          height: '35px',
+          backgroundColor: color,
           border: '1px solid rgb(0, 0, 0, 0.2)',
+          borderRadius: '100%',
+          display: 'flex',
+          fontSize: '1.2rem',
+          height: '35px',
+          justifyContent: 'center',
+          margin: '0 0 0 5px',
+          padding: '5px',
+          textTransform: 'capitalize',
+          width: '35px',
         }}
       >
         {shortName(user)}
@@ -56,6 +55,7 @@ Message.propTypes = {
   text: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
   adminUser: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
 }
 
 export default Message
