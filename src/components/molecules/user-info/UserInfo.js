@@ -14,8 +14,14 @@ const Container = styled.div`
 `
 
 function UserInfo({ username, userColor }) {
-  function shortName(name) {
-    return name.slice(0, 2)
+  console.log(username)
+
+  if (!username) {
+    return <div>Loading...</div>
+  }
+
+  function shortName(username) {
+    return username.slice(0, 2)
   }
   return (
     <Container>
@@ -33,7 +39,7 @@ function UserInfo({ username, userColor }) {
         {shortName(username)}
       </h2>
       <Paragraph
-        text={username}
+        text={username || ''}
         styles={{
           fontSize: '2rem',
         }}

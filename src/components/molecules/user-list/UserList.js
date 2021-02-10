@@ -20,6 +20,9 @@ const User = styled.div`
 `
 
 function UserList({ users, userColor }) {
+  if (!userColor) {
+    return <p>Loading...</p>
+  }
   return (
     <Container>
       {users.map((user) => (

@@ -18,8 +18,9 @@ const FlexContainer = styled.div`
   justify-content: center;
 `
 
-const UsersArea = ({ usersConnected, userData }) => {
-  const { colorUser, username, room } = userData
+const UsersArea = ({ usersConnected, user }) => {
+  console.log(user)
+  const { color, name, room } = user
   return (
     <Container>
       <FlexContainer>
@@ -38,9 +39,9 @@ const UsersArea = ({ usersConnected, userData }) => {
         />
       </FlexContainer>
 
-      <UserInfo username={username} userColor={colorUser} />
+      <UserInfo username={name} userColor={color} />
 
-      <UserList users={usersConnected} userColor={colorUser} />
+      <UserList users={usersConnected} userColor={color} />
     </Container>
   )
 }
@@ -48,6 +49,7 @@ const UsersArea = ({ usersConnected, userData }) => {
 UsersArea.propTypes = {
   usersConnected: PropTypes.array.isRequired,
   userData: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 }
 
 export default UsersArea
