@@ -19,7 +19,7 @@ const FlexContainer = styled.div`
 `
 
 const UsersArea = ({ usersConnected, user }) => {
-  console.log(user)
+  console.log(usersConnected)
   if (Object.keys(user).length === 0) {
     return <p>Loading...</p>
   }

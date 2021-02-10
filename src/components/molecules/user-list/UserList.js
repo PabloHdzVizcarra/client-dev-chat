@@ -19,17 +19,14 @@ const User = styled.div`
   margin-bottom: 10px;
 `
 
-function UserList({ users, userColor }) {
-  if (!userColor) {
-    return <p>Loading...</p>
-  }
+function UserList({ users }) {
   return (
     <Container>
       {users.map((user) => (
         <User key={uuidv4()}>
           <h2
             style={{
-              backgroundColor: userColor,
+              backgroundColor: user.color,
               padding: '7px',
               borderRadius: '100%',
               textTransform: 'capitalize',
