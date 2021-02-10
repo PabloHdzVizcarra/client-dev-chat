@@ -30,6 +30,7 @@ function MessageList({ messages, username }) {
             text={message.text}
             user={message.user}
             adminUser={username}
+            color={message.userColor}
           />
         </WrapperMessage>
       ))}

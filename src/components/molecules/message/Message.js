@@ -43,6 +43,7 @@ function Message({ text, user, adminUser, color }) {
           padding: '5px',
           textTransform: 'capitalize',
           width: '35px',
+          color: '#fff',
         }}
       >
         {shortName(user)}
