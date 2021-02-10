@@ -46,7 +46,6 @@ const HomeTemplate = ({ userData }) => {
       console.log(msg)
       if (msg && msg?.text) {
         console.log(msg)
-        setUser(msg.user)
         setMessages((messages) => [...messages, msg])
         setInfoMessage('')
         return
@@ -80,7 +79,7 @@ const HomeTemplate = ({ userData }) => {
     }
   }
 
-  console.log(user)
+  //TODO: Bug alert show
   return (
     <Container>
       {appear ? (

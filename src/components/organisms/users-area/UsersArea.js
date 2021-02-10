@@ -19,8 +19,8 @@ const FlexContainer = styled.div`
 `
 
 const UsersArea = ({ usersConnected, user }) => {
-  console.log(usersConnected)
-  if (Object.keys(user).length === 0) {
+  console.log(user)
+  if (Object.keys(user).length === 0 || !user) {
     return <p>Loading...</p>
   }
   const { color, name, room } = user
@@ -42,7 +42,7 @@ const UsersArea = ({ usersConnected, user }) => {
         />
       </FlexContainer>
 
-      <UserInfo username={name} userColor={color} />
+      <UserInfo username={name || ''} userColor={color} />
 
       <UserList users={usersConnected} userColor={color} />
     </Container>
