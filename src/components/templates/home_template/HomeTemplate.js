@@ -39,13 +39,10 @@ const HomeTemplate = ({ userData }) => {
 
   React.useEffect(() => {
     socket.on('new_user', (user) => {
-      console.log(user)
       setUser(user)
     })
     socket.on('message', (msg) => {
-      console.log(msg)
       if (msg && msg?.text) {
-        console.log(msg)
         setMessages((messages) => [...messages, msg])
         setInfoMessage('')
         return
@@ -55,12 +52,10 @@ const HomeTemplate = ({ userData }) => {
     })
 
     socket.on('room_data', (data) => {
-      console.log(data)
       setUsersConnected(data.users)
     })
 
     socket.on('info_message', (data) => {
-      console.log(data)
       const { text } = data
       setInfoMessage(text)
       setAppear(true)
@@ -79,12 +74,11 @@ const HomeTemplate = ({ userData }) => {
     }
   }
 
-  //TODO: Bug alert show
   return (
     <Container>
       {appear ? (
         <Expire delay={1500}>
-          <AlertInfo text={infoMessage} />
+          <AlertInfo text={infoMessage} setAppear={setAppear} />
         </Expire>
       ) : null}
 
