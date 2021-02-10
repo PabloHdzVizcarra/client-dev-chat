@@ -19,7 +19,13 @@ const Text = styled.p`
   color: rgb(42, 123, 6);
 `
 
-function AlertInfo({ text }) {
+function AlertInfo({ text, setAppear }) {
+  React.useEffect(() => {
+    return () => {
+      setAppear(false)
+    }
+  }, [setAppear])
+
   return (
     <Container>
       <Text>{text}</Text>
@@ -29,6 +35,7 @@ function AlertInfo({ text }) {
 
 AlertInfo.propTypes = {
   text: PropTypes.string.isRequired,
+  setAppear: PropTypes.func.isRequired,
 }
 
 export default AlertInfo
