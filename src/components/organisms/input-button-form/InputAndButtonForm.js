@@ -9,7 +9,7 @@ const Form = styled.form`
   display: flex;
   padding: 17px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 4px;
   align-items: center;
 `
 

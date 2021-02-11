@@ -8,7 +8,7 @@ const Container = styled.div`
   background-color: #41c7c7;
   padding: 5px;
   height: 80%;
-  border-radius: 6px;
+  border-radius: 4px;
   align-items: center;
   cursor: pointer;
 `

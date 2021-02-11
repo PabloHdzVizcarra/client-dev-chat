@@ -6,7 +6,7 @@ import Paragraph from '../../atoms/Paragraph/Paragraph'
 const Container = styled.div`
   display: flex;
   background-color: #e4eaf7;
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 5px;
   align-items: center;
   justify-content: center;

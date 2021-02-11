@@ -10,7 +10,7 @@ const Container = styled.div`
   padding: 20px 10px;
   background-color: #c9d6ef;
   margin: 30px 10px 30px 0;
-  border-radius: 10px;
+  border-radius: 4px;
 `
 
 const MessagesArea = ({

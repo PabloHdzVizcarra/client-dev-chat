@@ -11,13 +11,14 @@ const Container = styled.div`
 `
 
 const Paragraph = styled.p`
-  font-size: ${(props) => (props.admin ? '1rem' : '1.2rem')};
+  font-weight: normal;
+  font-size: ${(props) => (props.admin ? '1.2rem' : '1rem')};
   margin: 5px 15px;
-  border-radius: 10px;
+  border-radius: 6px;
   width: max-content;
   list-style: none;
   background-color: ${(props) =>
-    props.admin ? 'rgba(86,121,191, .8)' : 'rgb(86,121,191)'};
+    props.admin ? 'rgb(86,121,191)' : 'rgba(86,121,191, .8)'};
   padding: 15px 15px;
   color: #fff;
   display: flex;
