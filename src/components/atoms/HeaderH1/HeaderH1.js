@@ -6,7 +6,7 @@ const H1 = styled.h1`
   font-size: ${(props) => props.fontSize || 'auto'};
   font-weight: normal;
   margin: ${(props) => props.margin || '0'};
-  font-family: ${(props) => props.fontFamily || 'JetBrains Mono'};
+  font-family: 'Roboto Mono', monospace;
   text-align: ${(props) => props.textAlign || 'left'};
 `
 

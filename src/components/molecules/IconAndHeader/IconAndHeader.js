@@ -22,7 +22,6 @@ const IconAndHeader = () => {
       <HeaderH1
         text={'ONLY TALK'}
         styles={{
-          fontFamily: 'Arvo',
           fontSize: '1.7rem',
         }}
       />

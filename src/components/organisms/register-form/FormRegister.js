@@ -47,7 +47,6 @@ const FormRegister = ({
           text={'Registro de usuarios'}
           styles={{
             textAlign: 'center',
-            fontFamily: 'Arvo',
             margin: '0 0 30px 0',
           }}
         />

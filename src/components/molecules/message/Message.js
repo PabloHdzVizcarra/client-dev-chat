@@ -11,11 +11,13 @@ const Container = styled.div`
 `
 
 const Paragraph = styled.p`
+  font-size: ${(props) => (props.admin ? '1rem' : '1.2rem')};
   margin: 5px 15px;
   border-radius: 10px;
   width: max-content;
   list-style: none;
-  background-color: #436fc7;
+  background-color: ${(props) =>
+    props.admin ? 'rgba(86,121,191, .8)' : 'rgb(86,121,191)'};
   padding: 15px 15px;
   color: #fff;
   display: flex;
@@ -28,7 +30,7 @@ function Message({ text, user, adminUser, color }) {
   }
   return (
     <Container admin={checkAdminUser(user, adminUser)}>
-      <Paragraph>{text}</Paragraph>
+      <Paragraph admin={checkAdminUser(user, adminUser)}>{text}</Paragraph>
       <h2
         style={{
           alignItems: 'center',
