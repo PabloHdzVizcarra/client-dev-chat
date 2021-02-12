@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const Container = styled.div`
   display: flex;
   align-items: center;
-  padding: 50px;
+  padding: 20px 50px 0 50px;
 `
 
 const IconAndHeader = () => {
@@ -22,7 +22,7 @@ const IconAndHeader = () => {
       <HeaderH1
         text={'ONLY TALK'}
         styles={{
-          fontSize: '1.7rem',
+          fontSize: '2rem',
         }}
       />
     </Container>

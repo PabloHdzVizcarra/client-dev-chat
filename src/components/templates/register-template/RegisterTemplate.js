@@ -44,7 +44,13 @@ const RegisterTemplate = ({ submitForm }) => {
       <IconAndHeader />
       <Disappear in={entered} valueOf={true}>
         <AlertError
-          message={errors.username || errors.room || errors.colorUser}
+          message={
+            errors.username ||
+            errors.email ||
+            errors.password ||
+            errors.password2 ||
+            errors.colorUser
+          }
         />
       </Disappear>
       <FormRegister

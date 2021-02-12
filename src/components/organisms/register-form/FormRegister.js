@@ -11,8 +11,8 @@ import Paragraph from '../../atoms/Paragraph/Paragraph'
 const Form = styled.form`
   padding: 16px;
   width: 30%;
-  height: 50%;
   border-radius: 8px;
+  height: 50%;
   align-self: center;
   justify-self: center;
 `
@@ -20,7 +20,7 @@ const Form = styled.form`
 const Container = styled.div`
   display: grid;
   height: 100%;
-  gap: 5px;
+  gap: 2px;
   grid-auto-rows: min-content;
 `
 
@@ -88,7 +88,6 @@ const FormRegister = ({
             height: '30px',
             width: '100%',
             border: '1px solid rgb(0, 0, 0, 0.2)',
-            margin: '0 0 20px 0',
           }}
         />
         <Label text='Confirma tu password' />
