@@ -67,6 +67,44 @@ describe('Test register-template component', () => {
     userEvent.click(screen.getByRole('button'))
     expect(screen.getByText(/email valido/)).toBeInTheDocument()
   })
+  test('should display an alert when the password field is not filled correctly', () => {
+    render(
+      <RegisterTemplate setColorUser={setColorUser} submitForm={submitForm} />,
+    )
+
+    const inputName = screen.getAllByRole('textbox')[0]
+    const inputEmail = screen.getAllByRole('textbox')[1]
+    const inputPassword = screen.getAllByRole('textbox')[2]
+    const submitButton = screen.getByRole('button')
+
+    userEvent.type(inputName, 'john')
+    userEvent.type(inputEmail, 'test@test.com')
+    // wrong password
+    userEvent.type(inputPassword, '123')
+    userEvent.click(submitButton)
+
+    expect(screen.getByText(/8 caracteres/)).toBeInTheDocument()
+  })
+  //TODO: Test not work
+  test('should display an alert when the passwords are not equals', () => {
+    render(
+      <RegisterTemplate setColorUser={setColorUser} submitForm={submitForm} />,
+    )
+
+    const inputName = screen.getAllByRole('textbox')[0]
+    const inputEmail = screen.getAllByRole('textbox')[1]
+    const inputPassword = screen.getAllByRole('textbox')[2]
+    const inputPassword2 = screen.getAllByRole('textbox')[3]
+    const submitButton = screen.getByRole('button')
+
+    userEvent.type(inputName, 'john')
+    userEvent.type(inputEmail, 'test@test.com')
+    userEvent.type(inputPassword, '12345678')
+    userEvent.type(inputPassword2, '123456789')
+    userEvent.click(submitButton)
+
+    expect(screen.getByText(/8 caracteres/)).toBeInTheDocument()
+  })
   test('should display the AlertError component when no color is chosen in the color palette', () => {
     const submitForm = jest.fn()
     const setColorUser = jest.fn()
