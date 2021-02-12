@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event'
 import RegisterTemplate from './RegisterTemplate'
 
 describe('Test register-template component', () => {
+  const submitForm = jest.fn()
+  const setColorUser = jest.fn()
   test('should show correctly', () => {
     const submitForm = jest.fn()
     const setColorUser = jest.fn()
@@ -52,7 +54,18 @@ describe('Test register-template component', () => {
     userEvent.type(screen.getAllByRole('textbox')[1], 'dat')
     userEvent.click(screen.getByRole('button'))
     expect(screen.getByRole('alert')).toBeInTheDocument()
-    expect(submitForm).toHaveBeenCalled()
+  })
+  test('should display an alert when the email field is not filled correctly', () => {
+    render(
+      <RegisterTemplate setColorUser={setColorUser} submitForm={submitForm} />,
+    )
+    const inputName = screen.getAllByRole('textbox')[0]
+    userEvent.type(inputName, 'john')
+    const inputEmail = screen.getAllByRole('textbox')[1]
+    userEvent.type(inputEmail, 'data')
+
+    userEvent.click(screen.getByRole('button'))
+    expect(screen.getByText(/email valido/)).toBeInTheDocument()
   })
   test('should display the AlertError component when no color is chosen in the color palette', () => {
     const submitForm = jest.fn()

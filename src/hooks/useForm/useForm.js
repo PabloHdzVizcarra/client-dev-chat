@@ -50,6 +50,7 @@ const useForm = ({ initialValues, onSubmit }) => {
       setErrors({
         email: 'debes ingresar un email valido',
       })
+      return
     }
 
     if (password.length <= 7) {
