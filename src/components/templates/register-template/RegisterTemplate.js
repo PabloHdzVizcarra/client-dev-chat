@@ -16,9 +16,11 @@ const Container = styled.div`
 const RegisterTemplate = ({ submitForm }) => {
   const [entered, setEntered] = React.useState(false)
   const initialValues = {
-    username: '',
-    room: '',
     colorUser: '',
+    email: '',
+    password: '',
+    password2: '',
+    username: '',
   }
   const {
     values,

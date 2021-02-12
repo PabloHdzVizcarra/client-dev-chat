@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import RegisterTemplate from './RegisterTemplate'
 
-describe('Test RegisterTemplate component', () => {
+describe('Test register-template component', () => {
   test('should show correctly', () => {
     const submitForm = jest.fn()
     const setColorUser = jest.fn()

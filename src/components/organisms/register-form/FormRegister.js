@@ -10,7 +10,7 @@ import Paragraph from '../../atoms/Paragraph/Paragraph'
 
 const Form = styled.form`
   padding: 16px;
-  width: 40%;
+  width: 30%;
   height: 50%;
   border-radius: 8px;
   align-self: center;
@@ -63,12 +63,40 @@ const FormRegister = ({
             border: '1px solid rgb(0, 0, 0, 0.2)',
           }}
         />
-        <Label text='Nombre de la sala de chat' />
+        <Label text={`Email`} />
+        <Input
+          name='email'
+          type='email'
+          value={values.email}
+          handleChange={handleChange}
+          styles={{
+            height: '30px',
+            color: '#212121',
+            width: '100%',
+            border: '1px solid rgb(0, 0, 0, 0.2)',
+          }}
+        />
+        <Label text='Password' />
 
         <Input
-          name='room'
-          type='text'
-          value={values.room}
+          name='password'
+          type='password'
+          value={values.password}
+          handleChange={handleChange}
+          styles={{
+            color: '#212121',
+            height: '30px',
+            width: '100%',
+            border: '1px solid rgb(0, 0, 0, 0.2)',
+            margin: '0 0 20px 0',
+          }}
+        />
+        <Label text='Confirma tu password' />
+
+        <Input
+          name='password2'
+          type='password'
+          value={values.password2}
           handleChange={handleChange}
           styles={{
             color: '#212121',

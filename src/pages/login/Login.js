@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import RegisterTemplate from '../../components/templates/RegisterTemplate/RegisterTemplate'
+import RegisterTemplate from '../../components/templates/register-template/RegisterTemplate'
 
 const Login = ({ setUserData }) => {
   //TODO: Form Validate
