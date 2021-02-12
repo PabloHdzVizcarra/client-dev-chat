@@ -35,13 +35,34 @@ const useForm = ({ initialValues, onSubmit }) => {
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault()
-    const { username, colorUser } = values
+    const { username, colorUser, email, password, password2 } = values
 
     if (username.length < 3) {
       setErrors({
         username: 'El username debe tener una longitud mayor a 3 caracteres',
       })
       onSubmit({ errors })
+      return
+    }
+
+    const re = /\S+@\S+\.\S+/
+    if (!re.test(email)) {
+      setErrors({
+        email: 'debes ingresar un email valido',
+      })
+    }
+
+    if (password.length <= 7) {
+      setErrors({
+        password: 'la contraseña debe ser mayor o igual a 8 caracteres',
+      })
+      return
+    }
+
+    if (password !== password2) {
+      setErrors({
+        password2: 'las contraseñas deben ser idénticas',
+      })
       return
     }
     if (!colorUser) {
