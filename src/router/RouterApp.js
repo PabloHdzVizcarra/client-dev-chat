@@ -22,7 +22,7 @@ const RouterApp = () => {
         <Switch>
           <Route exact path='/'>
             {!loginUser ? <Redirect to={'/login'} /> : <Home userData={''} />}
-            <Home userData={''} />
+            <Home userData={{}} />
           </Route>
           <Route path='/register'>
             <Register />
