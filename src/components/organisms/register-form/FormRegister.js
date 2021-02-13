@@ -126,7 +126,7 @@ const FormRegister = ({
         />
         <Button
           textButton='Registrar'
-          buttonStyles={{
+          styles={{
             backgroundColor: 'rgb(65,199,199)',
             height: '40px',
             color: '#ffffff',

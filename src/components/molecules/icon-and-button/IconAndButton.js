@@ -18,7 +18,7 @@ const IconAndButton = () => {
     <Container>
       <Button
         textButton='Enviar'
-        buttonStyles={{
+        styles={{
           width: 'max-content',
           backgroundColor: 'inherit',
           fontWeight: 'bold',

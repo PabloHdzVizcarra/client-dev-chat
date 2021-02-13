@@ -10,7 +10,6 @@ const ElementInput = styled.input`
   margin: ${(props) => props.margin || 'auto'};
   padding: ${(props) => props.padding || 'auto'};
   border: ${(props) => props.border || '1px solid rgb(0, 0, 0, 1)'};
-  border-radius: 6px;
   background-color: ${(props) => props.backgroundColor || '#ffffff'};
 
   &:focus {

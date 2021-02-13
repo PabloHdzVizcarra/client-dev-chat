@@ -20,7 +20,7 @@ const H1AndButton = ({ room, handleClick }) => {
       <HeaderH1 text={`Chat Room: ${room}`} />
       <Button
         textButton={'close'}
-        buttonStyles={{
+        styles={{
           backgroundColor: '#e62c2c',
           color: '#ffffff',
           HBColor: '#b32222',
