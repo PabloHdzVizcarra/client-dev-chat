@@ -73,7 +73,7 @@ const useForm = ({ initialValues, onSubmit }) => {
       return
     }
     setErrors({})
-    onSubmit({ values, errors })
+    onSubmit(values)
   }
 
   return {
