@@ -118,7 +118,7 @@ const FormRegister = ({
           />
         </ColorPickerContainer>
         <Paragraph
-          text='tienes que escoger un color de usuario, no te preocupes podras cambiarlo una vez creada tu cuenta'
+          text='tienes que escoger un color de usuario, no te preocupes podrás cambiarlo una vez creada tu cuenta'
           styles={{
             color: '#555454',
             fontSize: '.7rem',
