@@ -17,13 +17,14 @@ const ElementInput = styled.input`
   }
 `
 
-const Input = ({ type, name, value, handleChange, styles }) => {
+const Input = ({ type, name, value, handleChange, styles, placeHolder }) => {
   return (
     <ElementInput
       type={type}
       name={name}
       value={value}
       onChange={handleChange}
+      placeholder={placeHolder}
       {...styles}
     />
   )
@@ -35,6 +36,7 @@ Input.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   styles: PropTypes.object.isRequired,
+  placeHolder: PropTypes.string,
 }
 
 export default Input
