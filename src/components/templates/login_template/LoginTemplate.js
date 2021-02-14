@@ -5,6 +5,7 @@ import IconAndHeader from '../../molecules/IconAndHeader/IconAndHeader'
 import useFormV2 from '../../../hooks/useForm/useFormv2'
 import Disappear from '../../atoms/disappear/Disappear'
 import AlertError from '../../atoms/alert_error/AlertError'
+import validateForm from './helper/validate_form'
 
 const Container = styled.div`
   display: flex;
@@ -18,14 +19,13 @@ function LoginTemplate() {
   const { values, errors, handleChange, handleSubmit, showError } = useFormV2(
     { email: '', password: '' },
     (values) => console.log(values),
-    (values) => ({ errors: values }),
+    () => validateForm(values),
   )
-  console.log(errors)
   return (
     <>
       <IconAndHeader />
       <Disappear valueOf={true} in={showError}>
-        <AlertError message='some error' />
+        <AlertError message={errors.email || errors.password} />
       </Disappear>
       <Container>
         <LoginForm
