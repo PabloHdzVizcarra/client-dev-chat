@@ -14,7 +14,7 @@ const Container = styled.div`
 
 function LoginTemplate() {
   const { values, errors, handleChange, handleSubmit } = useFormV2(
-    { username: '', password: '' },
+    { email: '', password: '' },
     (values) => console.log(values),
     (values) => ({ errors: values }),
   )

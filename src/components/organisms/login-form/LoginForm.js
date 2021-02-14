@@ -45,11 +45,11 @@ function LoginForm({ handleChange, handleSubmit, values }) {
         }}
       />
       <FlexContainer>
-        <Label text={`Username`} />
+        <Label text={`Email`} />
         <Input
-          name='username'
-          type='text'
-          value={values.username}
+          name='email'
+          type='email'
+          value={values.email}
           handleChange={handleChange}
           styles={{
             height: '30px',
@@ -61,7 +61,7 @@ function LoginForm({ handleChange, handleSubmit, values }) {
       </FlexContainer>
 
       <FlexContainer>
-        <Label text={`Email`} />
+        <Label text={`Password`} />
         <Input
           name='password'
           type='password'
