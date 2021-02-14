@@ -5,4 +5,8 @@ describe('test in validateForm function', () => {
     const result = validateForm({ email: '' })
     expect(result).toHaveProperty('email')
   })
+  test('should return an object with password property, when a valid password is not passed', () => {
+    const result = validateForm({ password: '' })
+    expect(result).toHaveProperty('password')
+  })
 })
