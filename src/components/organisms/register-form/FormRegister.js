@@ -7,6 +7,7 @@ import Label from '../../atoms/label/Label'
 import Button from '../../atoms/button/Button'
 import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 import Paragraph from '../../atoms/Paragraph/Paragraph'
+import { Link } from 'react-router-dom'
 
 const Form = styled.form`
   padding: 16px;
@@ -26,6 +27,16 @@ const Container = styled.div`
 
 const ColorPickerContainer = styled.div`
   display: flex;
+`
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: #181818;
+  font-weight: normal;
+  text-align: end;
+
+  &:hover {
+    font-weight: bold;
+  }
 `
 
 const FormRegister = ({
@@ -48,6 +59,7 @@ const FormRegister = ({
           styles={{
             textAlign: 'center',
             margin: '0 0 30px 0',
+            fontSize: '2rem',
           }}
         />
         <Label text={`Username`} />
@@ -136,6 +148,7 @@ const FormRegister = ({
             hoverBColor: 'rgb(62,189,189)',
           }}
         />
+        <LinkStyled to='/login'>Ya tienes una cuenta?</LinkStyled>
       </Container>
     </Form>
   )
