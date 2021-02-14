@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import LoginForm from '../../organisms/login-form/LoginForm'
 import IconAndHeader from '../../molecules/IconAndHeader/IconAndHeader'
 import useFormV2 from '../../../hooks/useForm/useFormv2'
+import Disappear from '../../atoms/disappear/Disappear'
+import AlertError from '../../atoms/alert_error/AlertError'
 
 const Container = styled.div`
   display: flex;
@@ -13,7 +15,7 @@ const Container = styled.div`
 `
 
 function LoginTemplate() {
-  const { values, errors, handleChange, handleSubmit } = useFormV2(
+  const { values, errors, handleChange, handleSubmit, showError } = useFormV2(
     { email: '', password: '' },
     (values) => console.log(values),
     (values) => ({ errors: values }),
@@ -22,6 +24,9 @@ function LoginTemplate() {
   return (
     <>
       <IconAndHeader />
+      <Disappear valueOf={true} in={showError}>
+        <AlertError message='some error' />
+      </Disappear>
       <Container>
         <LoginForm
           handleSubmit={handleSubmit}
