@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-const useForm = ({ initialValues, onSubmit, validateValuesFunc }) => {
+const useFormV2 = (initialValues, onSubmit, validateValuesFunc) => {
   const [values, setValues] = useState(initialValues || {})
   const [errors, setErrors] = useState({})
 
@@ -24,7 +24,7 @@ const useForm = ({ initialValues, onSubmit, validateValuesFunc }) => {
   const handleSubmit = (event) => {
     if (event) event.preventDefault()
 
-    const errors = validateValuesFunc()
+    const errors = validateValuesFunc(values)
 
     if (errors) {
       setErrors(errors)
@@ -42,4 +42,4 @@ const useForm = ({ initialValues, onSubmit, validateValuesFunc }) => {
   }
 }
 
-export default useForm
+export default useFormV2
