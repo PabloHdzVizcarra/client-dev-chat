@@ -58,6 +58,8 @@ const FormRegister = ({
           text={'Registro de usuarios'}
           styles={{
             textAlign: 'center',
+            color: '#181818',
+            fontWeight: 'bold',
             margin: '0 0 30px 0',
             fontSize: '2rem',
           }}
@@ -146,6 +148,7 @@ const FormRegister = ({
             width: '100%',
             margin: '10px 0 0 0',
             hoverBColor: 'rgb(62,189,189)',
+            fontSize: '1.2rem',
           }}
         />
         <LinkStyled to='/login'>Ya tienes una cuenta?</LinkStyled>

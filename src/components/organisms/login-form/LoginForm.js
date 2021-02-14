@@ -12,7 +12,6 @@ const FormLogin = styled.form`
   border-radius: 4px;
   width: 50%;
   padding: 20px;
-  border: 2px solid #181818;
 `
 
 const FlexContainer = styled.div`
@@ -25,6 +24,7 @@ const LinkStyled = styled(Link)`
   text-decoration: none;
   color: #181818;
   font-weight: normal;
+  text-align: end;
 
   &:hover {
     font-weight: bold;
@@ -40,59 +40,52 @@ function LoginForm() {
           textAlign: 'center',
           color: '#181818',
           fontWeight: 'bold',
-          fontSize: '2.2rem',
+          fontSize: '2rem',
         }}
       />
       <FlexContainer>
-        <Label
-          text='username'
-          styles={{
-            margin: '0 0 5px 0',
-          }}
-        />
+        <Label text={`Username`} />
         <Input
-          handleChange={() => {}}
-          type='text'
-          styles={{
-            width: '100%',
-            border: '2px solid #181818',
-            height: '25px',
-          }}
           name='username'
+          type='text'
           value=''
+          handleChange={() => {}}
+          styles={{
+            height: '30px',
+            color: '#212121',
+            width: '100%',
+            border: '1px solid rgb(0, 0, 0, 0.2)',
+          }}
         />
       </FlexContainer>
 
       <FlexContainer>
-        <Label
-          text='password'
-          styles={{
-            margin: '0 0 5px 0',
-          }}
-        />
+        <Label text={`Email`} />
         <Input
-          handleChange={() => {}}
-          type='password'
-          styles={{
-            width: '100%',
-            border: '2px solid #181818',
-            height: '25px',
-          }}
           name='password'
+          type='password'
           value=''
+          handleChange={() => {}}
+          styles={{
+            height: '30px',
+            color: '#212121',
+            width: '100%',
+            border: '1px solid rgb(0, 0, 0, 0.2)',
+          }}
         />
       </FlexContainer>
       <FlexContainer>
         <Button
           textButton='Login'
           styles={{
-            backgroundColor: '#FCDC04',
-            color: '#181818',
+            backgroundColor: 'rgb(65,199,199)',
+            height: '40px',
+            color: '#ffffff',
             fontWeight: 'bold',
-            fontSize: '1.5rem',
-            borderRadius: '4px',
-            padding: '4px',
-            hoverBColor: '#f0d005',
+            width: '100%',
+            margin: '10px 0 0 0',
+            hoverBColor: 'rgb(62,189,189)',
+            fontSize: '1.2rem',
           }}
         />
       </FlexContainer>
