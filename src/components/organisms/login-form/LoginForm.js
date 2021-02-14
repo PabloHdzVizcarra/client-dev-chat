@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 import Label from '../../atoms/label/Label'
 import Input from '../../atoms/input/Input'
@@ -31,9 +32,9 @@ const LinkStyled = styled(Link)`
   }
 `
 
-function LoginForm() {
+function LoginForm({ handleChange, handleSubmit, values }) {
   return (
-    <FormLogin>
+    <FormLogin onSubmit={(event) => handleSubmit(event)}>
       <HeaderH1
         text='Inicia Sesion'
         styles={{
@@ -48,8 +49,8 @@ function LoginForm() {
         <Input
           name='username'
           type='text'
-          value=''
-          handleChange={() => {}}
+          value={values.username}
+          handleChange={handleChange}
           styles={{
             height: '30px',
             color: '#212121',
@@ -64,8 +65,8 @@ function LoginForm() {
         <Input
           name='password'
           type='password'
-          value=''
-          handleChange={() => {}}
+          value={values.password}
+          handleChange={handleChange}
           styles={{
             height: '30px',
             color: '#212121',
@@ -94,6 +95,12 @@ function LoginForm() {
       </FlexContainer>
     </FormLogin>
   )
+}
+
+LoginForm.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  values: PropTypes.object.isRequired,
 }
 
 export default LoginForm
