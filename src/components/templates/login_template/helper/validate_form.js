@@ -2,7 +2,6 @@ function validateForm({ email, password = '' }) {
   const regex = /\S+@\S+\.\S+/
   const errors = {}
 
-  //TODO: error con parametro email undefined cuando no es agregado
   if (!regex.test(email)) {
     errors.email = 'El email que ingresaste no es valido'
   }
@@ -12,6 +11,8 @@ function validateForm({ email, password = '' }) {
   }
 
   if (Object.keys(errors).length !== 0) return errors
+
+  return false
 }
 
 export default validateForm

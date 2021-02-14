@@ -9,4 +9,22 @@ describe('test in validateForm function', () => {
     const result = validateForm({ password: '' })
     expect(result).toHaveProperty('password')
   })
+
+  test('should return and object wit password and email properties, when not sending the correct parameters', () => {
+    const result = validateForm({})
+    expect(result).toHaveProperty('password')
+    expect(result).toHaveProperty('email')
+
+    const result2 = validateForm({ email: 'data', password: '123' })
+    expect(result2).toHaveProperty('password')
+    expect(result2).toHaveProperty('email')
+  })
+
+  test('must return void when all data are correct', () => {
+    const result = validateForm({
+      email: 'data@example.com',
+      password: 'admin123',
+    })
+    expect(result).toBeFalsy()
+  })
 })
