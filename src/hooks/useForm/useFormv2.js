@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-const useFormV2 = (initialValues, onSubmit, validateValuesFunc) => {
+const useFormV2 = (initialValues, onSubmit, validateFunc) => {
   const [values, setValues] = useState(initialValues || {})
   const [errors, setErrors] = useState({})
   const [showErrorAlert, setShowErrorAlert] = useState(false)
@@ -25,7 +25,7 @@ const useFormV2 = (initialValues, onSubmit, validateValuesFunc) => {
   const handleSubmit = (event) => {
     if (event) event.preventDefault()
 
-    const errors = validateValuesFunc(values)
+    const errors = validateFunc(values)
 
     if (errors) {
       setShowErrorAlert(true)

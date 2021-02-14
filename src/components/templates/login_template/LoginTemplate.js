@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import LoginForm from '../../organisms/login-form/LoginForm'
 import IconAndHeader from '../../molecules/IconAndHeader/IconAndHeader'
 import useFormV2 from '../../../hooks/useForm/useFormv2'
@@ -15,11 +16,11 @@ const Container = styled.div`
   margin-top: 10%;
 `
 
-function LoginTemplate() {
+function LoginTemplate({ onSubmit }) {
   const { values, errors, handleChange, handleSubmit, showError } = useFormV2(
     { email: '', password: '' },
-    (values) => console.log(values),
-    () => validateForm(values),
+    onSubmit,
+    validateForm,
   )
   return (
     <>
@@ -36,6 +37,10 @@ function LoginTemplate() {
       </Container>
     </>
   )
+}
+
+LoginTemplate.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default LoginTemplate
