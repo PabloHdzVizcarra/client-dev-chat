@@ -1,4 +1,4 @@
-function validateForm({ email, password }) {
+function validateForm({ email, password = '' }) {
   const regex = /\S+@\S+\.\S+/
   const errors = {}
 
