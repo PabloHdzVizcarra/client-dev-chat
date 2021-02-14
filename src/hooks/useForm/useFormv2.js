@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 const useFormV2 = (initialValues, onSubmit, validateValuesFunc) => {
   const [values, setValues] = useState(initialValues || {})
   const [errors, setErrors] = useState({})
+  const [showErrorAlert, setShowErrorAlert] = useState(false)
 
   const formRendered = useRef(true)
 
@@ -27,7 +28,9 @@ const useFormV2 = (initialValues, onSubmit, validateValuesFunc) => {
     const errors = validateValuesFunc(values)
 
     if (errors) {
+      setShowErrorAlert(true)
       setErrors(errors)
+      return
     }
 
     setErrors({})
@@ -39,6 +42,7 @@ const useFormV2 = (initialValues, onSubmit, validateValuesFunc) => {
     errors,
     handleChange,
     handleSubmit,
+    showError: showErrorAlert,
   }
 }
 
