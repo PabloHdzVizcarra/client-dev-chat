@@ -33,6 +33,7 @@ const useFormV2 = (initialValues, onSubmit, validateValuesFunc) => {
       return
     }
 
+    setShowErrorAlert(false)
     setErrors({})
     onSubmit(values)
   }
