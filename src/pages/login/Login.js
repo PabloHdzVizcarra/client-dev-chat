@@ -1,9 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import LoginTemplate from '../../components/templates/login_template/LoginTemplate'
-import useToken from '../../hooks/useToken/useToken'
 
-const Login = () => {
-  const { token, setToken } = useToken()
+const Login = ({ setToken }) => {
   async function onSubmit({ email, password }) {
     const response = await fetch('http://localhost:3100/api/user/login', {
       method: 'POST',
@@ -15,9 +14,18 @@ const Login = () => {
         password: password,
       }),
     })
-    console.log(await response.json())
+
+    const { message, user, token } = await response.json()
+
+    if (!message || !user || !token) return
+
+    setToken(token)
   }
   return <LoginTemplate onSubmit={onSubmit} />
+}
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
 }
 
 export default Login
