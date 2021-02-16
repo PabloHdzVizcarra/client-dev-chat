@@ -8,10 +8,23 @@ import {
 import Login from '../pages/login/Login'
 import Home from '../pages/home/Home'
 import Register from '../pages/register/Register'
+import useToken from '../hooks/useToken/useToken'
 
 const RouterApp = () => {
-  const [loginUser, setLoginUser] = React.useState(false)
-  console.log(setLoginUser)
+  const [dataUser, setDataUser] = React.useState({})
+  const [authenticated, setAuthenticated] = React.useState(false)
+  const { token, setToken } = useToken()
+
+  React.useEffect(() => {
+    if (Object.keys(dataUser).length) {
+      setAuthenticated(true)
+    }
+  }, [dataUser])
+
+  console.log(token)
+  console.log(dataUser)
+
+  console.log(' APP Router')
   return (
     <Router>
       <div
@@ -21,14 +34,21 @@ const RouterApp = () => {
       >
         <Switch>
           <Route exact path='/'>
-            {!loginUser ? <Redirect to={'/login'} /> : <Home userData={''} />}
-            <Home userData={{}} />
+            {!authenticated ? (
+              <Redirect to={'/login'} />
+            ) : (
+              <Home userData={{}} />
+            )}
           </Route>
           <Route path='/register'>
             <Register />
           </Route>
           <Route path='/login'>
-            <Login />
+            {authenticated ? (
+              <h1>User Login</h1>
+            ) : (
+              <Login setToken={setToken} setDataUser={setDataUser} />
+            )}
           </Route>
         </Switch>
       </div>
