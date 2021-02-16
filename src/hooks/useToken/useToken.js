@@ -4,7 +4,8 @@ function useToken() {
   function getToken() {
     const tokenString = sessionStorage.getItem('token')
     const userToken = JSON.parse(tokenString)
-    return userToken?.token
+    if (!userToken) return
+    return userToken
   }
   const [token, setToken] = useState(getToken())
 

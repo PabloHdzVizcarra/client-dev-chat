@@ -9,6 +9,7 @@ import Login from '../pages/login/Login'
 import Home from '../pages/home/Home'
 import Register from '../pages/register/Register'
 import useToken from '../hooks/useToken/useToken'
+import autologin from './helpers/callAuth'
 
 const RouterApp = () => {
   const [dataUser, setDataUser] = React.useState({})
@@ -21,8 +22,11 @@ const RouterApp = () => {
     }
   }, [dataUser])
 
-  console.log(token)
-  console.log(dataUser)
+  React.useEffect(() => {
+    autologin(token).then((data) => {
+      console.log(data)
+    })
+  }, [token])
 
   console.log(' APP Router')
   return (
