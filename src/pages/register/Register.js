@@ -7,7 +7,7 @@ function Register() {
   async function handleSubmit(data) {
     const { username, password, email, colorUser } = data
 
-    const response = await fetch('http://localhost:3100/api/user', {
+    const response = await fetch('/api/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

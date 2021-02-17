@@ -1,7 +1,7 @@
 async function autologin(token) {
   if (!token) return
 
-  const response = await fetch('http://localhost:3100/api/user/auth')
+  const response = await fetch('/api/user/auth')
   console.log(response)
 }
 

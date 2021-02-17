@@ -11,7 +11,7 @@ function useToken() {
 
   function saveToken(userToken) {
     sessionStorage.setItem('token', JSON.stringify(userToken))
-    document.cookie = `token=${userToken}`
+    // document.cookie = `token=${userToken}`
     setToken(userToken.token)
   }
 

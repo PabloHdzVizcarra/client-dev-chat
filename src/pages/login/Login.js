@@ -4,7 +4,7 @@ import LoginTemplate from '../../components/templates/login_template/LoginTempla
 
 const Login = ({ setToken, setDataUser }) => {
   async function onSubmit({ email, password }) {
-    const response = await fetch('http://localhost:3100/api/user/login', {
+    const response = await fetch('/api/user/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
