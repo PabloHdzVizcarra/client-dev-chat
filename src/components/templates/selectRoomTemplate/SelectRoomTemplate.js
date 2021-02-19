@@ -4,11 +4,18 @@ import MessageOrList from '../../organisms/MessageOrList/MessageOrList'
 import PropTypes from 'prop-types'
 import AlertError from '../../molecules/AlertError'
 import Disappear from '../../atoms/disappear/Disappear'
+import ParagraphTwo from '../../molecules/ParagraphTwo'
 
 function SelectRoomTemplate({ listChatRooms }) {
   const [chatRoom, setChatRoom] = React.useState('')
   const [showAlert, setShowAlert] = React.useState(false)
+  const [showMessage, setShowMessage] = React.useState(false)
   const nodeRef = React.useRef(null)
+
+  React.useEffect(() => {
+    if (listChatRooms.length === 0) return
+    setShowMessage(true)
+  }, [listChatRooms])
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -26,6 +33,11 @@ function SelectRoomTemplate({ listChatRooms }) {
           nodeRef={nodeRef}
         />
       </Disappear>
+      <ParagraphTwo
+        show={showMessage}
+        textOne='Ups al parecer no haz creado ninguna sala de chat, pero no te preocupes puedes crear una'
+        textTwo='puedes escoger una sala de chat de las que haz creado'
+      />
       <MessageOrList
         listChatRooms={listChatRooms}
         chatRoom={chatRoom}

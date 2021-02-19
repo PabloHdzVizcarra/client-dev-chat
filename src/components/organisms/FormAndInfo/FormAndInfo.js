@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './FormAndInfo.module.css'
 
-function FormAndInfo({ text, chatRoom, setChatRoom, handleSubmit }) {
+function FormAndInfo({ chatRoom, setChatRoom, handleSubmit }) {
   return (
     <div className={styles.container}>
-      <p>{text}</p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.form__input}>
           <label htmlFor='chat'>Nombre de la sala de Chat</label>
@@ -24,7 +23,6 @@ function FormAndInfo({ text, chatRoom, setChatRoom, handleSubmit }) {
 }
 
 FormAndInfo.propTypes = {
-  text: PropTypes.string.isRequired,
   chatRoom: PropTypes.string.isRequired,
   setChatRoom: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,

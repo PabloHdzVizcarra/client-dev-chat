@@ -18,7 +18,6 @@ function MessageOrList({ listChatRooms, chatRoom, setChatRoom, handleSubmit }) {
         <Select data={listChatRooms} />
       ) : (
         <FormAndInfo
-          text='Ups al parecer no haz creado ninguna sala de chat, pero no te preocupes puedes crear una'
           setChatRoom={setChatRoom}
           chatRoom={chatRoom}
           handleSubmit={handleSubmit}
