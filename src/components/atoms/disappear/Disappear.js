@@ -4,8 +4,10 @@ import { CSSTransition } from 'react-transition-group'
 import './index.css'
 
 /**
- *This component requires a state to be able to activate the animation from the parent component, Example: const [entered, setEntered] = React.useState(true)
- * @param {boolean} in prop
+ *Este componente requiere un state para funcionar, por defecto debe ser false se debe agregar el componente al cual se desea elaborar la animación como {children}
+ * @param {boolean} in - state que renderiza el componente por defecto false
+ * @param {React.MutableRefObject} nodeRef - para poder ejecutar la transition requiere usar el hook UseRef y pasarlo como prop al componente
+ * @param {React.Component} children - componente a renderizar con la animación
  */
 const Disappear = ({ in: inProp, children, nodeRef }) => {
   return (

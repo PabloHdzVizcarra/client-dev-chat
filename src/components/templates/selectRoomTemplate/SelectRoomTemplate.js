@@ -12,15 +12,19 @@ function SelectRoomTemplate({ listChatRooms }) {
 
   function handleSubmit(event) {
     event.preventDefault()
+    if (chatRoom.length === 4) {
+      setShowAlert(true)
+    }
     setShowAlert(true)
-    console.log(showAlert)
-    console.log(chatRoom)
   }
   return (
     <div>
       <IconAndHeader />
       <Disappear valueOf={null} in={showAlert} nodeRef={nodeRef}>
-        <AlertError text='ocurrió un error un error' nodeRef={nodeRef} />
+        <AlertError
+          text='el nombre de la sala de chat debe ser mayor a 4 caracteres'
+          nodeRef={nodeRef}
+        />
       </Disappear>
       <MessageOrList
         listChatRooms={listChatRooms}

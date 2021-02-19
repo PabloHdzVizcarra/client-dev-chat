@@ -28,7 +28,7 @@ describe('test in SelectRoomTemplate component', () => {
     userEvent.type(input, 'dot')
     userEvent.click(button)
 
-    await screen.findByText(/error/)
-    screen.debug()
+    const errorAlert = await screen.findByText(/error/i)
+    expect(errorAlert).toBeInTheDocument()
   })
 })

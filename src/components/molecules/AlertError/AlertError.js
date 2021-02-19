@@ -10,6 +10,7 @@ AlertError.propTypes = {
 function AlertError({ text, nodeRef }) {
   return (
     <div className={styles.alert} ref={nodeRef}>
+      <p className={styles.alert__heading}>ERROR</p>
       <p className={styles.alert__info}>{text}</p>
     </div>
   )

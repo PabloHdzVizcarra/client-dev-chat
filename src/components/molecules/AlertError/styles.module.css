@@ -9,6 +9,13 @@
     background-color: rgb(242,222,222);
 }
 
+.alert__heading {
+    color: rgb(153, 11, 11);
+    font-size: .9rem;
+    text-align: left;
+}
+
 .alert__info {
     color: rgb(173, 12, 12);
+    font-size: .8rem;
 }
