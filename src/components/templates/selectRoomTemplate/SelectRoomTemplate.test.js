@@ -15,7 +15,7 @@ describe('test in SelectRoomTemplate component', () => {
     const list = ['test', 'some', 'chat', 'room']
     render(<SelectRoomTemplate listChatRooms={list} />)
 
-    const elements = screen.getAllByRole(/li/)
+    const elements = screen.getAllByRole(/option/)
 
     expect(elements).toHaveLength(list.length)
   })
