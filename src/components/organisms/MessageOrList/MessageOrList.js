@@ -4,7 +4,7 @@ import Select from '../../molecules/Select'
 import FormAndInfo from '../FormAndInfo'
 import './MessageOrList.css'
 
-function MessageOrList({ listChatRooms }) {
+function MessageOrList({ listChatRooms, chatRoom, setChatRoom, handleSubmit }) {
   const [haveRoom, setHaveRoom] = React.useState(false)
 
   React.useEffect(() => {
@@ -17,7 +17,12 @@ function MessageOrList({ listChatRooms }) {
       {haveRoom ? (
         <Select data={listChatRooms} />
       ) : (
-        <FormAndInfo text='Ups al parecer no haz creado ninguna sala de chat, pero no te preocupes puedes crear una' />
+        <FormAndInfo
+          text='Ups al parecer no haz creado ninguna sala de chat, pero no te preocupes puedes crear una'
+          setChatRoom={setChatRoom}
+          chatRoom={chatRoom}
+          handleSubmit={handleSubmit}
+        />
       )}
     </div>
   )
@@ -25,5 +30,8 @@ function MessageOrList({ listChatRooms }) {
 
 MessageOrList.propTypes = {
   listChatRooms: PropTypes.array.isRequired,
+  chatRoom: PropTypes.string.isRequired,
+  setChatRoom: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 }
 export default MessageOrList
