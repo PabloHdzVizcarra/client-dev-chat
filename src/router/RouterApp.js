@@ -9,26 +9,41 @@ import Login from '../pages/login/Login'
 import Home from '../pages/home/Home'
 import Register from '../pages/register/Register'
 import useToken from '../hooks/useToken/useToken'
-import autologin from './helpers/callAuth'
+import autologin from './helpers/autologin'
+import Main from '../pages/main/Main'
 
 const RouterApp = () => {
-  const [dataUser, setDataUser] = React.useState({})
+  const [dataUser, setDataUser] = React.useState({
+    _id: '',
+    name: '',
+    email: '',
+    password: '',
+    color: '',
+    socket_id: '',
+    room: '',
+    list_chat_rooms: '',
+    chat_rooms_created: '',
+  })
   const [authenticated, setAuthenticated] = React.useState(false)
   const { token, setToken } = useToken()
 
   React.useEffect(() => {
-    if (Object.keys(dataUser).length) {
+    if (dataUser.name) {
       setAuthenticated(true)
     }
-  }, [dataUser])
+  }, [dataUser.name])
 
   React.useEffect(() => {
-    autologin(token).then((data) => {
-      console.log(data)
-    })
+    autologin(token, setDataUser)
+      .then((data) => {
+        if (!data) return
+        setDataUser(data.user)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [token])
 
-  console.log(' APP Router')
   return (
     <Router>
       <div
@@ -49,7 +64,7 @@ const RouterApp = () => {
           </Route>
           <Route path='/login'>
             {authenticated ? (
-              <h1>User Login</h1>
+              <Main userData={dataUser} />
             ) : (
               <Login setToken={setToken} setDataUser={setDataUser} />
             )}

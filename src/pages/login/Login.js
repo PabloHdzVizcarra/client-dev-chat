@@ -18,7 +18,7 @@ const Login = ({ setToken, setDataUser }) => {
     const { message, user, token } = await response.json()
 
     if (!message || !user || !token) return
-
+    console.log(user)
     setToken(token)
     setDataUser(user)
   }
