@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import AlertError from '../../molecules/AlertError'
 import Disappear from '../../atoms/disappear/Disappear'
 import ParagraphTwo from '../../molecules/ParagraphTwo'
+import { message1, message2 } from './utils'
 
 function SelectRoomTemplate({ listChatRooms }) {
   const [chatRoom, setChatRoom] = React.useState('')
@@ -33,11 +34,7 @@ function SelectRoomTemplate({ listChatRooms }) {
           nodeRef={nodeRef}
         />
       </Disappear>
-      <ParagraphTwo
-        show={showMessage}
-        textOne='Ups al parecer no haz creado ninguna sala de chat, pero no te preocupes puedes crear una'
-        textTwo='puedes escoger una sala de chat de las que haz creado'
-      />
+      <ParagraphTwo show={showMessage} textOne={message1} textTwo={message2} />
       <MessageOrList
         listChatRooms={listChatRooms}
         chatRoom={chatRoom}
