@@ -7,13 +7,14 @@ import './index.css'
  *This component requires a state to be able to activate the animation from the parent component, Example: const [entered, setEntered] = React.useState(true)
  * @param {boolean} in prop
  */
-const Disappear = ({ in: inProp, children }) => {
+const Disappear = ({ in: inProp, children, nodeRef }) => {
   return (
     <CSSTransition
       unmountOnExit
       in={inProp}
       timeout={{ appear: 300, enter: 1000, exit: 300 }}
       classNames='roll'
+      nodeRef={nodeRef}
     >
       {children}
     </CSSTransition>
@@ -23,7 +24,7 @@ const Disappear = ({ in: inProp, children }) => {
 Disappear.propTypes = {
   in: PropTypes.bool.isRequired,
   children: PropTypes.object,
-  childRef: PropTypes.object,
+  nodeRef: PropTypes.object,
 }
 
 export default Disappear
