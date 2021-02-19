@@ -7,13 +7,21 @@ function Main({ userData }) {
   const [toHaveRoom, setToHaveRoom] = React.useState(false)
 
   React.useEffect(() => {
-    console.log(userData.room)
+    console.log(userData)
     if (userData.room) {
       setToHaveRoom(true)
     }
-  }, [userData.room])
+  }, [userData])
 
-  return <>{toHaveRoom ? <Home userData={userData} /> : <SelectRoom />}</>
+  return (
+    <>
+      {toHaveRoom ? (
+        <Home userData={userData} />
+      ) : (
+        <SelectRoom listChatRooms={userData.chat_rooms_created} />
+      )}
+    </>
+  )
 }
 
 Main.propTypes = {
