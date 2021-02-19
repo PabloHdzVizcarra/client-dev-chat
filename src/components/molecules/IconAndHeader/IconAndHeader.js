@@ -7,6 +7,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   padding: 20px 50px 0 50px;
+  align-self: self-start;
 `
 
 const IconAndHeader = () => {
