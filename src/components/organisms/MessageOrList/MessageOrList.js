@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Paragraph from '../../atoms/Paragraph/Paragraph'
+import List from '../../molecules/List'
 
 function MessageOrList({ listChatRooms }) {
   const [haveRoom, setHaveRoom] = React.useState(false)
@@ -13,7 +14,7 @@ function MessageOrList({ listChatRooms }) {
   return (
     <div>
       {haveRoom ? (
-        <p>lista de salas</p>
+        <List data={listChatRooms} />
       ) : (
         <Paragraph text='Ups al parecer no haz creado ninguna sala de chat' />
       )}
