@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Home from '../home/Home'
-import SelectRoom from '../SelectRoom/SelectRoom'
+import SelectRoom from '../SelectRoom'
 
 function Main({ userData }) {
   const [toHaveRoom, setToHaveRoom] = React.useState(false)

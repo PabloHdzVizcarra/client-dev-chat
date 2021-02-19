@@ -1,7 +1,8 @@
 import React from 'react'
+import SelectRoomTemplate from '../../components/templates/selectRoomTemplate'
 
 function SelectRoom() {
-  return <p>select room</p>
+  return <SelectRoomTemplate />
 }
 
 export default SelectRoom
