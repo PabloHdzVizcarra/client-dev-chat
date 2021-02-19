@@ -4,7 +4,6 @@ import {
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
-// import userEvent from '@testing-library/user-event'
 import HomeTemplate from './HomeTemplate'
 import userEvent from '@testing-library/user-event'
 
