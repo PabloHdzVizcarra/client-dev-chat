@@ -1,0 +1,14 @@
+.alert {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    padding: 10px 6px;
+    margin: 6px;
+    border-radius: 3px;
+    border: 1px solid rgb(238,211,215);
+    background-color: rgb(242,222,222);
+}
+
+.alert__info {
+    color: rgb(173, 12, 12);
+}
