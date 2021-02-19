@@ -1,8 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './FormAndInfo.module.css'
+import styles from './style.module.css'
 
-function FormAndInfo({ chatRoom, setChatRoom, handleSubmit }) {
+AddChatRoom.propTypes = {
+  chatRoom: PropTypes.string.isRequired,
+  setChatRoom: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+}
+
+function AddChatRoom({ chatRoom, handleSubmit, setChatRoom }) {
   const [showForm, setShowForm] = React.useState(false)
   const [showButton, setShowButton] = React.useState(true)
   return (
@@ -13,6 +19,7 @@ function FormAndInfo({ chatRoom, setChatRoom, handleSubmit }) {
             setShowForm(true)
             setShowButton(false)
           }}
+          className={styles.btn__open}
         >
           Crear Sala
         </button>
@@ -29,12 +36,15 @@ function FormAndInfo({ chatRoom, setChatRoom, handleSubmit }) {
               onChange={(e) => setChatRoom(e.target.value)}
             />
           </div>
-          <button type='submit'>Crear</button>
+          <button type='submit' className={styles.btn__submit}>
+            Crear
+          </button>
           <button
             onClick={() => {
               setShowForm(false)
               setShowButton(true)
             }}
+            className={styles.btn__close}
           >
             Salir
           </button>
@@ -44,10 +54,4 @@ function FormAndInfo({ chatRoom, setChatRoom, handleSubmit }) {
   )
 }
 
-FormAndInfo.propTypes = {
-  chatRoom: PropTypes.string.isRequired,
-  setChatRoom: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-}
-
-export default FormAndInfo
+export default AddChatRoom

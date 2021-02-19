@@ -1,11 +1,11 @@
 import React from 'react'
 import IconAndHeader from '../../molecules/IconAndHeader/IconAndHeader'
-import MessageOrList from '../../organisms/MessageOrList/MessageOrList'
 import PropTypes from 'prop-types'
 import AlertError from '../../molecules/AlertError'
 import Disappear from '../../atoms/disappear/Disappear'
 import ParagraphTwo from '../../molecules/ParagraphTwo'
 import { message1, message2 } from './utils'
+import AddChatRoom from '../../organisms/AddChatRoom'
 
 function SelectRoomTemplate({ listChatRooms }) {
   const [chatRoom, setChatRoom] = React.useState('')
@@ -35,8 +35,7 @@ function SelectRoomTemplate({ listChatRooms }) {
         />
       </Disappear>
       <ParagraphTwo show={showMessage} textOne={message1} textTwo={message2} />
-      <MessageOrList
-        listChatRooms={listChatRooms}
+      <AddChatRoom
         chatRoom={chatRoom}
         setChatRoom={setChatRoom}
         handleSubmit={handleSubmit}
