@@ -7,7 +7,7 @@ import ParagraphTwo from '../../molecules/ParagraphTwo'
 import AddChatRoom from '../../organisms/AddChatRoom'
 import { errorMessage, message1, message2 } from './utils'
 
-function SelectRoomTemplate({ listChatRooms }) {
+function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
   const [chatRoom, setChatRoom] = React.useState('')
   const [showAlert, setShowAlert] = React.useState(false)
   const [showMessage, setShowMessage] = React.useState(false)
@@ -24,7 +24,7 @@ function SelectRoomTemplate({ listChatRooms }) {
       setShowAlert(true)
       return
     }
-    console.log(chatRoom)
+    setNameChatRoom(chatRoom)
     setChatRoom('')
     setShowAlert(false)
   }
@@ -35,17 +35,21 @@ function SelectRoomTemplate({ listChatRooms }) {
         <AlertError text={errorMessage} nodeRef={nodeRef} />
       </Disappear>
       <ParagraphTwo show={showMessage} textOne={message1} textTwo={message2} />
+      {listChatRooms.length !== 0 ? <select /> : null}
+      {listChatRooms.length !== 0 ? <p>o puedes crear una nueva</p> : null}
       <AddChatRoom
         chatRoom={chatRoom}
         setChatRoom={setChatRoom}
         handleSubmit={handleSubmit}
       />
+      <p>o puedes unirte a una sala existente</p>
     </div>
   )
 }
 
 SelectRoomTemplate.propTypes = {
   listChatRooms: PropTypes.array.isRequired,
+  setNameChatRoom: PropTypes.func.isRequired,
 }
 
 export default SelectRoomTemplate

@@ -27,24 +27,23 @@ function AddChatRoom({ chatRoom, handleSubmit, setChatRoom }) {
       {showForm ? (
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.form__input}>
-            <label htmlFor='chat'>Nombre de la sala de Chat</label>
+            <label htmlFor='name_chat'>Nombre de la sala de Chat</label>
             <input
               type='text'
               name='chat'
               value={chatRoom}
-              id='chat'
+              id='name_chat'
               onChange={(e) => setChatRoom(e.target.value)}
             />
           </div>
-          <button type='submit' className={styles.btn__submit}>
-            Crear
-          </button>
+          <input type='submit' className={styles.btn__submit} value='Crear' />
           <button
             onClick={() => {
               setShowForm(false)
               setShowButton(true)
             }}
             className={styles.btn__close}
+            type='button'
           >
             Salir
           </button>
