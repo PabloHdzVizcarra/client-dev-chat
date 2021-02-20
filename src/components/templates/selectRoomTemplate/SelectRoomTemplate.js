@@ -1,11 +1,11 @@
 import React from 'react'
-import IconAndHeader from '../../molecules/IconAndHeader/IconAndHeader'
 import PropTypes from 'prop-types'
+import IconAndHeader from '../../molecules/IconAndHeader/IconAndHeader'
 import AlertError from '../../molecules/AlertError'
 import Disappear from '../../atoms/disappear/Disappear'
 import ParagraphTwo from '../../molecules/ParagraphTwo'
-import { message1, message2 } from './utils'
 import AddChatRoom from '../../organisms/AddChatRoom'
+import { errorMessage, message1, message2 } from './utils'
 
 function SelectRoomTemplate({ listChatRooms }) {
   const [chatRoom, setChatRoom] = React.useState('')
@@ -20,19 +20,19 @@ function SelectRoomTemplate({ listChatRooms }) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    if (chatRoom.length === 4) {
+    if (chatRoom.length < 5) {
       setShowAlert(true)
+      return
     }
-    setShowAlert(true)
+    console.log(chatRoom)
+    setChatRoom('')
+    setShowAlert(false)
   }
   return (
     <div>
       <IconAndHeader />
       <Disappear valueOf={null} in={showAlert} nodeRef={nodeRef}>
-        <AlertError
-          text='el nombre de la sala de chat debe ser mayor a 4 caracteres'
-          nodeRef={nodeRef}
-        />
+        <AlertError text={errorMessage} nodeRef={nodeRef} />
       </Disappear>
       <ParagraphTwo show={showMessage} textOne={message1} textTwo={message2} />
       <AddChatRoom

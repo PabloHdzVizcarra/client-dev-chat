@@ -14,7 +14,7 @@ const Disappear = ({ in: inProp, children, nodeRef }) => {
     <CSSTransition
       unmountOnExit
       in={inProp}
-      timeout={{ appear: 300, enter: 1000, exit: 300 }}
+      timeout={{ appear: 300, enter: 1000, exit: 500 }}
       classNames='roll'
       nodeRef={nodeRef}
     >
