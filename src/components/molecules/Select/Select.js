@@ -9,8 +9,11 @@ Select.propTypes = {
 function Select({ data }) {
   return (
     <select>
-      {data.map((element) => (
-        <option key={uuidv4()}>{element}</option>
+      <option key={uuidv4()} defaultValue='selected'>
+        --- chat room ---
+      </option>
+      {data.map((room) => (
+        <option key={uuidv4()}>{room.name}</option>
       ))}
     </select>
   )

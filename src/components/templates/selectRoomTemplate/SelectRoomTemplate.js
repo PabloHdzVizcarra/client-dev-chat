@@ -6,6 +6,7 @@ import Disappear from '../../atoms/disappear/Disappear'
 import ParagraphTwo from '../../molecules/ParagraphTwo'
 import AddChatRoom from '../../organisms/AddChatRoom'
 import { errorMessage, message1, message2 } from './utils'
+import Select from '../../molecules/Select'
 
 function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
   const [chatRoom, setChatRoom] = React.useState('')
@@ -28,6 +29,8 @@ function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
     setChatRoom('')
     setShowAlert(false)
   }
+
+  console.log(listChatRooms)
   return (
     <div>
       <IconAndHeader />
@@ -35,7 +38,7 @@ function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
         <AlertError text={errorMessage} nodeRef={nodeRef} />
       </Disappear>
       <ParagraphTwo show={showMessage} textOne={message1} textTwo={message2} />
-      {listChatRooms.length !== 0 ? <select /> : null}
+      {listChatRooms.length !== 0 ? <Select data={listChatRooms} /> : null}
       {listChatRooms.length !== 0 ? <p>o puedes crear una nueva</p> : null}
       <AddChatRoom
         chatRoom={chatRoom}
