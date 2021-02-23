@@ -7,7 +7,7 @@ const Container = styled.div`
   padding: 5px;
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 20px 0 0 0;
 `
 
 const ESelect = styled.select`

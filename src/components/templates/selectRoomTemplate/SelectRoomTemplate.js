@@ -46,18 +46,19 @@ function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
           style={{
             display: 'flex',
             justifyContent: 'center',
+            marginBottom: '15px',
           }}
         >
           <Button
             textButton='Ingresar'
             styles={{
-              backgroundColor: 'rgb(65,199,199)',
+              backgroundColor: 'rgb(47,153,12)',
               height: '40px',
               color: '#ffffff',
               fontWeight: 'bold',
               margin: '10px 0 0 0',
               width: '10%',
-              hoverBColor: 'rgb(62,189,189)',
+              hoverBColor: 'rgb(51,166,13)',
               fontSize: '1.2rem',
             }}
           />

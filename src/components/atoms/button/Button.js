@@ -17,6 +17,10 @@ const ElementButton = styled.button`
 
   transition: 300ms ease background-color;
 
+  &:focus {
+    outline: none;
+  }
+
   &:hover {
     background-color: ${(props) => props.hoverBColor || 'none'};
   }
