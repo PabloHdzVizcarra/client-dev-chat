@@ -26,12 +26,13 @@ const Option = styled.option`
 
 Select.propTypes = {
   data: PropTypes.array.isRequired,
+  handleChange: PropTypes.func.isRequired,
 }
 
-function Select({ data }) {
+function Select({ data, handleChange }) {
   return (
     <Container>
-      <ESelect>
+      <ESelect onChange={handleChange}>
         <Option key={uuidv4()} defaultValue='selected'>
           --- chat room ---
         </Option>

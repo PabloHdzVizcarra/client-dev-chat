@@ -5,16 +5,13 @@ import AlertError from '../../molecules/AlertError'
 import Disappear from '../../atoms/disappear/Disappear'
 import ParagraphTwo from '../../molecules/ParagraphTwo'
 import AddChatRoom from '../../organisms/AddChatRoom'
-import Select from '../../molecules/Select'
 import { errorMessage, message1, message2 } from './utils'
-import Button from '../../atoms/button/Button'
+import EnterChatRoom from '../../organisms/EnterChatRoom'
 
 function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
   const [chatRoom, setChatRoom] = React.useState('')
   const [showAlert, setShowAlert] = React.useState(false)
   const [showMessage, setShowMessage] = React.useState(false)
-  const [selectRoom, setSelectRoom] = React.useState(false)
-  console.log(setSelectRoom)
   const nodeRef = React.useRef(null)
 
   React.useEffect(() => {
@@ -40,30 +37,7 @@ function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
         <AlertError text={errorMessage} nodeRef={nodeRef} />
       </Disappear>
       <ParagraphTwo show={showMessage} textOne={message1} textTwo={message2} />
-      {listChatRooms.length !== 0 ? <Select data={listChatRooms} /> : null}
-      {selectRoom ? (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginBottom: '15px',
-          }}
-        >
-          <Button
-            textButton='Ingresar'
-            styles={{
-              backgroundColor: 'rgb(47,153,12)',
-              height: '40px',
-              color: '#ffffff',
-              fontWeight: 'bold',
-              margin: '10px 0 0 0',
-              width: '10%',
-              hoverBColor: 'rgb(51,166,13)',
-              fontSize: '1.2rem',
-            }}
-          />
-        </div>
-      ) : null}
+      <EnterChatRoom handleSelect={() => {}} listChatRooms={listChatRooms} />
       {listChatRooms.length !== 0 ? <p>o puedes crear una nueva</p> : null}
       <AddChatRoom
         chatRoom={chatRoom}
