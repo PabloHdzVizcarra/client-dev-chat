@@ -11,13 +11,16 @@ EnterChatRoom.propTypes = {
 function EnterChatRoom({ handleSelect, listChatRooms }) {
   const [selected, setSelected] = React.useState(false)
 
-  function handleChange() {
+  function handleChange(event) {
+    console.log(event.target.value)
+    if (!event.target.value || event.target.value === '-----') {
+      return setSelected(false)
+    }
     setSelected(true)
     handleSelect()
   }
 
   React.useEffect(() => {}, [selected])
-  console.log(setSelected)
   return (
     <div>
       {listChatRooms.length !== 0 ? (

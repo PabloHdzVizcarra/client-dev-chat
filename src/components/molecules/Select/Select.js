@@ -32,9 +32,9 @@ Select.propTypes = {
 function Select({ data, handleChange }) {
   return (
     <Container>
-      <ESelect onChange={handleChange}>
+      <ESelect onChange={(e) => handleChange(e)}>
         <Option key={uuidv4()} defaultValue='selected'>
-          --- chat room ---
+          -----
         </Option>
         {data.map((room) => (
           <Option key={uuidv4()}>{room.name}</Option>

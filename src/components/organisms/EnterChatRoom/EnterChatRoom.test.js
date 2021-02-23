@@ -37,4 +37,24 @@ describe('test in EnterChatRoom component', () => {
     userEvent.selectOptions(screen.getByRole('combobox'), 'nodejs')
     expect(screen.getByRole('button')).toBeInTheDocument()
   })
+
+  test('button is hidden when deselected', () => {
+    const handler = jest.fn()
+    render(
+      <EnterChatRoom
+        listChatRooms={[
+          { name: 'developer' },
+          { name: 'nodejs' },
+          { name: 'amazon' },
+        ]}
+        handleSelect={handler}
+      />,
+    )
+
+    userEvent.selectOptions(screen.getByRole('combobox'), 'nodejs')
+    expect(screen.getByRole('button')).toBeInTheDocument()
+
+    userEvent.selectOptions(screen.getByRole('combobox'), '-----')
+    expect(screen.queryByRole('button')).not.toBeInTheDocument()
+  })
 })
