@@ -12,9 +12,11 @@ function EnterChatRoom({ handleSelect, listChatRooms }) {
   const [selected, setSelected] = React.useState(false)
 
   function handleChange() {
-    console.log('change me')
+    setSelected(true)
     handleSelect()
   }
+
+  React.useEffect(() => {}, [selected])
   console.log(setSelected)
   return (
     <div>

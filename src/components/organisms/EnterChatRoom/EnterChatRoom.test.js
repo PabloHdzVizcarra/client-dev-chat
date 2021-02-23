@@ -20,4 +20,21 @@ describe('test in EnterChatRoom component', () => {
     userEvent.selectOptions(screen.getByRole('combobox'), 'nodejs')
     expect(handler).toHaveBeenCalled()
   })
+
+  test('show display button when change select option', () => {
+    const handler = jest.fn()
+    render(
+      <EnterChatRoom
+        listChatRooms={[
+          { name: 'developer' },
+          { name: 'nodejs' },
+          { name: 'amazon' },
+        ]}
+        handleSelect={handler}
+      />,
+    )
+
+    userEvent.selectOptions(screen.getByRole('combobox'), 'nodejs')
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
 })
