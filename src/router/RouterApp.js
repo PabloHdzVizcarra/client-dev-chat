@@ -65,7 +65,7 @@ const RouterApp = () => {
           </Route>
           <Route path='/login'>
             {authenticated ? (
-              <Main userData={dataUser} />
+              <Main userData={dataUser} setDataUser={setDataUser} />
             ) : (
               <Login setToken={setToken} setDataUser={setDataUser} />
             )}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Home from '../home/Home'
 import SelectRoom from '../SelectRoom'
 
-function Main({ userData }) {
+function Main({ userData, setDataUser }) {
   const [toHaveRoom, setToHaveRoom] = React.useState(false)
 
   React.useEffect(() => {
@@ -18,7 +18,10 @@ function Main({ userData }) {
       {toHaveRoom ? (
         <Home userData={userData} />
       ) : (
-        <SelectRoom listChatRooms={userData.chat_rooms_created} />
+        <SelectRoom
+          listChatRooms={userData.chat_rooms_created}
+          setDataUser={setDataUser}
+        />
       )}
     </>
   )
@@ -26,6 +29,7 @@ function Main({ userData }) {
 
 Main.propTypes = {
   userData: PropTypes.object.isRequired,
+  setDataUser: PropTypes.func.isRequired,
 }
 
 export default Main
