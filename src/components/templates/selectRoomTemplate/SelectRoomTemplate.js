@@ -30,7 +30,6 @@ function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
     setShowAlert(false)
   }
 
-  console.log(listChatRooms)
   return (
     <div>
       <IconAndHeader />

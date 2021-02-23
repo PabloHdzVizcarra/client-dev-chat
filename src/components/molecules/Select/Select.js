@@ -1,6 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { v4 as uuidv4 } from 'uuid'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+`
+
+const ESelect = styled.select`
+  padding: 10px;
+  width: 20%;
+  text-align: center;
+  text-align-last: center;
+  font-size: 1.1rem;
+  border: 2px solid #212121;
+  background-color: white;
+`
+
+const Option = styled.option`
+  text-align: center;
+`
 
 Select.propTypes = {
   data: PropTypes.array.isRequired,
@@ -8,14 +30,16 @@ Select.propTypes = {
 
 function Select({ data }) {
   return (
-    <select>
-      <option key={uuidv4()} defaultValue='selected'>
-        --- chat room ---
-      </option>
-      {data.map((room) => (
-        <option key={uuidv4()}>{room.name}</option>
-      ))}
-    </select>
+    <Container>
+      <ESelect>
+        <Option key={uuidv4()} defaultValue='selected'>
+          --- chat room ---
+        </Option>
+        {data.map((room) => (
+          <Option key={uuidv4()}>{room.name}</Option>
+        ))}
+      </ESelect>
+    </Container>
   )
 }
 
