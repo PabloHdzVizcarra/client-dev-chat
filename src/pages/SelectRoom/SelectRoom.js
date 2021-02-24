@@ -22,10 +22,16 @@ function SelectRoom({ listChatRooms, setDataUser }) {
       })
       .catch((e) => console.log(e))
   }, [nameChatRoom, setDataUser])
+
+  function setChatRoomInDatabase(room) {
+    return console.log('selecciona sala de chat ' + room)
+  }
+
   return (
     <SelectRoomTemplate
       listChatRooms={listChatRooms}
       setNameChatRoom={setNameChatRoom}
+      setChatRoomInDatabase={setChatRoomInDatabase}
     />
   )
 }

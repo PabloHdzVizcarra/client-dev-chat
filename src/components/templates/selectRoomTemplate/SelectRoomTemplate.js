@@ -8,7 +8,11 @@ import AddChatRoom from '../../organisms/AddChatRoom'
 import { errorMessage, message1, message2 } from './utils'
 import EnterChatRoom from '../../organisms/EnterChatRoom'
 
-function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
+function SelectRoomTemplate({
+  listChatRooms,
+  setNameChatRoom,
+  setChatRoomInDatabase,
+}) {
   const [chatRoom, setChatRoom] = React.useState('')
   const [showAlert, setShowAlert] = React.useState(false)
   const [showMessage, setShowMessage] = React.useState(false)
@@ -37,7 +41,10 @@ function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
         <AlertError text={errorMessage} nodeRef={nodeRef} />
       </Disappear>
       <ParagraphTwo show={showMessage} textOne={message1} textTwo={message2} />
-      <EnterChatRoom handleSelect={() => {}} listChatRooms={listChatRooms} />
+      <EnterChatRoom
+        handleSelect={setChatRoomInDatabase}
+        listChatRooms={listChatRooms}
+      />
       {listChatRooms.length !== 0 ? <p>o puedes crear una nueva</p> : null}
       <AddChatRoom
         chatRoom={chatRoom}
@@ -52,6 +59,7 @@ function SelectRoomTemplate({ listChatRooms, setNameChatRoom }) {
 SelectRoomTemplate.propTypes = {
   listChatRooms: PropTypes.array.isRequired,
   setNameChatRoom: PropTypes.func.isRequired,
+  setChatRoomInDatabase: PropTypes.func.isRequired,
 }
 
 export default SelectRoomTemplate

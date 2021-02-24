@@ -21,7 +21,7 @@ function EnterChatRoom({ handleSelect, listChatRooms }) {
     }
     setValueSelect(event.target.value)
     setSelected(true)
-    handleSelect()
+    handleSelect(valueSelect)
   }
 
   React.useEffect(() => {}, [selected])
