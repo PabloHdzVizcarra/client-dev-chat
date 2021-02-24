@@ -57,4 +57,25 @@ describe('test in EnterChatRoom component', () => {
     userEvent.selectOptions(screen.getByRole('combobox'), '-----')
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
   })
+
+  test('not change value to select', () => {
+    const handler = jest.fn()
+    render(
+      <EnterChatRoom
+        listChatRooms={[
+          { name: 'developer' },
+          { name: 'nodejs' },
+          { name: 'amazon' },
+        ]}
+        handleSelect={handler}
+      />,
+    )
+
+    userEvent.selectOptions(screen.getByRole('combobox'), 'nodejs')
+    expect(screen.getAllByRole('option')[2].selected).toBeTruthy()
+    expect(screen.getAllByRole('option')[1].selected).toBeFalsy()
+    expect(screen.getAllByRole('option')[0].selected).toBeFalsy()
+    expect(screen.getAllByRole('option')[3].selected).toBeFalsy()
+    screen.debug()
+  })
 })

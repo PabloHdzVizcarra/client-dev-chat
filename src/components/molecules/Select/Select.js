@@ -27,15 +27,14 @@ const Option = styled.option`
 Select.propTypes = {
   data: PropTypes.array.isRequired,
   handleChange: PropTypes.func.isRequired,
+  valueSelect: PropTypes.string.isRequired,
 }
 
-function Select({ data, handleChange }) {
+function Select({ data, handleChange, valueSelect }) {
   return (
     <Container>
-      <ESelect onChange={(e) => handleChange(e)}>
-        <Option key={uuidv4()} defaultValue='selected'>
-          -----
-        </Option>
+      <ESelect onChange={(e) => handleChange(e)} value={valueSelect}>
+        {<Option key={uuidv4()}>------</Option>}
         {data.map((room) => (
           <Option key={uuidv4()}>{room.name}</Option>
         ))}
