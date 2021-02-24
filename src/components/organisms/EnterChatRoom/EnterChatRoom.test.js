@@ -4,23 +4,6 @@ import EnterChatRoom from './EnterChatRoom'
 import userEvent from '@testing-library/user-event'
 
 describe('test in EnterChatRoom component', () => {
-  test('should call handleSelect function when change value', () => {
-    const handler = jest.fn()
-    render(
-      <EnterChatRoom
-        listChatRooms={[
-          { name: 'developer' },
-          { name: 'nodejs' },
-          { name: 'amazon' },
-        ]}
-        handleSelect={handler}
-      />,
-    )
-
-    userEvent.selectOptions(screen.getByRole('combobox'), 'nodejs')
-    expect(handler).toHaveBeenCalled()
-  })
-
   test('show display button when change select option', () => {
     const handler = jest.fn()
     render(
@@ -60,7 +43,7 @@ describe('test in EnterChatRoom component', () => {
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
   })
 
-  test('not change value to select', () => {
+  test('should change value to selected option', () => {
     const handler = jest.fn()
     render(
       <EnterChatRoom
@@ -102,36 +85,9 @@ describe('test in EnterChatRoom component', () => {
     )
 
     const select = screen.getByRole('combobox')
-    userEvent.selectOptions(select, '-----')
+    userEvent.selectOptions(select, 'nodejs')
 
     expect(handler).not.toHaveBeenCalled()
-  })
-
-  test('should call function with actual value of select', () => {
-    const handler = jest.fn(
-      /**
-       * @param {T} value
-       */
-      (value) => {
-        console.log('call function')
-        return value
-      },
-    )
-    render(
-      <EnterChatRoom
-        listChatRooms={[
-          { name: 'developer' },
-          { name: 'nodejs' },
-          { name: 'amazon' },
-        ]}
-        handleSelect={handler}
-      />,
-    )
-
-    const select = screen.getByRole('combobox')
-
-    userEvent.selectOptions(select, 'nodejs')
-    expect(handler).toHaveBeenCalledWith('nodejs')
   })
 
   test('should call function when click to button', () => {
@@ -158,7 +114,6 @@ describe('test in EnterChatRoom component', () => {
     const select = screen.getByRole('combobox')
 
     userEvent.selectOptions(select, 'nodejs')
-    screen.debug()
     userEvent.click(screen.getByRole('button'))
 
     expect(handler).toHaveBeenCalledWith('nodejs')
