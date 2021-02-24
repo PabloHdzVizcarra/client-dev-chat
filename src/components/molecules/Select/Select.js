@@ -31,10 +31,11 @@ Select.propTypes = {
 }
 
 function Select({ data, handleChange, valueSelect }) {
+  React.useEffect(() => {}, [valueSelect])
   return (
     <Container>
       <ESelect onChange={(e) => handleChange(e)} value={valueSelect}>
-        {<Option key={uuidv4()}>------</Option>}
+        {<Option key={uuidv4()}>-----</Option>}
         {data.map((room) => (
           <Option key={uuidv4()}>{room.name}</Option>
         ))}

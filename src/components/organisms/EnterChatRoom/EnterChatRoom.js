@@ -15,7 +15,9 @@ function EnterChatRoom({ handleSelect, listChatRooms }) {
   function handleChange(event) {
     console.log(event.target.value)
     if (!event.target.value || event.target.value === '-----') {
-      return setSelected(false)
+      setValueSelect(event.target.value)
+      setSelected(false)
+      return
     }
     setValueSelect(event.target.value)
     setSelected(true)

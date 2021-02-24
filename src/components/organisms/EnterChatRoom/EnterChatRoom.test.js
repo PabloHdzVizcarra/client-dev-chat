@@ -51,10 +51,12 @@ describe('test in EnterChatRoom component', () => {
       />,
     )
 
-    userEvent.selectOptions(screen.getByRole('combobox'), 'nodejs')
+    const select = screen.getByRole('combobox')
+
+    userEvent.selectOptions(select, 'nodejs')
     expect(screen.getByRole('button')).toBeInTheDocument()
 
-    userEvent.selectOptions(screen.getByRole('combobox'), '-----')
+    userEvent.selectOptions(select, '-----')
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
   })
 
@@ -76,6 +78,5 @@ describe('test in EnterChatRoom component', () => {
     expect(screen.getAllByRole('option')[1].selected).toBeFalsy()
     expect(screen.getAllByRole('option')[0].selected).toBeFalsy()
     expect(screen.getAllByRole('option')[3].selected).toBeFalsy()
-    screen.debug()
   })
 })
