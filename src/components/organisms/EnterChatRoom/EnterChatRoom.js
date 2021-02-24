@@ -22,10 +22,16 @@ function EnterChatRoom({ handleSelect, listChatRooms }) {
     setSelected(true)
   }
 
-  React.useEffect(() => {
+  function handleClick() {
+    console.log('handleClick button')
     if (valueSelect === '-----') return
     handleSelect(valueSelect)
-  }, [valueSelect, handleSelect, selected])
+  }
+
+  // React.useEffect(() => {
+  //   if (valueSelect === '-----') return
+  //   handleSelect(valueSelect)
+  // }, [valueSelect, handleSelect, selected])
 
   return (
     <div>
@@ -56,6 +62,7 @@ function EnterChatRoom({ handleSelect, listChatRooms }) {
               hoverBColor: 'rgb(51,166,13)',
               fontSize: '1.2rem',
             }}
+            handleClick={handleClick}
           />
         </div>
       ) : null}
