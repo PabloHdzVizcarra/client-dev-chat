@@ -12,7 +12,7 @@ function EnterChatRoom({ handleSelect, listChatRooms }) {
   const [selected, setSelected] = React.useState(false)
   const [valueSelect, setValueSelect] = React.useState('-----')
 
-  function handleChange(event) {
+  function handleChangeValueSelect(event) {
     if (event.target.value === '-----') {
       setValueSelect(event.target.value)
       setSelected(false)
@@ -23,22 +23,16 @@ function EnterChatRoom({ handleSelect, listChatRooms }) {
   }
 
   function handleClick() {
-    console.log('handleClick button')
     if (valueSelect === '-----') return
     handleSelect(valueSelect)
   }
-
-  // React.useEffect(() => {
-  //   if (valueSelect === '-----') return
-  //   handleSelect(valueSelect)
-  // }, [valueSelect, handleSelect, selected])
 
   return (
     <div>
       {listChatRooms.length !== 0 ? (
         <Select
           data={listChatRooms}
-          handleChange={handleChange}
+          handleChange={handleChangeValueSelect}
           valueSelect={valueSelect}
         />
       ) : null}
