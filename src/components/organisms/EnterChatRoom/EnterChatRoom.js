@@ -13,18 +13,20 @@ function EnterChatRoom({ handleSelect, listChatRooms }) {
   const [valueSelect, setValueSelect] = React.useState('-----')
 
   function handleChange(event) {
-    console.log(event.target.value)
-    if (!event.target.value || event.target.value === '-----') {
+    if (event.target.value === '-----') {
       setValueSelect(event.target.value)
       setSelected(false)
       return
     }
     setValueSelect(event.target.value)
     setSelected(true)
-    handleSelect(valueSelect)
   }
 
-  React.useEffect(() => {}, [selected])
+  React.useEffect(() => {
+    if (valueSelect === '-----') return
+    handleSelect(valueSelect)
+  }, [valueSelect, handleSelect, selected])
+
   return (
     <div>
       {listChatRooms.length !== 0 ? (

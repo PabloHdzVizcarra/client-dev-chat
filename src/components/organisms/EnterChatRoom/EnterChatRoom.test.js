@@ -79,4 +79,48 @@ describe('test in EnterChatRoom component', () => {
     expect(screen.getAllByRole('option')[0].selected).toBeFalsy()
     expect(screen.getAllByRole('option')[3].selected).toBeFalsy()
   })
+
+  test('dont should call function with select', () => {
+    const handler = jest.fn((value) => {
+      console.log('call function')
+      return value
+    })
+    render(
+      <EnterChatRoom
+        listChatRooms={[
+          { name: 'developer' },
+          { name: 'nodejs' },
+          { name: 'amazon' },
+        ]}
+        handleSelect={handler}
+      />,
+    )
+
+    const select = screen.getByRole('combobox')
+    userEvent.selectOptions(select, '-----')
+
+    expect(handler).not.toHaveBeenCalled()
+  })
+
+  test('should call function with actual value of select', () => {
+    const handler = jest.fn((value) => {
+      console.log('call function')
+      return value
+    })
+    render(
+      <EnterChatRoom
+        listChatRooms={[
+          { name: 'developer' },
+          { name: 'nodejs' },
+          { name: 'amazon' },
+        ]}
+        handleSelect={handler}
+      />,
+    )
+
+    const select = screen.getByRole('combobox')
+
+    userEvent.selectOptions(select, 'nodejs')
+    expect(handler).toHaveBeenCalledWith('nodejs')
+  })
 })
