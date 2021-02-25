@@ -20,29 +20,30 @@ const HomeTemplate = ({ userData }) => {
   const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
-  const [user, setUser] = React.useState({})
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
   const [usersConnected, setUsersConnected] = React.useState([])
-  const { name, room: roomID, color: colorUser } = userData
+  const { name, room, color } = userData
   console.log(userData)
 
   React.useEffect(() => {
     socket = io(host)
 
-    socket.emit('user_join', { name, roomID, colorUser }, (error) => {
+    socket.emit('user_join', { name, room, color }, (error) => {
       if (error) {
         alert(error)
       }
     })
     return () => {}
-  }, [roomID, name, colorUser])
+  }, [room, name, color])
 
   React.useEffect(() => {
     socket.on('new_user', (user) => {
-      setUser(user)
+      console.log(user)
+      console.log('EVENTO new_user')
     })
     socket.on('message', (msg) => {
+      console.log('EVENTO message')
       if (msg && msg?.text) {
         setMessages((messages) => [...messages, msg])
         setInfoMessage('')
@@ -53,10 +54,12 @@ const HomeTemplate = ({ userData }) => {
     })
 
     socket.on('room_data', (data) => {
+      console.log('EVENTO room_data')
       setUsersConnected(data.users)
     })
 
     socket.on('info_message', (data) => {
+      console.log('EVENTO info_message')
       const { text } = data
       setInfoMessage(text)
       setAppear(true)
@@ -83,11 +86,7 @@ const HomeTemplate = ({ userData }) => {
         </Expire>
       ) : null}
 
-      <UsersArea
-        usersConnected={usersConnected}
-        userData={userData}
-        user={user}
-      />
+      <UsersArea usersConnected={usersConnected} user={userData} />
 
       <MessagesArea
         messages={messages}

@@ -50,7 +50,6 @@ const UsersArea = ({ usersConnected, user }) => {
 
 UsersArea.propTypes = {
   usersConnected: PropTypes.array.isRequired,
-  userData: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
 }
 
