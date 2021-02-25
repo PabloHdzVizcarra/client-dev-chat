@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import HomeTemplate from '../../components/templates/home_template/HomeTemplate'
+import HomeTemplate from '../../components/templates/home_template/HomeTemplate'
 
 const Home = ({ userData }) => {
   console.log(userData)
-  return <p>home template</p>
-  // return <HomeTemplate userData={userData} />
+  return <HomeTemplate userData={userData} />
 }
 
 Home.propTypes = {

@@ -24,18 +24,19 @@ const HomeTemplate = ({ userData }) => {
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
   const [usersConnected, setUsersConnected] = React.useState([])
-  const { username, room: roomID, colorUser } = userData
+  const { name, room: roomID, color: colorUser } = userData
+  console.log(userData)
 
   React.useEffect(() => {
     socket = io(host)
 
-    socket.emit('user_join', { username, roomID, colorUser }, (error) => {
+    socket.emit('user_join', { name, roomID, colorUser }, (error) => {
       if (error) {
         alert(error)
       }
     })
     return () => {}
-  }, [roomID, username, colorUser])
+  }, [roomID, name, colorUser])
 
   React.useEffect(() => {
     socket.on('new_user', (user) => {
@@ -90,7 +91,7 @@ const HomeTemplate = ({ userData }) => {
 
       <MessagesArea
         messages={messages}
-        username={username}
+        username={name}
         setMessage={setMessage}
         message={message}
         handleSubmitForm={handleSubmitForm}
