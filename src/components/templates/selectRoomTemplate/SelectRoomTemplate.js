@@ -7,6 +7,8 @@ import ParagraphTwo from '../../molecules/ParagraphTwo'
 import AddChatRoom from '../../organisms/AddChatRoom'
 import { errorMessage, message1, message2 } from './utils'
 import EnterChatRoom from '../../organisms/EnterChatRoom'
+import OptionalChatRoom from '../../organisms/OptionalChatRoom'
+import Select from '../../molecules/Select'
 
 function SelectRoomTemplate({
   listChatRooms,
@@ -51,7 +53,11 @@ function SelectRoomTemplate({
         setChatRoom={setChatRoom}
         handleSubmit={handleSubmit}
       />
-      <p>o puedes unirte a una sala existente</p>
+      <OptionalChatRoom
+        infoMessage={'o puedes unirte a una sala de chat existente'}
+      >
+        <Select valueSelect='' handleChange={() => {}} data={[]} />
+      </OptionalChatRoom>
     </div>
   )
 }
