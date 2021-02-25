@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import LoginTemplate from '../../components/templates/login_template/LoginTemplate'
 
 const Login = ({ setToken, setDataUser }) => {
-  async function onSubmit({ email, password }) {
-    const response = await fetch('/api/user/login', {
+  function onSubmit({ email, password }) {
+    fetch('/api/user/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -14,13 +14,13 @@ const Login = ({ setToken, setDataUser }) => {
         password: password,
       }),
     })
-
-    const { message, user, token } = await response.json()
-
-    if (!message || !user || !token) return
-    console.log(user)
-    setToken(token)
-    setDataUser(user)
+      .then((result) => result.json())
+      .then(({ document, message, token }) => {
+        if (!message || !document || !token) return
+        setToken(token)
+        setDataUser(document)
+      })
+      .catch(console.log)
   }
   return <LoginTemplate onSubmit={onSubmit} />
 }
