@@ -16,12 +16,12 @@ function OptionalChatRoom({ infoMessage, roomList }) {
     console.log(event.target.value)
     if (event.target.value === '-----') {
       setValueSelect('-----')
+      setIsButton(false)
       return
     }
     setValueSelect(event.target.value)
     setIsButton(true)
   }
-  //TODO: display button when select option
   //TODO: hidden button deselected document
   //TODO: set room with click button
   return (
