@@ -13,7 +13,6 @@ function OptionalChatRoom({ infoMessage, roomList }) {
   const [valueSelect, setValueSelect] = React.useState('')
 
   function handleSelectOption(event) {
-    console.log(event.target.value)
     if (event.target.value === '-----') {
       setValueSelect('-----')
       setIsButton(false)
@@ -22,7 +21,6 @@ function OptionalChatRoom({ infoMessage, roomList }) {
     setValueSelect(event.target.value)
     setIsButton(true)
   }
-  //TODO: hidden button deselected document
   //TODO: set room with click button
   return (
     <div>

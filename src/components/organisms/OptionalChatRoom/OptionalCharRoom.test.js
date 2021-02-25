@@ -29,8 +29,6 @@ describe('test in OptionalChatRoom component', () => {
     const select = screen.getByRole('combobox')
     // select option nodejs
     userEvent.selectOptions(select, 'nodejs')
-    // we make sure that only one option is selected
-    expect(screen.getByText('javascript').selected).toBe(false)
     // we make sure that the selection is correct
     expect(screen.getByText('nodejs').selected).toBe(true)
     expect(screen.getByRole('combobox').value).toEqual('nodejs')
