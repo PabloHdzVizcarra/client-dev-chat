@@ -56,6 +56,7 @@ function SelectRoomTemplate({
       <OptionalChatRoom
         infoMessage={'o puedes unirte a una sala de chat existente'}
         roomList={roomList}
+        handleSetRoom={setChatRoomInDatabase}
       />
     </div>
   )
