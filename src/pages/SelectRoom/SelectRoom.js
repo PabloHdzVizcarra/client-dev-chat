@@ -4,6 +4,8 @@ import SelectRoomTemplate from '../../components/templates/selectRoomTemplate'
 
 function SelectRoom({ listChatRooms, setDataUser }) {
   const [nameChatRoom, setNameChatRoom] = React.useState('')
+  const [roomsList, setRoomsList] = React.useState([])
+  console.log(setRoomsList)
   React.useEffect(() => {
     if (nameChatRoom === '') return
 
@@ -42,6 +44,7 @@ function SelectRoom({ listChatRooms, setDataUser }) {
       listChatRooms={listChatRooms}
       setNameChatRoom={setNameChatRoom}
       setChatRoomInDatabase={setChatRoomInDatabase}
+      roomList={roomsList}
     />
   )
 }

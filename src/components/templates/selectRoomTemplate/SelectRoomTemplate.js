@@ -5,15 +5,16 @@ import AlertError from '../../molecules/AlertError'
 import Disappear from '../../atoms/disappear/Disappear'
 import ParagraphTwo from '../../molecules/ParagraphTwo'
 import AddChatRoom from '../../organisms/AddChatRoom'
-import { errorMessage, message1, message2 } from './utils'
 import EnterChatRoom from '../../organisms/EnterChatRoom'
 import OptionalChatRoom from '../../organisms/OptionalChatRoom'
 import Select from '../../molecules/Select'
+import { errorMessage, message1, message2 } from './utils'
 
 function SelectRoomTemplate({
   listChatRooms,
   setNameChatRoom,
   setChatRoomInDatabase,
+  roomList,
 }) {
   const [chatRoom, setChatRoom] = React.useState('')
   const [showAlert, setShowAlert] = React.useState(false)
@@ -56,7 +57,7 @@ function SelectRoomTemplate({
       <OptionalChatRoom
         infoMessage={'o puedes unirte a una sala de chat existente'}
       >
-        <Select valueSelect='' handleChange={() => {}} data={[]} />
+        <Select valueSelect='' handleChange={() => {}} data={roomList} />
       </OptionalChatRoom>
     </div>
   )
@@ -66,6 +67,7 @@ SelectRoomTemplate.propTypes = {
   listChatRooms: PropTypes.array.isRequired,
   setNameChatRoom: PropTypes.func.isRequired,
   setChatRoomInDatabase: PropTypes.func.isRequired,
+  roomList: PropTypes.array.isRequired,
 }
 
 export default SelectRoomTemplate
