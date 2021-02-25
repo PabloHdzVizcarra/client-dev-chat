@@ -28,8 +28,8 @@ function SelectRoom({ listChatRooms, setDataUser }) {
       method: 'POST',
     })
       .then((res) => res.json())
-      .then((result) => {
-        console.log(result)
+      .then(({ document }) => {
+        setDataUser(document)
       })
       .catch((error) => {
         console.log(error)
