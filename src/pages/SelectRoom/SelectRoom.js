@@ -24,6 +24,16 @@ function SelectRoom({ listChatRooms, setDataUser }) {
   }, [nameChatRoom, setDataUser])
 
   function setChatRoomInDatabase(room) {
+    fetch(`/api/room/${room}`, {
+      method: 'POST',
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     return console.log('selecciona sala de chat ' + room)
   }
 
