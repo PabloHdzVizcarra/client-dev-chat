@@ -5,7 +5,6 @@ import SelectRoomTemplate from '../../components/templates/selectRoomTemplate'
 function SelectRoom({ listChatRooms, setDataUser }) {
   const [nameChatRoom, setNameChatRoom] = React.useState('')
   const [roomsList, setRoomsList] = React.useState([])
-  console.log(setRoomsList)
   React.useEffect(() => {
     if (nameChatRoom === '') return
 
@@ -24,6 +23,21 @@ function SelectRoom({ listChatRooms, setDataUser }) {
       })
       .catch((e) => console.log(e))
   }, [nameChatRoom, setDataUser])
+
+  React.useEffect(() => {
+    fetch('/api/room')
+      .then((response) => response.json())
+      .then(({ documents, error }) => {
+        if (error || !documents) {
+          console.log('ocurrió un error')
+          return
+        }
+        setRoomsList(documents)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
 
   function setChatRoomInDatabase(room) {
     fetch(`/api/room/${room}`, {
