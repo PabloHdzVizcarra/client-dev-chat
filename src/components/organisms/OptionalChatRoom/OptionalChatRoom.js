@@ -6,9 +6,10 @@ OptionalChatRoom.propTypes = {
   infoMessage: PropTypes.string.isRequired,
   children: PropTypes.element,
   roomList: PropTypes.array.isRequired,
+  handleSetRoom: PropTypes.func.isRequired,
 }
 
-function OptionalChatRoom({ infoMessage, roomList }) {
+function OptionalChatRoom({ infoMessage, roomList, handleSetRoom }) {
   const [isButton, setIsButton] = React.useState(false)
   const [valueSelect, setValueSelect] = React.useState('')
 
@@ -21,7 +22,10 @@ function OptionalChatRoom({ infoMessage, roomList }) {
     setValueSelect(event.target.value)
     setIsButton(true)
   }
-  //TODO: set room with click button
+
+  function handleClick() {
+    handleSetRoom(valueSelect)
+  }
   return (
     <div>
       <p>{infoMessage}</p>
@@ -30,7 +34,7 @@ function OptionalChatRoom({ infoMessage, roomList }) {
         handleChange={handleSelectOption}
         data={roomList}
       />
-      {isButton ? <button>Ingresar</button> : null}
+      {isButton ? <button onClick={handleClick}>Ingresar</button> : null}
     </div>
   )
 }

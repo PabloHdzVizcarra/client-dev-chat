@@ -9,8 +9,20 @@ describe('test in OptionalChatRoom component', () => {
     { name: 'nodejs' },
     { name: 'typescript' },
   ]
+  const handleSetRoom = jest.fn(
+    /**
+     * @param {T} value
+     */
+    (value) => value,
+  )
   test('should display button, when select option', async () => {
-    render(<OptionalChatRoom roomList={roomList} infoMessage={'select room'} />)
+    render(
+      <OptionalChatRoom
+        roomList={roomList}
+        infoMessage={'select room'}
+        handleSetRoom={handleSetRoom}
+      />,
+    )
 
     const select = screen.getByRole('combobox')
     // select option nodejs
@@ -25,7 +37,13 @@ describe('test in OptionalChatRoom component', () => {
   })
 
   test('hidden button when deselected option', () => {
-    render(<OptionalChatRoom roomList={roomList} infoMessage={'select room'} />)
+    render(
+      <OptionalChatRoom
+        roomList={roomList}
+        infoMessage={'select room'}
+        handleSetRoom={handleSetRoom}
+      />,
+    )
     const select = screen.getByRole('combobox')
     // select option nodejs
     userEvent.selectOptions(select, 'nodejs')
@@ -36,5 +54,30 @@ describe('test in OptionalChatRoom component', () => {
     // we remove the option
     userEvent.selectOptions(select, '-----')
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
+  })
+
+  test('handleSetRoom function must be called with current value of the select', () => {
+    const handleSetRoom = jest.fn(
+      /**
+       * @param {T} value
+       */
+      (value) => value,
+    )
+    render(
+      <OptionalChatRoom
+        roomList={roomList}
+        infoMessage={'select room'}
+        handleSetRoom={handleSetRoom}
+      />,
+    )
+    const select = screen.getByRole('combobox')
+    // select option nodejs
+    userEvent.selectOptions(select, 'nodejs')
+
+    //click button
+    const button = screen.queryByRole('button')
+    userEvent.click(button)
+
+    expect(handleSetRoom).toHaveBeenCalledWith('nodejs')
   })
 })
