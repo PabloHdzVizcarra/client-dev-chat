@@ -10,6 +10,7 @@ const H1 = styled.h1`
   margin: ${(props) => props.margin || '0'};
   font-family: 'Roboto Mono', monospace;
   text-align: ${(props) => props.textAlign || 'left'};
+  text-transform: capitalize;
 `
 
 const HeaderH1 = ({ text, styles }) => {

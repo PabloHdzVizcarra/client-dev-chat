@@ -88,7 +88,7 @@ const HomeTemplate = ({ userData }) => {
       <div
         style={{
           gridColumn: '1/3',
-          justifyItems: 'end',
+          justifySelf: 'end',
           padding: '0 1rem',
         }}
       >

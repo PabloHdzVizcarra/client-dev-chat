@@ -8,14 +8,15 @@ import UserList from '../../molecules/user-list/UserList'
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 10% 40% 50%;
-  padding: 30px;
+  grid-template-rows: 10% 30% 53%;
+  padding: 10px 20px;
 `
 
 const FlexContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
 `
 
 const UsersArea = ({ usersConnected, user }) => {
@@ -24,7 +25,7 @@ const UsersArea = ({ usersConnected, user }) => {
   }
   const { color, name, room } = user
   return (
-    <div>
+    <>
       <Container>
         <FlexContainer>
           <AiOutlineMessage
@@ -38,6 +39,7 @@ const UsersArea = ({ usersConnected, user }) => {
             styles={{
               textAlign: 'center',
               margin: '0 0 0 10px',
+              fontSize: '1.8rem',
             }}
           />
         </FlexContainer>
@@ -46,7 +48,7 @@ const UsersArea = ({ usersConnected, user }) => {
 
         <UserList users={usersConnected} userColor={color} />
       </Container>
-    </div>
+    </>
   )
 }
 

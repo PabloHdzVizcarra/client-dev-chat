@@ -7,8 +7,11 @@ import shortName from '../../templates/home_template/helpers/shortName'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px;
   margin-top: 20px;
+  background-color: #e4eaf7;
+  border-radius: 4px;
+  padding: 15px 0 0 0;
+  height: 100%;
 `
 
 const User = styled.div`
