@@ -9,6 +9,7 @@ import AlertInfo from '../../molecules/alert-info/AlertInfo'
 
 const Container = styled.div`
   display: grid;
+  grid-template-rows: min-content;
   grid-template-columns: 25% 75%;
   background-color: #ffffff;
   height: 100%;
@@ -24,7 +25,6 @@ const HomeTemplate = ({ userData }) => {
   const [appear, setAppear] = React.useState(false)
   const [usersConnected, setUsersConnected] = React.useState([])
   const { name, room, color } = userData
-  console.log(userData)
 
   React.useEffect(() => {
     socket = io(host)
@@ -34,12 +34,14 @@ const HomeTemplate = ({ userData }) => {
         alert(error)
       }
     })
-    return () => {}
+    return () => {
+      socket.close()
+    }
   }, [room, name, color])
 
   React.useEffect(() => {
     socket.on('new_user', (user) => {
-      console.log(user)
+      console.log(user.name)
       console.log('EVENTO new_user')
     })
     socket.on('message', (msg) => {
@@ -55,7 +57,10 @@ const HomeTemplate = ({ userData }) => {
 
     socket.on('room_data', (data) => {
       console.log('EVENTO room_data')
-      setUsersConnected(data.users)
+      if (!data.users_connected) {
+        return
+      }
+      setUsersConnected(data.users_connected)
     })
 
     socket.on('info_message', (data) => {
@@ -80,6 +85,15 @@ const HomeTemplate = ({ userData }) => {
 
   return (
     <Container>
+      <div
+        style={{
+          gridColumn: '1/3',
+          justifyItems: 'end',
+          padding: '0 1rem',
+        }}
+      >
+        <button>Salir</button>
+      </div>
       {appear ? (
         <Expire delay={1500}>
           <AlertInfo text={infoMessage} setAppear={setAppear} />

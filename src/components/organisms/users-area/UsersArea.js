@@ -8,7 +8,7 @@ import UserList from '../../molecules/user-list/UserList'
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 10% 30% 60%;
+  grid-template-rows: 10% 40% 50%;
   padding: 30px;
 `
 
@@ -24,27 +24,29 @@ const UsersArea = ({ usersConnected, user }) => {
   }
   const { color, name, room } = user
   return (
-    <Container>
-      <FlexContainer>
-        <AiOutlineMessage
-          style={{
-            fontSize: '3rem',
-            color: '#41C7C7',
-          }}
-        />
-        <HeaderH1
-          text={room}
-          styles={{
-            textAlign: 'center',
-            margin: '0 0 0 10px',
-          }}
-        />
-      </FlexContainer>
+    <div>
+      <Container>
+        <FlexContainer>
+          <AiOutlineMessage
+            style={{
+              fontSize: '3rem',
+              color: '#41C7C7',
+            }}
+          />
+          <HeaderH1
+            text={room}
+            styles={{
+              textAlign: 'center',
+              margin: '0 0 0 10px',
+            }}
+          />
+        </FlexContainer>
 
-      <UserInfo username={name || ''} userColor={color} />
+        <UserInfo username={name || ''} userColor={color} />
 
-      <UserList users={usersConnected} userColor={color} />
-    </Container>
+        <UserList users={usersConnected} userColor={color} />
+      </Container>
+    </div>
   )
 }
 
