@@ -2,18 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { io } from 'socket.io-client'
 import Expire from '../../atoms/Expire/Expire'
-import styled from 'styled-components'
 import UsersArea from '../../organisms/users-area/UsersArea'
 import MessagesArea from '../../organisms/messages-area/MessagesArea'
 import AlertInfo from '../../molecules/alert-info/AlertInfo'
-
-const Container = styled.div`
-  display: grid;
-  grid-template-rows: min-content;
-  grid-template-columns: 25% 75%;
-  background-color: #ffffff;
-  height: 100%;
-`
+import Button from '../../atoms/button/Button'
+import { BtnContainer, ContainerBtn } from './styles'
 
 let socket
 
@@ -83,17 +76,31 @@ const HomeTemplate = ({ userData }) => {
     }
   }
 
+  function closeSession() {
+    console.log('cerrar session')
+    socket.emit('exit-room', userData)
+  }
+
   return (
-    <Container>
-      <div
-        style={{
-          gridColumn: '1/3',
-          justifySelf: 'end',
-          padding: '0 1rem',
-        }}
-      >
-        <button>Salir</button>
-      </div>
+    <ContainerBtn>
+      <BtnContainer>
+        <Button
+          textButton='Salir'
+          styles={{
+            width: 'max-content',
+            backgroundColor: '#FE2C34',
+            fontWeight: 'bold',
+            height: '100%',
+            color: '#fff',
+            padding: '0 1rem',
+            margin: '5px 0 0 0',
+            borderRadius: '4px',
+            hoverBColor: '#e6272d',
+            scale: 'scale(1.2)',
+          }}
+          handleClick={closeSession}
+        />
+      </BtnContainer>
       {appear ? (
         <Expire delay={1500}>
           <AlertInfo text={infoMessage} setAppear={setAppear} />
@@ -109,7 +116,7 @@ const HomeTemplate = ({ userData }) => {
         message={message}
         handleSubmitForm={handleSubmitForm}
       />
-    </Container>
+    </ContainerBtn>
   )
 }
 

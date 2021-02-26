@@ -35,4 +35,18 @@ const WrapperMessage = styled.div`
     props.admin === true ? 'flex-end' : 'flex-start'};
 `
 
+export const ContainerBtn = styled.div`
+  display: grid;
+  grid-template-rows: min-content;
+  grid-template-columns: 25% 75%;
+  background-color: #ffffff;
+  height: 100%;
+`
+
+export const BtnContainer = styled.div`
+  grid-column: 1/3;
+  justify-self: end;
+  padding: 0 1rem;
+`
+
 export { Container, Paragraph, Message, ContainerData, WrapperMessage }

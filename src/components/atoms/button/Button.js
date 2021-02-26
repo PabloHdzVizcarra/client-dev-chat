@@ -15,13 +15,14 @@ const ElementButton = styled.button`
   font-weight: ${(props) => props.fontWeight || 'normal'};
   cursor: pointer;
 
-  transition: 300ms ease background-color;
+  transition: 300ms ease all;
 
   &:focus {
     outline: none;
   }
 
   &:hover {
+    transform: ${(props) => props.scale || 'none'};
     background-color: ${(props) => props.hoverBColor || 'none'};
   }
 `
