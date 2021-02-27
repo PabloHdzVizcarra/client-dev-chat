@@ -25,6 +25,7 @@ const RouterApp = () => {
     chat_rooms_created: '',
   })
   const [authenticated, setAuthenticated] = React.useState(false)
+  const [currentRoom, setCurrentRoom] = React.useState('')
   const { token, setToken } = useToken()
 
   React.useEffect(() => {
@@ -57,7 +58,7 @@ const RouterApp = () => {
             {!authenticated ? (
               <Redirect to={'/login'} />
             ) : (
-              <Home userData={{}} />
+              <Home userData={{}} setCurrentRoom={setCurrentRoom} />
             )}
           </Route>
           <Route path='/register'>
@@ -65,7 +66,12 @@ const RouterApp = () => {
           </Route>
           <Route path='/login'>
             {authenticated ? (
-              <Main userData={dataUser} setDataUser={setDataUser} />
+              <Main
+                userData={dataUser}
+                setDataUser={setDataUser}
+                currentRoom={currentRoom}
+                setCurrentRoom={setCurrentRoom}
+              />
             ) : (
               <Login setToken={setToken} setDataUser={setDataUser} />
             )}

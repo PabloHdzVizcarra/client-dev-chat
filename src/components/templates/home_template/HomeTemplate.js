@@ -49,6 +49,7 @@ const HomeTemplate = ({ userData }) => {
     })
 
     socket.on('room_data', (data) => {
+      console.log(data)
       console.log('EVENTO room_data')
       if (!data.users_connected) {
         return
@@ -122,6 +123,7 @@ const HomeTemplate = ({ userData }) => {
 
 HomeTemplate.propTypes = {
   userData: PropTypes.object.isRequired,
+  setCurrentRoom: PropTypes.func.isRequired,
 }
 
 export default HomeTemplate
