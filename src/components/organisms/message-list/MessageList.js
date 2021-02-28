@@ -5,11 +5,13 @@ import { v4 as uuidv4 } from 'uuid'
 import checkAdminUser from '../../templates/home_template/helpers/check_admim_user'
 import Message from '../../molecules/message/Message'
 
-const Container = styled.div`
+const Container = styled.ul`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   max-height: 79vh;
+  padding: 0;
+  margin: 0;
 `
 
 const WrapperMessage = styled.div`

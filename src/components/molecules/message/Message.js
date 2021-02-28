@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 // import shortName from '../../templates/home_template/helpers/shortName'
 
-const Container = styled.div`
+const Container = styled.li`
   display: flex;
   width: max-content;
   align-items: center;
