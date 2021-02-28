@@ -25,14 +25,18 @@ const RouterApp = () => {
     chat_rooms_created: '',
   })
   const [authenticated, setAuthenticated] = React.useState(false)
-  const [currentRoom, setCurrentRoom] = React.useState('')
+  const [currentRoom, setCurrentRoom] = React.useState(false)
   const { token, setToken } = useToken()
 
   React.useEffect(() => {
     if (dataUser.name) {
       setAuthenticated(true)
     }
-  }, [dataUser.name])
+
+    if (dataUser.room) {
+      setCurrentRoom(true)
+    }
+  }, [dataUser.name, dataUser.room])
 
   React.useEffect(() => {
     autologin(token, setDataUser)
@@ -58,7 +62,7 @@ const RouterApp = () => {
             {!authenticated ? (
               <Redirect to={'/login'} />
             ) : (
-              <Home userData={{}} setCurrentRoom={setCurrentRoom} />
+              <Home userData={dataUser} setCurrentRoom={setCurrentRoom} />
             )}
           </Route>
           <Route path='/register'>

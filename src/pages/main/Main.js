@@ -9,14 +9,12 @@ function Main({ userData, setDataUser, currentRoom, setCurrentRoom }) {
   React.useEffect(() => {
     console.log(userData)
 
-    if (userData.room) {
+    if (userData.room && currentRoom) {
       setToHaveRoom(true)
       return
     }
 
-    if (currentRoom) {
-      setToHaveRoom(true)
-    }
+    setToHaveRoom(false)
   }, [userData, currentRoom])
 
   return (
@@ -27,6 +25,7 @@ function Main({ userData, setDataUser, currentRoom, setCurrentRoom }) {
         <SelectRoom
           listChatRooms={userData.chat_rooms_created}
           setDataUser={setDataUser}
+          setCurrentRoom={setCurrentRoom}
         />
       )}
     </>
@@ -36,7 +35,7 @@ function Main({ userData, setDataUser, currentRoom, setCurrentRoom }) {
 Main.propTypes = {
   userData: PropTypes.object.isRequired,
   setDataUser: PropTypes.func.isRequired,
-  currentRoom: PropTypes.string.isRequired,
+  currentRoom: PropTypes.bool.isRequired,
   setCurrentRoom: PropTypes.func.isRequired,
 }
 

@@ -10,7 +10,7 @@ import { BtnContainer, ContainerBtn } from './styles'
 
 let socket
 
-const HomeTemplate = ({ userData }) => {
+const HomeTemplate = ({ userData, setCurrentRoom }) => {
   const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
@@ -50,6 +50,13 @@ const HomeTemplate = ({ userData }) => {
 
     socket.on('room_data', (data) => {
       console.log(data)
+      if (!data.users_connected.map((user) => user.name).includes(name)) {
+        setCurrentRoom('')
+        return
+      }
+
+      setCurrentRoom(room)
+
       console.log('EVENTO room_data')
       if (!data.users_connected) {
         return
@@ -63,10 +70,15 @@ const HomeTemplate = ({ userData }) => {
       setInfoMessage(text)
       setAppear(true)
     })
+
+    socket.on('delete-current-room', ({ userDisconnected }) => {
+      setCurrentRoom(false)
+      console.log(userDisconnected)
+    })
     return () => {
       setInfoMessage('')
     }
-  }, [])
+  }, [setCurrentRoom, name, room])
 
   function handleSubmitForm(event) {
     event.preventDefault()

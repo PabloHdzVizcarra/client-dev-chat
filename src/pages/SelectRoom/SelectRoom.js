@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SelectRoomTemplate from '../../components/templates/selectRoomTemplate'
 
-function SelectRoom({ listChatRooms, setDataUser }) {
+function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
   const [nameChatRoom, setNameChatRoom] = React.useState('')
   const [roomsList, setRoomsList] = React.useState([])
   React.useEffect(() => {
@@ -46,6 +46,7 @@ function SelectRoom({ listChatRooms, setDataUser }) {
       .then((res) => res.json())
       .then(({ document }) => {
         setDataUser(document)
+        setCurrentRoom(true)
       })
       .catch((error) => {
         console.log(error)
@@ -66,6 +67,7 @@ function SelectRoom({ listChatRooms, setDataUser }) {
 SelectRoom.propTypes = {
   listChatRooms: PropTypes.array.isRequired,
   setDataUser: PropTypes.func.isRequired,
+  setCurrentRoom: PropTypes.func.isRequired,
 }
 
 export default SelectRoom

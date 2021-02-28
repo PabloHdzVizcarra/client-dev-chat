@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import HomeTemplate from '../../components/templates/home_template/HomeTemplate'
 
 const Home = ({ userData, setCurrentRoom }) => {
-  console.log(userData)
+  React.useEffect(() => {
+    console.log(userData)
+  }, [userData])
   return <HomeTemplate userData={userData} setCurrentRoom={setCurrentRoom} />
 }
 
