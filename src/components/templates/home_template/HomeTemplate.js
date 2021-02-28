@@ -21,8 +21,7 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
 
   React.useEffect(() => {
     socket = io(host)
-
-    socket.emit('user_join', { name, room, color }, (error) => {
+    socket.emit('user_join', { chatRoom: room, username: name }, (error) => {
       if (error) {
         alert(error)
       }
@@ -48,17 +47,12 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
         setCurrentRoom(false)
         return
       }
-
       setCurrentRoom(true)
-
-      if (!data.users_connected) {
-        return
-      }
       setUsersConnected(data.users_connected)
     })
 
-    socket.on('info_message', (data) => {
-      console.log('EVENTO info_message')
+    socket.on('info-message', (data) => {
+      console.log(data)
       const { text } = data
       setInfoMessage(text)
       setAppear(true)
@@ -75,15 +69,22 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
   function handleSubmitForm(event) {
     event.preventDefault()
     if (message) {
-      socket.emit('text-message', message, userData.name)
+      socket.emit(
+        'text-message',
+        { chatRoom: room, username: name },
+        { text: message },
+      )
       setMessage('')
       setInfoMessage('')
     }
   }
 
   function closeSession() {
-    console.log('cerrar session')
-    socket.emit('exit-room', userData)
+    socket.emit(
+      'exit-room',
+      { chatRoom: room, username: name },
+      { email: userData.email },
+    )
   }
 
   return (
