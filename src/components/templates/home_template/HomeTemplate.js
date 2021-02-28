@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { io } from 'socket.io-client'
 import Expire from '../../atoms/Expire/Expire'
 import UsersArea from '../../organisms/users-area/UsersArea'
-import MessagesArea from '../../organisms/messages-area/MessagesArea'
+import MessagesArea from '../../organisms/MessagesArea/MessagesArea'
 import AlertInfo from '../../molecules/alert-info/AlertInfo'
 import Button from '../../atoms/button/Button'
 import { BtnContainer, ContainerBtn } from './styles'
@@ -33,15 +33,13 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
   }, [room, name, color])
 
   React.useEffect(() => {
-    socket.on('message', (msg) => {
-      console.log('EVENTO message')
-      if (msg && msg?.text) {
-        setMessages((messages) => [...messages, msg])
-        setInfoMessage('')
+    socket.on('text-message', (data) => {
+      if (!data.message) {
         return
       }
-      setInfoMessage('lo sentimos ocurrió un error al mandar el mensaje')
-      setAppear(true)
+
+      setMessages((messages) => [...messages, data.message])
+      console.log(data)
     })
 
     socket.on('room_data', (data) => {
@@ -53,7 +51,6 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
 
       setCurrentRoom(true)
 
-      console.log('EVENTO room_data')
       if (!data.users_connected) {
         return
       }
@@ -73,12 +70,12 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
     return () => {
       setInfoMessage('')
     }
-  }, [setCurrentRoom, name, room])
+  }, [setCurrentRoom, name, room, setMessages])
 
   function handleSubmitForm(event) {
     event.preventDefault()
     if (message) {
-      socket.emit('text-message', message)
+      socket.emit('text-message', message, userData.name)
       setMessage('')
       setInfoMessage('')
     }

@@ -7,8 +7,6 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
   const [roomsList, setRoomsList] = React.useState([])
   React.useEffect(() => {
     if (nameChatRoom === '') return
-    const abortCtrl = new AbortController()
-    const opts = { signal: abortCtrl.signal }
 
     fetch('/api/room/', {
       method: 'POST',
@@ -17,7 +15,6 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name_room: nameChatRoom }),
-      opts,
     })
       .then((data) => data.json())
       .then((user) => {
@@ -25,8 +22,6 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
         setNameChatRoom('')
       })
       .catch((e) => console.log(e))
-
-    return () => abortCtrl.abort()
   }, [nameChatRoom, setDataUser])
 
   React.useEffect(() => {

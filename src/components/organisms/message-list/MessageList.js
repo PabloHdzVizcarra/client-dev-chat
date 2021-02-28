@@ -28,9 +28,8 @@ function MessageList({ messages, username }) {
         >
           <Message
             text={message.text}
-            user={message.user}
+            user={message.owner_user}
             adminUser={username}
-            color={message.userColor}
           />
         </WrapperMessage>
       ))}

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import shortName from '../../templates/home_template/helpers/shortName'
+// import shortName from '../../templates/home_template/helpers/shortName'
 
 const Container = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const Paragraph = styled.p`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `
 
-function Message({ text, user, adminUser, color }) {
+function Message({ text, user, adminUser }) {
   function checkAdminUser(user, nameAdminUser) {
     return user === nameAdminUser
   }
@@ -35,7 +35,6 @@ function Message({ text, user, adminUser, color }) {
       <h2
         style={{
           alignItems: 'center',
-          backgroundColor: color,
           border: '1px solid rgb(0, 0, 0, 0.2)',
           borderRadius: '100%',
           display: 'flex',
@@ -49,7 +48,7 @@ function Message({ text, user, adminUser, color }) {
           color: '#fff',
         }}
       >
-        {shortName(user)}
+        {user}
       </h2>
     </Container>
   )
@@ -59,7 +58,6 @@ Message.propTypes = {
   text: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
   adminUser: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
 }
 
 export default Message
