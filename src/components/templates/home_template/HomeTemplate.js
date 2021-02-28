@@ -33,10 +33,6 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
   }, [room, name, color])
 
   React.useEffect(() => {
-    socket.on('new_user', (user) => {
-      console.log(user.name)
-      console.log('EVENTO new_user')
-    })
     socket.on('message', (msg) => {
       console.log('EVENTO message')
       if (msg && msg?.text) {
@@ -51,11 +47,11 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
     socket.on('room_data', (data) => {
       console.log(data)
       if (!data.users_connected.map((user) => user.name).includes(name)) {
-        setCurrentRoom('')
+        setCurrentRoom(false)
         return
       }
 
-      setCurrentRoom(room)
+      setCurrentRoom(true)
 
       console.log('EVENTO room_data')
       if (!data.users_connected) {
@@ -71,9 +67,8 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
       setAppear(true)
     })
 
-    socket.on('delete-current-room', ({ userDisconnected }) => {
+    socket.on('delete-current-room', () => {
       setCurrentRoom(false)
-      console.log(userDisconnected)
     })
     return () => {
       setInfoMessage('')
