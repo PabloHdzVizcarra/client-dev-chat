@@ -27,7 +27,7 @@ function MessageList({ messages, username }) {
       {messages.map((message) => (
         <WrapperMessage
           key={uuidv4()}
-          admin={checkAdminUser(username, message.user)}
+          admin={checkAdminUser(username, message.owner_user)}
         >
           <Message
             text={message.text}

@@ -11,7 +11,6 @@ export const Container = styled.li`
 export const Paragraph = styled.p`
   font-weight: normal;
   font-size: ${(props) => (props.admin ? '1.2rem' : '1rem')};
-  margin: 0 15px 0 15px;
   border-radius: 6px;
   width: max-content;
   list-style: none;
@@ -24,9 +23,11 @@ export const Paragraph = styled.p`
 `
 
 export const UserName = styled.p`
+  display: flex;
+  width: 100%;
+  justify-content: ${(props) =>
+    props.admin === true ? 'flex-end' : 'flex-start'};
   font-size: 0.7rem;
-  padding: 0 15px;
-  width: 80%;
-  text-align: left;
   color: #333333;
+  padding-bottom: 2px;
 `
