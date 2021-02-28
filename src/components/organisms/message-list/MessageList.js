@@ -21,6 +21,7 @@ const WrapperMessage = styled.div`
 `
 
 function MessageList({ messages, username }) {
+  console.log(username)
   return (
     <Container>
       {messages.map((message) => (

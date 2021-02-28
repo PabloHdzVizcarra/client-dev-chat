@@ -52,7 +52,6 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
     })
 
     socket.on('info-message', (data) => {
-      console.log(data)
       const { text } = data
       setInfoMessage(text)
       setAppear(true)
