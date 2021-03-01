@@ -17,23 +17,14 @@ const ElementInput = styled.input`
     outline: none;
   }
 
-  @media only screen and ${device.mobileS} {
-    height: 10px;
-  }
-  @media only screen and ${device.mobileM} {
-    height: 30px;
-  }
   @media only screen and ${device.mobileL} {
     height: 30px;
   }
   @media only screen and ${device.tablet} {
-    height: 50px;
+    height: 40px;
   }
   @media only screen and ${device.laptop} {
     height: 40px;
-  }
-  @media only screen and ${device.laptopL} {
-    height: 80px;
   }
 `
 

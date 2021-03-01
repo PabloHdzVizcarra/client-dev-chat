@@ -6,13 +6,22 @@ import Label from '../../atoms/label/Label'
 import Input from '../../atoms/input/Input'
 import Button from '../../atoms/button/Button'
 import { Link } from 'react-router-dom'
+import { device } from '../../../utils/size'
 
 const FormLogin = styled.form`
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
-  width: 50%;
-  padding: 20px;
+  width: 95%;
+  padding: 5px;
+  margin-top: 10%;
+
+  @media only screen and ${device.tablet} {
+    height: 40px;
+  }
+  @media only screen and ${device.laptop} {
+    width: 60%;
+    margin-top: 0;
+  }
 `
 
 const FlexContainer = styled.div`

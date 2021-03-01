@@ -54,12 +54,13 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
 
     socket.on('room_data', (data) => {
       console.log(data)
-      if (!data.users_connected.map((user) => user.name).includes(name)) {
+      const { users_connected } = data
+      if (!users_connected.map((user) => user.name).includes(name)) {
         setCurrentRoom(false)
         return
       }
       setCurrentRoom(true)
-      setUsersConnected(data.users_connected)
+      setUsersConnected(users_connected)
     })
 
     socket.on('info-message', (data) => {
