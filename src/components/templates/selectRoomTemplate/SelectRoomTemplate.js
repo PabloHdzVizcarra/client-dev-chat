@@ -42,22 +42,32 @@ function SelectRoomTemplate({
       <Disappear valueOf={null} in={showAlert} nodeRef={nodeRef}>
         <AlertError text={errorMessage} nodeRef={nodeRef} />
       </Disappear>
-      <ParagraphTwo show={showMessage} textOne={message1} textTwo={message2} />
-      <EnterChatRoom
-        handleSelect={setChatRoomInDatabase}
-        listChatRooms={listChatRooms}
-      />
-      {listChatRooms.length !== 0 ? <p>o puedes crear una nueva</p> : null}
-      <AddChatRoom
-        chatRoom={chatRoom}
-        setChatRoom={setChatRoom}
-        handleSubmit={handleSubmit}
-      />
-      <OptionalChatRoom
-        infoMessage={'o puedes unirte a una sala de chat existente'}
-        roomList={roomList}
-        handleSetRoom={setChatRoomInDatabase}
-      />
+      <div
+        style={{
+          padding: '10px',
+        }}
+      >
+        <ParagraphTwo
+          show={showMessage}
+          textOne={message1}
+          textTwo={message2}
+        />
+        <EnterChatRoom
+          handleSelect={setChatRoomInDatabase}
+          listChatRooms={listChatRooms}
+        />
+        {listChatRooms.length !== 0 ? <p>o puedes crear una nueva</p> : null}
+        <AddChatRoom
+          chatRoom={chatRoom}
+          setChatRoom={setChatRoom}
+          handleSubmit={handleSubmit}
+        />
+        <OptionalChatRoom
+          infoMessage={'o puedes unirte a una sala de chat existente'}
+          roomList={roomList}
+          handleSetRoom={setChatRoomInDatabase}
+        />
+      </div>
     </div>
   )
 }
