@@ -6,7 +6,7 @@ import UsersArea from '../../organisms/users-area/UsersArea'
 import MessagesArea from '../../organisms/MessagesArea/MessagesArea'
 import AlertInfo from '../../molecules/alert-info/AlertInfo'
 import Button from '../../atoms/button/Button'
-import { BtnContainer, ContainerBtn } from './styles'
+import { BtnContainer, ContainerHomeTemplate } from './styles'
 
 let socket
 
@@ -99,7 +99,7 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
   }
 
   return (
-    <ContainerBtn>
+    <ContainerHomeTemplate>
       <BtnContainer>
         <Button
           textButton='Salir'
@@ -133,7 +133,7 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
         message={message}
         handleSubmitForm={handleSubmitForm}
       />
-    </ContainerBtn>
+    </ContainerHomeTemplate>
   )
 }
 

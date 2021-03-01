@@ -9,7 +9,7 @@ const Container = styled.ul`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  max-height: 79vh;
+  max-height: 77vh;
   padding: 0;
   margin: 0;
 `
@@ -21,7 +21,6 @@ const WrapperMessage = styled.div`
 `
 
 function MessageList({ messages, username }) {
-  console.log(username)
   return (
     <Container>
       {messages.reverse().map((message) => (

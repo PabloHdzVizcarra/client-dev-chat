@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-const Container = styled.div`
-  display: grid;
-  grid-template-rows: 5% 90% 5%;
-  height: 100vh;
-  background-color: #fff;
-`
+// const Container = styled.div`
+//   display: grid;
+//   grid-template-rows: 5% 90% 5%;
+//   height: 100vh;
+//   background-color: #fff;
+// `
 
 const Paragraph = styled.p`
   text-align: center;
@@ -35,7 +35,7 @@ const WrapperMessage = styled.div`
     props.admin === true ? 'flex-end' : 'flex-start'};
 `
 
-export const ContainerBtn = styled.div`
+export const ContainerHomeTemplate = styled.div`
   display: grid;
   grid-template-rows: min-content;
   grid-template-columns: 25% 75%;
@@ -49,4 +49,4 @@ export const BtnContainer = styled.div`
   padding: 0 1rem;
 `
 
-export { Container, Paragraph, Message, ContainerData, WrapperMessage }
+export { Paragraph, Message, ContainerData, WrapperMessage }
