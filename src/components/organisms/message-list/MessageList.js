@@ -24,7 +24,7 @@ function MessageList({ messages, username }) {
   console.log(username)
   return (
     <Container>
-      {messages.map((message) => (
+      {messages.reverse().map((message) => (
         <WrapperMessage
           key={uuidv4()}
           admin={checkAdminUser(username, message.owner_user)}

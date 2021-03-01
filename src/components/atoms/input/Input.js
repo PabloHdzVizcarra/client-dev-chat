@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { device } from '../../../utils/size'
 
 const ElementInput = styled.input`
   color: ${(props) => props.color || 'black'};
@@ -14,6 +15,25 @@ const ElementInput = styled.input`
 
   &:focus {
     outline: none;
+  }
+
+  @media only screen and ${device.mobileS} {
+    height: 10px;
+  }
+  @media only screen and ${device.mobileM} {
+    height: 30px;
+  }
+  @media only screen and ${device.mobileL} {
+    height: 30px;
+  }
+  @media only screen and ${device.tablet} {
+    height: 50px;
+  }
+  @media only screen and ${device.laptop} {
+    height: 40px;
+  }
+  @media only screen and ${device.laptopL} {
+    height: 80px;
   }
 `
 
