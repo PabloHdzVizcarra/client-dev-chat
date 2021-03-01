@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../../utils/size'
 
 export const Container = styled.div`
   padding: 5px;
@@ -9,12 +10,20 @@ export const Container = styled.div`
 
 export const ESelect = styled.select`
   padding: 10px;
-  width: 20%;
+  width: 60%;
   text-align: center;
   text-align-last: center;
   font-size: 1.1rem;
   border: 2px solid #212121;
   background-color: white;
+  cursor: pointer;
+
+  @media only screen and ${device.tablet} {
+    width: 20%;
+  }
+  @media only screen and ${device.laptop} {
+    width: 30%;
+  }
 `
 
 export const Option = styled.option`
