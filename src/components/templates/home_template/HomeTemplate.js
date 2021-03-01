@@ -26,6 +26,14 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
         alert(error)
       }
     })
+
+    fetch(`/api/messages/${room}`)
+      .catch(console.log)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+      })
+
     return () => {
       socket.close()
     }
