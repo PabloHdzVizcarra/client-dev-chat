@@ -8,14 +8,22 @@ import Button from '../../atoms/button/Button'
 import HeaderH1 from '../../atoms/HeaderH1/HeaderH1'
 import Paragraph from '../../atoms/Paragraph/Paragraph'
 import { Link } from 'react-router-dom'
+import { device } from '../../../utils/size'
 
 const Form = styled.form`
   padding: 16px;
-  width: 30%;
+  width: 90%;
   border-radius: 8px;
   height: 50%;
   align-self: center;
   justify-self: center;
+
+  @media only screen and ${device.tablet} {
+    width: 70%;
+  }
+  @media only screen and ${device.laptop} {
+    width: 50%;
+  }
 `
 
 const Container = styled.div`
