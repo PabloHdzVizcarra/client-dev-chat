@@ -10,6 +10,7 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 10% 30% 53%;
   padding: 10px 20px;
+  height: 100%;
 `
 
 const FlexContainer = styled.div`

@@ -6,10 +6,14 @@ import UsersArea from '../../organisms/users-area/UsersArea'
 import MessagesArea from '../../organisms/MessagesArea/MessagesArea'
 import AlertInfo from '../../molecules/alert-info/AlertInfo'
 import Button from '../../atoms/button/Button'
-import { BtnContainer, ContainerHomeTemplate } from './styles'
+import {
+  BtnContainer,
+  ContainerHomeTemplate,
+  ContainerUsersArea,
+} from './styles'
+import UsersAreaMobile from '../../organisms/UsersAreaMobile/UsersAreaMobile'
 
 let socket
-
 const HomeTemplate = ({ userData, setCurrentRoom }) => {
   const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
@@ -17,7 +21,15 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
   const [infoMessage, setInfoMessage] = React.useState('')
   const [appear, setAppear] = React.useState(false)
   const [usersConnected, setUsersConnected] = React.useState([])
+  const [widthScreen, setWidthScreen] = React.useState(false)
   const { name, room, color } = userData
+
+  React.useEffect(() => {
+    if (window.innerWidth < 768) {
+      return setWidthScreen(true)
+    }
+    setWidthScreen(false)
+  }, [])
 
   React.useEffect(() => {
     socket = io(host)
@@ -124,7 +136,13 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
         </Expire>
       ) : null}
 
-      <UsersArea usersConnected={usersConnected} user={userData} />
+      <ContainerUsersArea>
+        {widthScreen ? (
+          <UsersAreaMobile />
+        ) : (
+          <UsersArea usersConnected={usersConnected} user={userData} />
+        )}
+      </ContainerUsersArea>
 
       <MessagesArea
         messages={messages}
