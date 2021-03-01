@@ -31,7 +31,10 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
       .catch(console.log)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        const { documents } = data
+        if (!documents) return
+
+        setMessages(documents)
       })
 
     return () => {
