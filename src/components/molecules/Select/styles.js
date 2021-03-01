@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import { device } from '../../../utils/size'
 
-export const Container = styled.div`
+export const ContainerSelect = styled.div`
   padding: 5px;
   display: flex;
   justify-content: center;
   margin: 20px 0 0 0;
+  width: 100%;
 `
 
 export const ESelect = styled.select`
@@ -19,7 +20,7 @@ export const ESelect = styled.select`
   cursor: pointer;
 
   @media only screen and ${device.tablet} {
-    width: 20%;
+    width: 40%;
   }
   @media only screen and ${device.laptop} {
     width: 30%;

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { v4 as uuidv4 } from 'uuid'
-import { Container, ESelect, Option } from './styles'
+import { ContainerSelect, ESelect, Option } from './styles'
 
 Select.propTypes = {
   data: PropTypes.array.isRequired,
@@ -11,14 +11,14 @@ Select.propTypes = {
 
 function Select({ data, handleChange, valueSelect }) {
   return (
-    <Container>
+    <ContainerSelect>
       <ESelect onChange={(e) => handleChange(e)} value={valueSelect}>
         {<Option key={uuidv4()}>-----</Option>}
         {data.map((room) => (
           <Option key={uuidv4()}>{room.name}</Option>
         ))}
       </ESelect>
-    </Container>
+    </ContainerSelect>
   )
 }
 
