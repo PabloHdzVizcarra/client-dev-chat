@@ -7,10 +7,10 @@ import shortName from '../../templates/home_template/helpers/shortName'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: #e4eaf7;
   border-radius: 4px;
-  padding: 15px 0 0 0;
+  padding-top: 5px;
   height: 100%;
 `
 
@@ -22,9 +22,16 @@ const User = styled.div`
   margin-bottom: 10px;
 `
 
+const UsersConnected = styled.p`
+  font-size: 0.8rem;
+  color: #4d4d4d;
+  margin: 0;
+`
+
 function UserList({ users }) {
   return (
     <Container>
+      <UsersConnected>{`usuarios ${users.length}`}</UsersConnected>
       {users.map((user) => (
         <User key={uuidv4()}>
           <h2

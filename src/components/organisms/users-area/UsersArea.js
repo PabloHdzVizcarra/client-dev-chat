@@ -25,30 +25,28 @@ const UsersArea = ({ usersConnected, user }) => {
   }
   const { color, name, room } = user
   return (
-    <>
-      <Container>
-        <FlexContainer>
-          <AiOutlineMessage
-            style={{
-              fontSize: '3rem',
-              color: '#41C7C7',
-            }}
-          />
-          <HeaderH1
-            text={room}
-            styles={{
-              textAlign: 'center',
-              margin: '0 0 0 10px',
-              fontSize: '1.8rem',
-            }}
-          />
-        </FlexContainer>
+    <Container>
+      <FlexContainer>
+        <AiOutlineMessage
+          style={{
+            fontSize: '3rem',
+            color: '#41C7C7',
+          }}
+        />
+        <HeaderH1
+          text={room}
+          styles={{
+            textAlign: 'center',
+            margin: '0 0 0 10px',
+            fontSize: '1.8rem',
+          }}
+        />
+      </FlexContainer>
 
-        <UserInfo username={name || ''} userColor={color} />
+      <UserInfo username={name || ''} userColor={color} />
 
-        <UserList users={usersConnected} userColor={color} />
-      </Container>
-    </>
+      <UserList users={usersConnected} userColor={color} />
+    </Container>
   )
 }
 
