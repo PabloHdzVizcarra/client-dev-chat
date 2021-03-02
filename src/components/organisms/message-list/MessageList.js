@@ -8,7 +8,8 @@ import Message from '../../molecules/message/Message'
 const Container = styled.ul`
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: visible;
   max-height: 77vh;
   padding: 0;
   margin: 0;
@@ -21,6 +22,14 @@ const WrapperMessage = styled.div`
 `
 
 function MessageList({ messages, username }) {
+  const messagesRef = React.useRef(null)
+
+  function scrollToBottom() {
+    messagesRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+  React.useEffect(() => {
+    scrollToBottom()
+  }, [messages])
   return (
     <Container>
       {messages.reverse().map((message) => (
@@ -33,6 +42,7 @@ function MessageList({ messages, username }) {
             user={message.owner_user}
             adminUser={username}
           />
+          <div ref={messagesRef} />
         </WrapperMessage>
       ))}
     </Container>
