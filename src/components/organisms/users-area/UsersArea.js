@@ -8,16 +8,16 @@ import UserList from '../../molecules/user-list/UserList'
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 10% 30% 53%;
-  padding: 10px 20px;
-  height: 100%;
+  grid-template-rows: 10% 40% 50%;
+  height: 98%;
 `
 
 const FlexContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
+  height: 100%;
 `
 
 const UsersArea = ({ usersConnected, user }) => {

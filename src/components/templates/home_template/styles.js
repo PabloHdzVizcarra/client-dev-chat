@@ -13,6 +13,7 @@ export const ContainerHomeTemplate = styled.div`
   }
   @media only screen and ${device.laptop} {
     background-color: #ffffff;
+    grid-template-columns: 25% 75%;
   }
 `
 
@@ -20,24 +21,29 @@ export const BtnContainer = styled.div`
   grid-column: 2/3;
   justify-self: end;
   height: 40px;
-  padding: 5px 5px 0 0;
+  padding: 5px 10px 0 0;
 
   @media only screen and ${device.tablet} {
   }
   @media only screen and ${device.laptop} {
-    height: 100%;
+    display: flex;
+    height: 40px;
+    padding-right: 10px;
   }
 `
 export const ContainerUsersArea = styled.div`
   grid-column: 1/2;
   grid-row: 1/2;
   display: flex;
+  justify-content: flex-start;
 
   @media only screen and ${device.tablet} {
   }
   @media only screen and ${device.laptop} {
     grid-row: 1/3;
     grid-column: 1/2;
+    justify-content: center;
+    padding: 10px;
   }
 `
 

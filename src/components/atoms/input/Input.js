@@ -24,7 +24,7 @@ const ElementInput = styled.input`
     height: 40px;
   }
   @media only screen and ${device.laptop} {
-    height: 40px;
+    height: 30px;
   }
 `
 

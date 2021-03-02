@@ -4,13 +4,20 @@ import PropTypes from 'prop-types'
 import Input from '../../atoms/input/Input'
 import { FiChevronRight } from 'react-icons/fi'
 import IconAndButton from '../../molecules/icon-and-button/IconAndButton'
+import { device } from '../../../utils/size'
 
 const Form = styled.form`
   display: flex;
-  padding: 17px;
+  padding: 15px;
   background-color: #fff;
   border-radius: 4px;
   align-items: center;
+
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    padding: 20px;
+  }
 `
 
 const InputAndButtonForm = ({ handleChange, valueInput, handleSubmit }) => {
@@ -30,7 +37,7 @@ const InputAndButtonForm = ({ handleChange, valueInput, handleSubmit }) => {
           margin: '0 10px 0 0',
           padding: '0 5px',
           border: '2px solid #ededed',
-          height: '30px',
+          height: 'auto',
         }}
         name='message'
         value={valueInput}

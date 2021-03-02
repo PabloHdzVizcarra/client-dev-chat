@@ -22,7 +22,6 @@ function DataUsers({
   userData,
   nodeRef,
 }) {
-  console.log(listOfConnectedUsers)
   return (
     <ContainerDataUsers role='group' ref={nodeRef}>
       <ContainerCloseIcon>

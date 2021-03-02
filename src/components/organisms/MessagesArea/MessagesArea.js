@@ -11,7 +11,6 @@ const ContainerMessagesArea = styled.div`
   grid-template-rows: 90% 10%;
   padding: 20px 10px;
   background-color: #c9d6ef;
-  margin: 10px 10px 30px 0;
   border-radius: 4px;
 
   @media only screen and ${device.tablet} {
