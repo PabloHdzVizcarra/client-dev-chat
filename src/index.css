@@ -8,6 +8,22 @@ html, body {
     font-weight: lighter;
 }
 
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+}
+
+ /*Works on Chrome, Edge, and Safari*/
+*::-webkit-scrollbar {
+    width: 5px;
+    background: #c9d6ef;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
 #root {
     height: 100%;
 }
