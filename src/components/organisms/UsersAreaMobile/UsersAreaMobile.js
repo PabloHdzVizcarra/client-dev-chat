@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { IconMessages } from '../../templates/home_template/styles'
 import DataUsers from '../DataUsers'
+import { CSSTransition } from 'react-transition-group'
+import './animation.css'
 
 const ContainerUsersAreaMobile = styled.div`
   cursor: pointer;
@@ -20,6 +22,7 @@ UsersAreaMobile.propTypes = {
 function UsersAreaMobile({ listOfConnectedUsers, userData }) {
   const [isDisplay, setIsDisplay] = React.useState(false)
   const [showIcon, setShowIcon] = React.useState(true)
+  const nodeRef = React.useRef(null)
 
   function handleAppearIcon() {
     setIsDisplay((state) => !state)
@@ -37,13 +40,20 @@ function UsersAreaMobile({ listOfConnectedUsers, userData }) {
       {showIcon ? (
         <IconMessages onClick={handleAppearIcon} role='figure' />
       ) : null}
-      {isDisplay ? (
+      <CSSTransition
+        in={isDisplay}
+        timeout={{ appear: 300, enter: 1000, exit: 500 }}
+        classNames='my-node'
+        unmountOnExit
+        nodeRef={nodeRef}
+      >
         <DataUsers
           handleClickClose={handleAppearMenu}
           userData={userData}
           listOfConnectedUsers={listOfConnectedUsers}
+          nodeRef={nodeRef}
         />
-      ) : null}
+      </CSSTransition>
     </ContainerUsersAreaMobile>
   )
 }

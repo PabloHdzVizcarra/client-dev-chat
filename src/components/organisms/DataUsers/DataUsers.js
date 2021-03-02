@@ -13,12 +13,18 @@ DataUsers.propTypes = {
   handleClickClose: PropTypes.func.isRequired,
   listOfConnectedUsers: PropTypes.array.isRequired,
   userData: PropTypes.object.isRequired,
+  nodeRef: PropTypes.any,
 }
 
-function DataUsers({ handleClickClose, listOfConnectedUsers, userData }) {
+function DataUsers({
+  handleClickClose,
+  listOfConnectedUsers,
+  userData,
+  nodeRef,
+}) {
   console.log(listOfConnectedUsers)
   return (
-    <ContainerDataUsers role='group'>
+    <ContainerDataUsers role='group' ref={nodeRef}>
       <ContainerCloseIcon>
         <CloseIcon onClick={handleClickClose} />
       </ContainerCloseIcon>
