@@ -7,7 +7,7 @@ DataUsers.propTypes = {
 }
 function DataUsers({ handleClickClose }) {
   return (
-    <ContainerDataUsers>
+    <ContainerDataUsers role='group'>
       <ContainerCloseIcon>
         <CloseIcon onClick={handleClickClose} />
       </ContainerCloseIcon>

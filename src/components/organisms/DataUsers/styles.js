@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ImCross } from 'react-icons/all'
+import { ImCross } from 'react-icons/im'
 
 export const ContainerDataUsers = styled.div`
   background-color: rgba(22, 97, 203, 0.9);

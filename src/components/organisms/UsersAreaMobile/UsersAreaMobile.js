@@ -12,18 +12,24 @@ UsersAreaMobile.propTypes = {}
 
 function UsersAreaMobile() {
   const [isDisplay, setIsDisplay] = React.useState(false)
+  const [showIcon, setShowIcon] = React.useState(true)
 
-  function handleClick() {
-    console.log('click')
+  function handleAppearIcon() {
     setIsDisplay((state) => !state)
+    setShowIcon((value) => !value)
   }
 
-  function handleClickClose() {}
+  function handleAppearMenu() {
+    setIsDisplay((state) => !state)
+    setShowIcon((value) => !value)
+  }
 
   return (
     <ContainerUsersAreaMobile>
-      <IconMessages onClick={handleClick} />
-      {isDisplay ? <DataUsers handleClickClose={handleClickClose} /> : null}
+      {showIcon ? (
+        <IconMessages onClick={handleAppearIcon} role='figure' />
+      ) : null}
+      {isDisplay ? <DataUsers handleClickClose={handleAppearMenu} /> : null}
     </ContainerUsersAreaMobile>
   )
 }
