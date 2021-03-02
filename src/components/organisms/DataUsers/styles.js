@@ -5,7 +5,7 @@ export const ContainerDataUsers = styled.div`
   background-color: rgba(65, 199, 199, 0.8);
   position: fixed;
   top: 0;
-  width: 150px;
+  width: 250px;
   height: 100%;
   display: flex;
   flex-direction: column;

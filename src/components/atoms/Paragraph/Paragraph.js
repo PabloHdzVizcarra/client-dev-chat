@@ -10,7 +10,7 @@ const P = styled.p`
   font-size: ${(props) => props.fontSize || '1rem'};
   height: ${(props) => props.height || 'auto'};
   width: ${(props) => props.width || 'auto'};
-  margin: ${(props) => props.margin || 'auto'};
+  margin: ${(props) => props.margin || '0'};
   padding: ${(props) => props.padding || 'auto'};
 `
 
