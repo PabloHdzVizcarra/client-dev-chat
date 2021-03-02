@@ -42,7 +42,7 @@ function UsersAreaMobile({ listOfConnectedUsers, userData }) {
       ) : null}
       <CSSTransition
         in={isDisplay}
-        timeout={{ appear: 300, enter: 1000, exit: 500 }}
+        timeout={400}
         classNames='my-node'
         unmountOnExit
         nodeRef={nodeRef}
