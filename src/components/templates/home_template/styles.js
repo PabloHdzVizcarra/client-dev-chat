@@ -12,8 +12,10 @@ export const ContainerHomeTemplate = styled.div`
   @media only screen and ${device.tablet} {
   }
   @media only screen and ${device.laptop} {
-    background-color: #ffffff;
     grid-template-columns: 25% 75%;
+  }
+  @media only screen and ${device.laptopL} {
+    grid-template-columns: 20% 80%;
   }
 `
 

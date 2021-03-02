@@ -8,8 +8,9 @@ import UserList from '../../molecules/user-list/UserList'
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 10% 40% 50%;
+  grid-template-rows: 10% 30% 60%;
   height: 98%;
+  width: 100%;
 `
 
 const FlexContainer = styled.div`

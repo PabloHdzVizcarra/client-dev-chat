@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Paragraph from '../../atoms/Paragraph/Paragraph'
 
-const Container = styled.div`
+const ContainerUserInfo = styled.div`
   display: flex;
   background-color: #e4eaf7;
   border-radius: 4px;
@@ -18,7 +18,7 @@ function UserInfo({ username, userColor }) {
     return username.slice(0, 2)
   }
   return (
-    <Container>
+    <ContainerUserInfo>
       <h2
         style={{
           backgroundColor: userColor,
@@ -38,7 +38,7 @@ function UserInfo({ username, userColor }) {
           fontSize: '2rem',
         }}
       />
-    </Container>
+    </ContainerUserInfo>
   )
 }
 

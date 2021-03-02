@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 import { v4 as uuidv4 } from 'uuid'
 import shortName from '../../templates/home_template/helpers/shortName'
 
-const Container = styled.div`
+const ContainerUserList = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
   background-color: #e4eaf7;
-  border-radius: 4px;
-  padding-top: 5px;
-  height: 100%;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding-top: 20px;
+  height: 95%;
 `
 
 const User = styled.div`
@@ -30,7 +30,7 @@ const UsersConnected = styled.p`
 
 function UserList({ users }) {
   return (
-    <Container>
+    <ContainerUserList>
       <UsersConnected>{`usuarios ${users.length}`}</UsersConnected>
       {users.map((user) => (
         <User key={uuidv4()}>
@@ -55,7 +55,7 @@ function UserList({ users }) {
           </h3>
         </User>
       ))}
-    </Container>
+    </ContainerUserList>
   )
 }
 
