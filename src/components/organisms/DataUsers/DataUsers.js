@@ -1,17 +1,28 @@
 import React from 'react'
-import { CloseIcon, ContainerCloseIcon, ContainerDataUsers } from './styles'
+import {
+  CloseIcon,
+  ContainerCloseIcon,
+  ContainerDataUsers,
+  NameChatRoom,
+} from './styles'
 import PropTypes from 'prop-types'
+import NumberUsersConnected from '../../atoms/NumberUsersConnected'
 
 DataUsers.propTypes = {
   handleClickClose: PropTypes.func.isRequired,
+  listOfConnectedUsers: PropTypes.array.isRequired,
+  userData: PropTypes.object.isRequired,
 }
-function DataUsers({ handleClickClose }) {
+
+function DataUsers({ handleClickClose, listOfConnectedUsers, userData }) {
+  console.log(listOfConnectedUsers)
   return (
     <ContainerDataUsers role='group'>
       <ContainerCloseIcon>
         <CloseIcon onClick={handleClickClose} />
       </ContainerCloseIcon>
-      data user
+      <NameChatRoom>{userData.room}</NameChatRoom>
+      <NumberUsersConnected number={listOfConnectedUsers.length} />
     </ContainerDataUsers>
   )
 }

@@ -137,7 +137,10 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
 
       <ContainerUsersArea>
         {widthScreen ? (
-          <UsersAreaMobile />
+          <UsersAreaMobile
+            listOfConnectedUsers={usersConnected}
+            userData={userData}
+          />
         ) : (
           <UsersArea usersConnected={usersConnected} user={userData} />
         )}
