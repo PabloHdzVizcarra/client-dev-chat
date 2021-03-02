@@ -17,6 +17,7 @@ const Container = styled.ul`
 
 const WrapperMessage = styled.div`
   display: flex;
+  padding: 0 10px;
   justify-content: ${(props) =>
     props.admin === true ? 'flex-end' : 'flex-start'};
 `

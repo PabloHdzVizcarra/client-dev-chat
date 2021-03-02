@@ -17,6 +17,8 @@ const Form = styled.form`
   }
   @media only screen and ${device.laptop} {
     padding: 20px;
+    width: 90%;
+    margin: auto;
   }
 `
 

@@ -9,7 +9,7 @@ const ContainerMessagesArea = styled.div`
   display: grid;
   grid-column: 1/3;
   grid-template-rows: 90% 10%;
-  padding: 20px 10px;
+  padding: 20px 0;
   background-color: #c9d6ef;
   border-radius: 4px;
 

@@ -13,9 +13,7 @@ export const ContainerHomeTemplate = styled.div`
   }
   @media only screen and ${device.laptop} {
     grid-template-columns: 25% 75%;
-  }
-  @media only screen and ${device.laptopL} {
-    grid-template-columns: 20% 80%;
+    grid-template-rows: 7% 92%;
   }
 `
 
@@ -28,9 +26,10 @@ export const BtnContainer = styled.div`
   @media only screen and ${device.tablet} {
   }
   @media only screen and ${device.laptop} {
-    display: flex;
-    height: 40px;
     padding-right: 10px;
+    align-items: center;
+    height: 100%;
+    display: flex;
   }
 `
 export const ContainerUsersArea = styled.div`
