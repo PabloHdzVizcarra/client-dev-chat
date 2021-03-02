@@ -122,7 +122,6 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
             height: '100%',
             color: '#fff',
             padding: '0 1rem',
-            margin: '5px 0 0 0',
             borderRadius: '4px',
             hoverBColor: '#e6272d',
             scale: 'scale(1.2)',
