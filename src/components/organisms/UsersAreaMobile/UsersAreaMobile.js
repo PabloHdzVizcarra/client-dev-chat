@@ -6,6 +6,10 @@ import DataUsers from '../DataUsers'
 
 const ContainerUsersAreaMobile = styled.div`
   cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: flex-start;
+  align-items: center;
 `
 
 UsersAreaMobile.propTypes = {

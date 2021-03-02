@@ -19,11 +19,13 @@ export const ContainerHomeTemplate = styled.div`
 export const BtnContainer = styled.div`
   grid-column: 2/3;
   justify-self: end;
-  height: 100%;
+  height: 40px;
+  padding: 5px 5px 0 0;
 
   @media only screen and ${device.tablet} {
   }
   @media only screen and ${device.laptop} {
+    height: 100%;
   }
 `
 export const ContainerUsersArea = styled.div`

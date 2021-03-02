@@ -25,7 +25,7 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
   const { name, room, color } = userData
 
   React.useEffect(() => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1024) {
       return setWidthScreen(true)
     }
     setWidthScreen(false)
@@ -119,7 +119,7 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
             width: 'max-content',
             backgroundColor: '#FE2C34',
             fontWeight: 'bold',
-            height: '100%',
+            height: '80%',
             color: '#fff',
             padding: '0 1rem',
             borderRadius: '4px',
