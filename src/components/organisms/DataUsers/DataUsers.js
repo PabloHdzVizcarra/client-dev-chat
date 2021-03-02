@@ -7,6 +7,7 @@ import {
 } from './styles'
 import PropTypes from 'prop-types'
 import NumberUsersConnected from '../../atoms/NumberUsersConnected'
+import UserListMobile from '../../molecules/UserListMobile'
 
 DataUsers.propTypes = {
   handleClickClose: PropTypes.func.isRequired,
@@ -23,6 +24,7 @@ function DataUsers({ handleClickClose, listOfConnectedUsers, userData }) {
       </ContainerCloseIcon>
       <NameChatRoom>{userData.room}</NameChatRoom>
       <NumberUsersConnected number={listOfConnectedUsers.length} />
+      <UserListMobile listOfConnectedUsers={listOfConnectedUsers} />
     </ContainerDataUsers>
   )
 }

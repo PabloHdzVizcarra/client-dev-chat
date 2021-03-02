@@ -15,6 +15,7 @@ export const ContainerCloseIcon = styled.div`
   justify-content: flex-end;
 `
 
+//TODO: animation close button X
 export const CloseIcon = styled(ImCross)`
   padding-right: 5px;
   padding-top: 5px;
