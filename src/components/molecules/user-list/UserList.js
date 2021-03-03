@@ -20,6 +20,8 @@ const User = styled.div`
   align-items: center;
   height: min-content;
   margin-bottom: 10px;
+
+  opacity: ${(props) => (props.connect ? 'none' : '0.5')};
 `
 
 const UsersConnected = styled.p`
@@ -33,7 +35,7 @@ function UserList({ users }) {
     <ContainerUserList>
       <UsersConnected>{`usuarios ${users.length}`}</UsersConnected>
       {users.map((user) => (
-        <User key={uuidv4()}>
+        <User key={uuidv4()} connect={user.status}>
           <h2
             style={{
               backgroundColor: user.color,
