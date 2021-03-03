@@ -30,10 +30,19 @@ const UsersConnected = styled.p`
   margin: 0;
 `
 
+const UsersDisconnect = styled.p`
+  font-size: 0.8rem;
+  color: #4d4d4d;
+  margin: 0;
+`
+
 function UserList({ users }) {
   return (
     <ContainerUserList>
       <UsersConnected>{`usuarios ${users.length}`}</UsersConnected>
+      <UsersDisconnect>{`usuarios conectados ${
+        users.filter((user) => user.status === true).length
+      }`}</UsersDisconnect>
       {users.map((user) => (
         <User key={uuidv4()} connect={user.status}>
           <h2
