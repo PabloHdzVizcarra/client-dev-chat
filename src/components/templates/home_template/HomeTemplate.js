@@ -14,6 +14,9 @@ import {
 import UsersAreaMobile from '../../organisms/UsersAreaMobile/UsersAreaMobile'
 
 let socket
+//TODO: salir del home si el usuario se desconecta
+//TODO: agregar button para eliminarte de la sala de chat
+//TODO: version mobile usuario desconectado
 const HomeTemplate = ({ userData, setCurrentRoom }) => {
   const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
@@ -66,8 +69,14 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
 
     socket.on('room_data', (data) => {
       const { users_connected } = data
-      console.log(users_connected)
-      if (!users_connected.map((user) => user.name).includes(name)) {
+      if (
+        !users_connected.filter((user) => user.name === userData.name)[0]
+          .status === true
+      ) {
+        setCurrentRoom(false)
+        return
+      }
+      if (users_connected.includes((user) => user.name === userData.name)) {
         setCurrentRoom(false)
         return
       }
@@ -87,7 +96,7 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
     return () => {
       setInfoMessage('')
     }
-  }, [setCurrentRoom, name, room, setMessages])
+  }, [setCurrentRoom, name, room, setMessages, userData.name])
 
   function handleSubmitForm(event) {
     event.preventDefault()
