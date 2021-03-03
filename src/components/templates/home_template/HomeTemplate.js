@@ -12,6 +12,7 @@ import {
   ContainerUsersArea,
 } from './styles'
 import UsersAreaMobile from '../../organisms/UsersAreaMobile/UsersAreaMobile'
+import { userIsActive } from './helpers/userIsActive'
 
 let socket
 //TODO: salir del home si el usuario se desconecta
@@ -64,20 +65,16 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
       }
 
       setMessages((messages) => [...messages, data.message])
-      console.log(data)
     })
 
     socket.on('room_data', (data) => {
       const { users_connected } = data
-      if (
-        !users_connected.filter((user) => user.name === userData.name)[0]
-          .status === true
-      ) {
+      console.log(users_connected)
+
+      if (!userIsActive(users_connected, userData.name)) {
+        console.log('usuario desconectado')
         setCurrentRoom(false)
-        return
-      }
-      if (users_connected.includes((user) => user.name === userData.name)) {
-        setCurrentRoom(false)
+        setUsersConnected(users_connected)
         return
       }
       setCurrentRoom(true)
