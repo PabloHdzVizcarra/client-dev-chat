@@ -21,15 +21,17 @@ export const BtnContainer = styled.div`
   grid-column: 2/3;
   justify-self: end;
   height: 40px;
-  padding: 5px 10px 0 0;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
 
   @media only screen and ${device.tablet} {
   }
   @media only screen and ${device.laptop} {
-    padding-right: 10px;
     align-items: center;
     height: 100%;
     display: flex;
+    padding: 2px 10px;
   }
 `
 export const ContainerUsersArea = styled.div`

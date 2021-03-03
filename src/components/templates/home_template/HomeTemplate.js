@@ -119,7 +119,7 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
             width: 'max-content',
             backgroundColor: '#FE2C34',
             fontWeight: 'bold',
-            height: '40px',
+            height: '30px',
             color: '#fff',
             padding: '0 1rem',
             borderRadius: '4px',
