@@ -1,12 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SelectRoomTemplate from '../../components/templates/selectRoomTemplate'
+import { useHistory } from 'react-router-dom'
 
 function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
   const [nameChatRoom, setNameChatRoom] = React.useState('')
   const [roomsList, setRoomsList] = React.useState([])
+  let history = useHistory()
+
   React.useEffect(() => {
     if (nameChatRoom === '') return
+    console.log(nameChatRoom)
 
     fetch('/api/room/', {
       method: 'POST',
@@ -51,6 +55,7 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
       .then(({ document }) => {
         setDataUser(document)
         setCurrentRoom(true)
+        history.push('/')
       })
       .catch((error) => {
         console.log(error)
