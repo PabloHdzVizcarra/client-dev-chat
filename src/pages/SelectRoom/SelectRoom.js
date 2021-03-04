@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SelectRoomTemplate from '../../components/templates/selectRoomTemplate'
+import { useHistory } from 'react-router-dom'
 
 function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
   const [roomsList, setRoomsList] = React.useState([])
+  let history = useHistory()
 
   function callAPIToCreateChatRoom(name) {
     console.log(name)
@@ -50,6 +52,7 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
       .then(({ document }) => {
         setDataUser(document)
         setCurrentRoom(true)
+        history.push('/')
       })
       .catch((error) => {
         console.log(error)
