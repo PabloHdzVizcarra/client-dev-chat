@@ -41,7 +41,7 @@ const HomeTemplate = ({ userData }) => {
     if (message) {
       socket.emit(
         'text-message',
-        { chatRoom: userData.room, username: name },
+        { chatRoom: userData.room, username: userData.name },
         { text: message },
       )
       setMessage('')
@@ -52,7 +52,7 @@ const HomeTemplate = ({ userData }) => {
   function closeSession() {
     socket.emit(
       'exit-room',
-      { chatRoom: userData.room, username: name },
+      { chatRoom: userData.room, username: userData.name },
       { email: userData.email },
     )
     history.replace('/select-room')

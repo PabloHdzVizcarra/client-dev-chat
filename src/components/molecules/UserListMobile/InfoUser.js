@@ -39,6 +39,7 @@ const CircleOff = styled.span`
 `
 
 function InfoUser({ userName, status }) {
+  console.log(status)
   return (
     <ContainerInfoUser>
       {status ? <Circle /> : <CircleOff />}
