@@ -12,13 +12,13 @@ import {
   ContainerUsersArea,
 } from './styles'
 import UsersAreaMobile from '../../organisms/UsersAreaMobile/UsersAreaMobile'
-import { userIsActive } from './helpers/userIsActive'
+import { useHistory } from 'react-router-dom'
 
 let socket
-//TODO: salir del home si el usuario se desconecta
 //TODO: agregar button para eliminarte de la sala de chat
 //TODO: version mobile usuario desconectado
 const HomeTemplate = ({ userData, setCurrentRoom }) => {
+  let history = useHistory()
   const host = 'http://localhost:3100'
   const [message, setMessage] = React.useState('')
   const [messages, setMessages] = React.useState([])
@@ -70,11 +70,11 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
     socket.on('room_data', (data) => {
       const { users_connected } = data
       console.log(users_connected)
+      console.log(userData)
 
-      if (!userIsActive(users_connected, userData.name)) {
+      if (!userData.room) {
         console.log('usuario desconectado')
         setCurrentRoom(false)
-        setUsersConnected(users_connected)
         return
       }
       setCurrentRoom(true)
@@ -93,7 +93,7 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
     return () => {
       setInfoMessage('')
     }
-  }, [setCurrentRoom, name, room, setMessages, userData.name])
+  }, [setCurrentRoom, name, room, setMessages, userData])
 
   function handleSubmitForm(event) {
     event.preventDefault()
@@ -114,6 +114,7 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
       { chatRoom: room, username: name },
       { email: userData.email },
     )
+    history.push('/register')
   }
 
   return (
