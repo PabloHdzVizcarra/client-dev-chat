@@ -11,6 +11,7 @@ import Register from '../pages/register/Register'
 import useToken from '../hooks/useToken/useToken'
 import autologin from './helpers/autologin'
 import Main from '../pages/main/Main'
+import SelectRoom from '../pages/SelectRoom'
 
 const RouterApp = () => {
   const [dataUser, setDataUser] = React.useState({
@@ -79,6 +80,13 @@ const RouterApp = () => {
             ) : (
               <Login setToken={setToken} setDataUser={setDataUser} />
             )}
+          </Route>
+          <Route path='/select-room'>
+            <SelectRoom
+              listChatRooms={dataUser.chat_rooms_created}
+              setCurrentRoom={setCurrentRoom}
+              setDataUser={setDataUser}
+            />
           </Route>
         </Switch>
       </div>

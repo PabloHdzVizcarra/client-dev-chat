@@ -16,7 +16,6 @@ import { useHistory } from 'react-router-dom'
 
 let socket
 //TODO: agregar button para eliminarte de la sala de chat
-//TODO: version mobile usuario desconectado
 const HomeTemplate = ({ userData, setCurrentRoom }) => {
   let history = useHistory()
   const host = 'http://localhost:3100'
