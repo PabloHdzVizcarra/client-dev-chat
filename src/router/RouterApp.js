@@ -10,7 +10,7 @@ import Home from '../pages/home/Home'
 import Register from '../pages/register/Register'
 import useToken from '../hooks/useToken/useToken'
 import autologin from './helpers/autologin'
-import Main from '../pages/main/Main'
+// import Main from '../pages/main/Main'
 import SelectRoom from '../pages/SelectRoom'
 
 const RouterApp = () => {
@@ -22,13 +22,14 @@ const RouterApp = () => {
     color: '',
     socket_id: '',
     room: '',
-    list_chat_rooms: '',
-    chat_rooms_created: '',
+    list_chat_rooms: [],
+    chat_rooms_created: [],
   })
   const [authenticated, setAuthenticated] = React.useState(false)
   const [currentRoom, setCurrentRoom] = React.useState(false)
   const { token, setToken } = useToken()
 
+  console.log(currentRoom)
   React.useEffect(() => {
     if (dataUser.name) {
       setAuthenticated(true)
@@ -71,12 +72,7 @@ const RouterApp = () => {
           </Route>
           <Route path='/login'>
             {authenticated ? (
-              <Main
-                userData={dataUser}
-                setDataUser={setDataUser}
-                currentRoom={currentRoom}
-                setCurrentRoom={setCurrentRoom}
-              />
+              <Redirect to='/select-room' />
             ) : (
               <Login setToken={setToken} setDataUser={setDataUser} />
             )}
