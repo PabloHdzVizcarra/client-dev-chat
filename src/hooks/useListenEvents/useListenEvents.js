@@ -35,28 +35,37 @@ export function useListenEvents(data) {
 
   React.useEffect(() => {
     socket.on('text-message', (data) => {
+      console.log('EVENTO text-message')
       if (!data.message) {
         return
       }
       setMessages((messages) => [...messages, data.message])
     })
 
-    socket.on('room_data', (data) => {
-      const { users_connected } = data
+    socket.on('room_data', (eventData) => {
+      console.log('EVENTO room-data')
+      const { users_connected } = eventData
 
-      if (!data.room) {
+      if (!room) {
         return
       }
       setUsersConnected(users_connected)
     })
 
     socket.on('info-message', (data) => {
+      console.log('EVENTO info-message')
       const { text } = data
       setInfoMessage(text)
       setAppear(true)
     })
 
-    socket.on('delete-current-room', () => {})
+    socket.on('delete-current-room', () => {
+      console.log('EVENTO delete-current-room')
+    })
+    socket.on('exit-room', () => {
+      console.log('EVENTO exit-room   ')
+    })
+
     return () => {
       setInfoMessage('')
     }
