@@ -114,7 +114,8 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
       { chatRoom: room, username: name },
       { email: userData.email },
     )
-    history.push('/register')
+    history.replace('/register')
+    console.log(history)
   }
 
   return (
