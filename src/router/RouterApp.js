@@ -38,7 +38,7 @@ const RouterApp = () => {
     if (dataUser.room) {
       setCurrentRoom(true)
     }
-  }, [dataUser.name, dataUser.room])
+  }, [dataUser])
 
   React.useEffect(() => {
     autologin(token, setDataUser)

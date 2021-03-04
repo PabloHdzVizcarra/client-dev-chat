@@ -1,32 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SelectRoomTemplate from '../../components/templates/selectRoomTemplate'
-import { useHistory } from 'react-router-dom'
 
 function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
-  const [nameChatRoom, setNameChatRoom] = React.useState('')
   const [roomsList, setRoomsList] = React.useState([])
-  let history = useHistory()
 
-  React.useEffect(() => {
-    if (nameChatRoom === '') return
-    console.log(nameChatRoom)
-
+  function callAPIToCreateChatRoom(name) {
+    console.log(name)
     fetch('/api/room/', {
       method: 'POST',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name_room: nameChatRoom }),
+      body: JSON.stringify({ name_room: name }),
     })
       .then((data) => data.json())
       .then((user) => {
+        console.log(user)
         setDataUser(user.document)
-        setNameChatRoom('')
       })
       .catch((e) => console.log(e))
-  }, [nameChatRoom, setDataUser])
+  }
 
   React.useEffect(() => {
     const abortCtrl = new AbortController()
@@ -55,7 +50,6 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
       .then(({ document }) => {
         setDataUser(document)
         setCurrentRoom(true)
-        history.push('/')
       })
       .catch((error) => {
         console.log(error)
@@ -66,9 +60,9 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
   return (
     <SelectRoomTemplate
       listChatRooms={listChatRooms}
-      setNameChatRoom={setNameChatRoom}
       setChatRoomInDatabase={setChatRoomInDatabase}
       roomList={roomsList}
+      callAPIToCreateChatRoom={callAPIToCreateChatRoom}
     />
   )
 }

@@ -11,9 +11,9 @@ import { errorMessage, message1, message2 } from './utils'
 
 function SelectRoomTemplate({
   listChatRooms,
-  setNameChatRoom,
   setChatRoomInDatabase,
   roomList,
+  callAPIToCreateChatRoom,
 }) {
   const [chatRoom, setChatRoom] = React.useState('')
   const [showAlert, setShowAlert] = React.useState(false)
@@ -31,7 +31,7 @@ function SelectRoomTemplate({
       setShowAlert(true)
       return
     }
-    setNameChatRoom(chatRoom)
+    callAPIToCreateChatRoom(chatRoom)
     setChatRoom('')
     setShowAlert(false)
   }
@@ -74,9 +74,9 @@ function SelectRoomTemplate({
 
 SelectRoomTemplate.propTypes = {
   listChatRooms: PropTypes.array.isRequired,
-  setNameChatRoom: PropTypes.func.isRequired,
   setChatRoomInDatabase: PropTypes.func.isRequired,
   roomList: PropTypes.array.isRequired,
+  callAPIToCreateChatRoom: PropTypes.func.isRequired,
 }
 
 export default SelectRoomTemplate
