@@ -12,11 +12,15 @@ export function useListenEvents(data) {
 
   React.useEffect(() => {
     socket = io(host)
-    socket.emit('user_join', { chatRoom: room, username: name }, (error) => {
-      if (error) {
-        alert(error)
-      }
-    })
+    socket.emit(
+      'user-join',
+      { chatRoom: room, username: name, email: data.email, color: data.color },
+      (error) => {
+        if (error) {
+          alert(error)
+        }
+      },
+    )
 
     fetch(`/api/messages/${room}`)
       .catch(console.log)
@@ -31,7 +35,7 @@ export function useListenEvents(data) {
     return () => {
       socket.close()
     }
-  }, [name, room])
+  }, [name, room, data])
 
   React.useEffect(() => {
     socket.on('text-message', (data) => {

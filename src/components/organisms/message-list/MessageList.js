@@ -23,6 +23,8 @@ const WrapperMessage = styled.div`
 `
 
 function MessageList({ messages, username }) {
+  console.log(username)
+  console.log(messages)
   const messagesRef = React.useRef(null)
 
   function scrollToBottom() {

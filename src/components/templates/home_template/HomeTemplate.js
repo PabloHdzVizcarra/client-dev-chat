@@ -97,7 +97,7 @@ const HomeTemplate = ({ userData }) => {
 
       <MessagesArea
         messages={messages}
-        username={name}
+        username={userData.name}
         setMessage={setMessage}
         message={message}
         handleSubmitForm={handleSubmitForm}
