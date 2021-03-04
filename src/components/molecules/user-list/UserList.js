@@ -16,10 +16,11 @@ const ContainerUserList = styled.div`
 
 const User = styled.div`
   display: flex;
-  padding: 0 20px 0 20px;
   align-items: center;
   height: min-content;
-  margin-bottom: 10px;
+  background-color: white;
+  margin: 0 10px 10px 10px;
+  border-radius: 4px;
 
   opacity: ${(props) => (props.connect ? 'none' : '0.5')};
 `
@@ -36,13 +37,19 @@ const UsersDisconnect = styled.p`
   margin: 0;
 `
 
+const ContainerUserInfo = styled.div`
+  padding: 10px;
+`
+
 function UserList({ users }) {
   return (
     <ContainerUserList>
-      <UsersConnected>{`usuarios ${users.length}`}</UsersConnected>
-      <UsersDisconnect>{`usuarios conectados ${
-        users.filter((user) => user.status === true).length
-      }`}</UsersDisconnect>
+      <ContainerUserInfo>
+        <UsersConnected>{`usuarios ${users.length}`}</UsersConnected>
+        <UsersDisconnect>{`usuarios conectados ${
+          users.filter((user) => user.status === true).length
+        }`}</UsersDisconnect>
+      </ContainerUserInfo>
       {users.map((user) => (
         <User key={uuidv4()} connect={user.status}>
           <h2

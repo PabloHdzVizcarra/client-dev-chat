@@ -14,7 +14,6 @@ import UsersAreaMobile from '../../organisms/UsersAreaMobile/UsersAreaMobile'
 import { useHistory } from 'react-router-dom'
 import { useListenEvents } from '../../../hooks/useListenEvents/useListenEvents'
 
-//TODO: agregar button para eliminarte de la sala de chat
 const HomeTemplate = ({ userData }) => {
   let history = useHistory()
   const [message, setMessage] = React.useState('')
