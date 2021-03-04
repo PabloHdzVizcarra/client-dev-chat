@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 InfoUser.propTypes = {
   userName: PropTypes.string.isRequired,
+  status: PropTypes.bool.isRequired,
 }
 
 const ContainerInfoUser = styled.div`
@@ -25,10 +26,23 @@ const Circle = styled.span`
   box-shadow: 0 0 10px 4px greenyellow;
 `
 
-function InfoUser({ userName }) {
+const CircleOff = styled.span`
+  height: 8px;
+  width: 8px;
+  background-color: #e00c0c;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+
+  box-shadow: 0 0 10px 4px #ff0000;
+`
+
+function InfoUser({ userName, status }) {
   return (
     <ContainerInfoUser>
-      <Circle />
+      {status ? <Circle /> : <CircleOff />}
+
       <Paragraph
         text={userName}
         styles={{

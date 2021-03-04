@@ -34,7 +34,6 @@ function UsersAreaMobile({ listOfConnectedUsers, userData }) {
     setShowIcon((value) => !value)
   }
 
-  //TODO: animation enter component
   return (
     <ContainerUsersAreaMobile>
       {showIcon ? (

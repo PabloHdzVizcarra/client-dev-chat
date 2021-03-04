@@ -17,7 +17,7 @@ function UserListMobile({ listOfConnectedUsers }) {
   return (
     <ContainerUserListMobile>
       {listOfConnectedUsers.map((user) => (
-        <InfoUser key={uuidv4()} userName={user.name} />
+        <InfoUser key={uuidv4()} userName={user.name} status={user.status} />
       ))}
     </ContainerUserListMobile>
   )
