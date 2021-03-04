@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { io } from 'socket.io-client'
 import Expire from '../../atoms/Expire/Expire'
 import UsersArea from '../../organisms/users-area/UsersArea'
 import MessagesArea from '../../organisms/MessagesArea/MessagesArea'
@@ -13,19 +12,23 @@ import {
 } from './styles'
 import UsersAreaMobile from '../../organisms/UsersAreaMobile/UsersAreaMobile'
 import { useHistory } from 'react-router-dom'
+import { useListenEvents } from '../../../hooks/useListenEvents/useListenEvents'
 
-let socket
 //TODO: agregar button para eliminarte de la sala de chat
-const HomeTemplate = ({ userData, setCurrentRoom }) => {
+const HomeTemplate = ({ userData }) => {
   let history = useHistory()
-  const host = 'http://localhost:3100'
+
   const [message, setMessage] = React.useState('')
-  const [messages, setMessages] = React.useState([])
-  const [infoMessage, setInfoMessage] = React.useState('')
-  const [appear, setAppear] = React.useState(false)
-  const [usersConnected, setUsersConnected] = React.useState([])
   const [widthScreen, setWidthScreen] = React.useState(false)
-  const { name, room, color } = userData
+  const {
+    socket,
+    messages,
+    usersConnected,
+    infoMessage,
+    appear,
+    setAppear,
+    setInfoMessage,
+  } = useListenEvents(userData)
 
   React.useEffect(() => {
     if (window.innerWidth < 1024) {
@@ -34,72 +37,12 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
     setWidthScreen(false)
   }, [])
 
-  React.useEffect(() => {
-    socket = io(host)
-    socket.emit('user_join', { chatRoom: room, username: name }, (error) => {
-      if (error) {
-        alert(error)
-      }
-    })
-
-    fetch(`/api/messages/${room}`)
-      .catch(console.log)
-      .then((response) => response.json())
-      .then((data) => {
-        const { documents } = data
-        if (!documents) return
-
-        setMessages(documents)
-      })
-
-    return () => {
-      socket.close()
-    }
-  }, [room, name, color])
-
-  React.useEffect(() => {
-    socket.on('text-message', (data) => {
-      if (!data.message) {
-        return
-      }
-
-      setMessages((messages) => [...messages, data.message])
-    })
-
-    socket.on('room_data', (data) => {
-      const { users_connected } = data
-      console.log(users_connected)
-      console.log(userData)
-
-      if (!userData.room) {
-        console.log('usuario desconectado')
-        setCurrentRoom(false)
-        return
-      }
-      setCurrentRoom(true)
-      setUsersConnected(users_connected)
-    })
-
-    socket.on('info-message', (data) => {
-      const { text } = data
-      setInfoMessage(text)
-      setAppear(true)
-    })
-
-    socket.on('delete-current-room', () => {
-      setCurrentRoom(false)
-    })
-    return () => {
-      setInfoMessage('')
-    }
-  }, [setCurrentRoom, name, room, setMessages, userData])
-
   function handleSubmitForm(event) {
     event.preventDefault()
     if (message) {
       socket.emit(
         'text-message',
-        { chatRoom: room, username: name },
+        { chatRoom: userData.room, username: name },
         { text: message },
       )
       setMessage('')
@@ -110,7 +53,7 @@ const HomeTemplate = ({ userData, setCurrentRoom }) => {
   function closeSession() {
     socket.emit(
       'exit-room',
-      { chatRoom: room, username: name },
+      { chatRoom: userData.room, username: name },
       { email: userData.email },
     )
     history.replace('/select-room')
