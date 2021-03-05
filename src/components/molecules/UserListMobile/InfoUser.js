@@ -10,8 +10,11 @@ InfoUser.propTypes = {
 
 const ContainerInfoUser = styled.div`
   display: flex;
-  padding: 2px 5px;
+  padding: 4px 0 4px 15px;
   align-items: center;
+  background-color: #9cb8f0;
+  margin: 2px 0;
+  border-radius: 4px;
 `
 
 const Circle = styled.span`
@@ -29,17 +32,14 @@ const Circle = styled.span`
 const CircleOff = styled.span`
   height: 8px;
   width: 8px;
-  background-color: #e00c0c;
+  background-color: #ee0808;
   border-radius: 50%;
   display: inline-block;
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin-right: 20px;
-
-  box-shadow: 0 0 10px 4px #ff0000;
 `
 
 function InfoUser({ userName, status }) {
-  console.log(status)
   return (
     <ContainerInfoUser>
       {status ? <Circle /> : <CircleOff />}
@@ -48,6 +48,9 @@ function InfoUser({ userName, status }) {
         text={userName}
         styles={{
           margin: '0 5px 0 0',
+          color: '#ffffff',
+          fontWeight: 'bold',
+          fontSize: '1.2rem',
         }}
       />
     </ContainerInfoUser>

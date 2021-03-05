@@ -2,10 +2,10 @@ import styled from 'styled-components'
 import { ImCross } from 'react-icons/im'
 
 export const ContainerDataUsers = styled.div`
-  background-color: rgba(65, 199, 199, 0.8);
+  background-color: #ffffff;
   position: fixed;
   top: 0;
-  width: 250px;
+  width: 160px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,6 @@ export const ContainerCloseIcon = styled.div`
   justify-content: flex-end;
 `
 
-//TODO: animation close button X
 export const CloseIcon = styled(ImCross)`
   padding-right: 5px;
   padding-top: 5px;
@@ -28,5 +27,5 @@ export const NameChatRoom = styled.p`
   font-weight: bold;
   font-size: 1.4rem;
   width: 100%;
-  margin-bottom: 10px;
+  margin: 10px 0;
 `
