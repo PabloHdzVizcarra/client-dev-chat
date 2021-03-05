@@ -31,7 +31,7 @@ const UsersArea = ({ usersConnected, user }) => {
       <FlexContainer>
         <AiOutlineMessage
           style={{
-            fontSize: '3rem',
+            fontSize: '4rem',
             color: '#41C7C7',
           }}
         />

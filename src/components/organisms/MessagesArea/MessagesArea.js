@@ -9,7 +9,7 @@ const ContainerMessagesArea = styled.div`
   display: grid;
   grid-column: 1/3;
   grid-template-rows: 90% 10%;
-  padding: 20px 0;
+  padding: 20px 0 0 0;
   background-color: #c9d6ef;
   border-radius: 4px;
 
@@ -17,6 +17,8 @@ const ContainerMessagesArea = styled.div`
   }
   @media only screen and ${device.laptop} {
     grid-column: 2/3;
+    margin-right: 10px;
+    padding: 20px 0;
   }
 `
 
