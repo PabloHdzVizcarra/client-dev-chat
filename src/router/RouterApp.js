@@ -26,7 +26,7 @@ const RouterApp = () => {
     chat_rooms_created: [],
   })
   const [authenticated, setAuthenticated] = React.useState(false)
-  const [isLoading, setIsLoading] = React.useState(true)
+  const [isLoading, setIsLoading] = React.useState(false)
   const [haveRoom, setHaveRoom] = React.useState(false)
   const { token, setToken } = useToken()
 
