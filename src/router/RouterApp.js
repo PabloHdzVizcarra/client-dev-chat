@@ -27,11 +27,17 @@ const RouterApp = () => {
   })
   const [authenticated, setAuthenticated] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(true)
+  const [haveRoom, setHaveRoom] = React.useState(false)
   const { token, setToken } = useToken()
 
+  console.log(haveRoom)
   React.useEffect(() => {
-    if (dataUser.room !== '') {
+    if (dataUser.name !== '') {
       setAuthenticated(true)
+    }
+
+    if (dataUser.room) {
+      setHaveRoom(true)
     }
   }, [dataUser])
 
@@ -59,7 +65,7 @@ const RouterApp = () => {
       >
         <Switch>
           <Route exact path='/'>
-            {!authenticated ? (
+            {!authenticated === haveRoom ? (
               <Redirect to={'/login'} />
             ) : (
               <Home userData={dataUser} />
