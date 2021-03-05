@@ -10,8 +10,8 @@ import Home from '../pages/home/Home'
 import Register from '../pages/register/Register'
 import useToken from '../hooks/useToken/useToken'
 import autologin from './helpers/autologin'
-// import Main from '../pages/main/Main'
 import SelectRoom from '../pages/SelectRoom'
+import Spinner from '../components/atoms/Spinner/Spinner'
 
 const RouterApp = () => {
   const [dataUser, setDataUser] = React.useState({
@@ -26,6 +26,7 @@ const RouterApp = () => {
     chat_rooms_created: [],
   })
   const [authenticated, setAuthenticated] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(true)
   const { token, setToken } = useToken()
 
   React.useEffect(() => {
@@ -39,9 +40,14 @@ const RouterApp = () => {
       .then((data) => {
         if (!data) return
         setDataUser(data.user)
+        setIsLoading(false)
       })
       .catch(console.log)
   }, [token])
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <Router>
@@ -75,6 +81,8 @@ const RouterApp = () => {
               setDataUser={setDataUser}
             />
           </Route>
+
+          <Redirect to='login' />
         </Switch>
       </div>
     </Router>

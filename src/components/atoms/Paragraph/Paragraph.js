@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const P = styled.p`
   text-align: center;
-  font-size: ${(props) => props.fontSize || '1rem'};
+  font-size: ${({ fontSize }) => fontSize || '1rem'};
   font-weight: ${(props) => props.fontWeight || 'normal'};
   color: ${(props) => props.color || 'black'};
   font-size: ${(props) => props.fontSize || '1rem'};
