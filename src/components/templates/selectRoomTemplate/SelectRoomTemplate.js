@@ -8,6 +8,11 @@ import AddChatRoom from '../../organisms/AddChatRoom'
 import EnterChatRoom from '../../organisms/EnterChatRoom'
 import OptionalChatRoom from '../../organisms/OptionalChatRoom'
 import { errorMessage, message1, message2 } from './utils'
+import {
+  BtnCloseSession,
+  ContainerBtnCloseSession,
+  ContainerHeader,
+} from './styles'
 
 function SelectRoomTemplate({
   listChatRooms,
@@ -38,7 +43,12 @@ function SelectRoomTemplate({
 
   return (
     <div>
-      <IconAndHeader />
+      <ContainerHeader>
+        <IconAndHeader />
+        <ContainerBtnCloseSession>
+          <BtnCloseSession>Salir</BtnCloseSession>
+        </ContainerBtnCloseSession>
+      </ContainerHeader>
       <Disappear valueOf={null} in={showAlert} nodeRef={nodeRef}>
         <AlertError text={errorMessage} nodeRef={nodeRef} />
       </Disappear>
