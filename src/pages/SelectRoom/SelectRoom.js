@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import SelectRoomTemplate from '../../components/templates/selectRoomTemplate'
 import { useHistory } from 'react-router-dom'
 
-function SelectRoom({ listChatRooms, setDataUser }) {
+function SelectRoom({ listChatRooms, setDataUser, setAuthenticated }) {
   const [roomsList, setRoomsList] = React.useState([])
   let history = useHistory()
 
@@ -51,12 +51,29 @@ function SelectRoom({ listChatRooms, setDataUser }) {
       .catch(console.log)
   }
 
+  function closeSession() {
+    setDataUser({
+      _id: '',
+      name: '',
+      email: '',
+      password: '',
+      color: '',
+      socket_id: '',
+      room: '',
+      list_chat_rooms: [],
+      chat_rooms_created: [],
+    })
+    history.push('/login')
+    setAuthenticated(false)
+  }
+
   return (
     <SelectRoomTemplate
       listChatRooms={listChatRooms}
       setChatRoomInDatabase={setChatRoomInDatabase}
       roomList={roomsList}
       callAPIToCreateChatRoom={callAPIToCreateChatRoom}
+      closeSession={closeSession}
     />
   )
 }
@@ -64,6 +81,7 @@ function SelectRoom({ listChatRooms, setDataUser }) {
 SelectRoom.propTypes = {
   listChatRooms: PropTypes.array.isRequired,
   setDataUser: PropTypes.func.isRequired,
+  setAuthenticated: PropTypes.func.isRequired,
 }
 
 export default SelectRoom

@@ -19,6 +19,7 @@ function SelectRoomTemplate({
   setChatRoomInDatabase,
   roomList,
   callAPIToCreateChatRoom,
+  closeSession,
 }) {
   const [chatRoom, setChatRoom] = React.useState('')
   const [showAlert, setShowAlert] = React.useState(false)
@@ -46,7 +47,7 @@ function SelectRoomTemplate({
       <ContainerHeader>
         <IconAndHeader />
         <ContainerBtnCloseSession>
-          <BtnCloseSession>Salir</BtnCloseSession>
+          <BtnCloseSession onClick={closeSession}>Salir</BtnCloseSession>
         </ContainerBtnCloseSession>
       </ContainerHeader>
       <Disappear valueOf={null} in={showAlert} nodeRef={nodeRef}>
@@ -87,6 +88,7 @@ SelectRoomTemplate.propTypes = {
   setChatRoomInDatabase: PropTypes.func.isRequired,
   roomList: PropTypes.array.isRequired,
   callAPIToCreateChatRoom: PropTypes.func.isRequired,
+  closeSession: PropTypes.func.isRequired,
 }
 
 export default SelectRoomTemplate

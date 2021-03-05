@@ -79,6 +79,7 @@ const RouterApp = () => {
             <SelectRoom
               listChatRooms={dataUser.chat_rooms_created}
               setDataUser={setDataUser}
+              setAuthenticated={setAuthenticated}
             />
           </Route>
 

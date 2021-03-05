@@ -23,11 +23,7 @@ export const BtnCloseSession = styled.button`
   font-weight: bold;
   font-size: 1rem;
   padding: 0 10px;
-
   transition: all 300ms ease;
-
-  @media only screen and ${device.tablet} {
-  }
 
   &:hover {
     background-color: #fe2c34;
@@ -35,5 +31,8 @@ export const BtnCloseSession = styled.button`
 
   &:focus {
     outline: none;
+  }
+
+  @media only screen and ${device.tablet} {
   }
 `
