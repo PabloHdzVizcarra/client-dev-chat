@@ -41,7 +41,7 @@ const RouterApp = () => {
   }, [dataUser])
 
   React.useEffect(() => {
-    autologin(token, setDataUser)
+    autologin()
       .then((data) => {
         if (!data) return
         setDataUser(data.user)
