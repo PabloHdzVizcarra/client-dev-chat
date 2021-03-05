@@ -30,7 +30,6 @@ const RouterApp = () => {
   const [haveRoom, setHaveRoom] = React.useState(false)
   const { token, setToken } = useToken()
 
-  console.log(haveRoom)
   React.useEffect(() => {
     if (dataUser.name !== '') {
       setAuthenticated(true)
