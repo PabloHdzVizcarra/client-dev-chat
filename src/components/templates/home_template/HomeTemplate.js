@@ -55,7 +55,6 @@ const HomeTemplate = ({ userData }) => {
       { email: userData.email },
     )
     history.replace('/select-room')
-    console.log(history)
   }
 
   return (
@@ -108,7 +107,6 @@ const HomeTemplate = ({ userData }) => {
 
 HomeTemplate.propTypes = {
   userData: PropTypes.object.isRequired,
-  setCurrentRoom: PropTypes.func.isRequired,
 }
 
 export default HomeTemplate

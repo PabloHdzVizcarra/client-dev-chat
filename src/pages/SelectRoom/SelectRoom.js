@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import SelectRoomTemplate from '../../components/templates/selectRoomTemplate'
 import { useHistory } from 'react-router-dom'
 
-function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
+function SelectRoom({ listChatRooms, setDataUser }) {
   const [roomsList, setRoomsList] = React.useState([])
   let history = useHistory()
 
   function callAPIToCreateChatRoom(name) {
-    console.log(name)
     fetch('/api/room/', {
       method: 'POST',
       mode: 'cors',
@@ -19,10 +18,9 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
     })
       .then((data) => data.json())
       .then((user) => {
-        console.log(user)
         setDataUser(user.document)
       })
-      .catch((e) => console.log(e))
+      .catch(console.log)
   }
 
   React.useEffect(() => {
@@ -32,14 +30,11 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
       .then((response) => response.json())
       .then(({ documents, error }) => {
         if (error || !documents) {
-          console.log('ocurrió un error')
           return
         }
         setRoomsList(documents)
       })
-      .catch((error) => {
-        console.log(error)
-      })
+      .catch(console.log)
 
     return () => abortCtrl.abort()
   }, [])
@@ -51,13 +46,9 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
       .then((res) => res.json())
       .then(({ document }) => {
         setDataUser(document)
-        setCurrentRoom(true)
         history.push('/')
       })
-      .catch((error) => {
-        console.log(error)
-      })
-    return console.log('selecciona sala de chat ' + room)
+      .catch(console.log)
   }
 
   return (
@@ -73,7 +64,6 @@ function SelectRoom({ listChatRooms, setDataUser, setCurrentRoom }) {
 SelectRoom.propTypes = {
   listChatRooms: PropTypes.array.isRequired,
   setDataUser: PropTypes.func.isRequired,
-  setCurrentRoom: PropTypes.func.isRequired,
 }
 
 export default SelectRoom

@@ -39,7 +39,7 @@ const InputAndButtonForm = ({ handleChange, valueInput, handleSubmit }) => {
           margin: '0 10px 0 0',
           padding: '0 5px',
           border: '2px solid #ededed',
-          height: 'auto',
+          height: '30px',
         }}
         name='message'
         value={valueInput}

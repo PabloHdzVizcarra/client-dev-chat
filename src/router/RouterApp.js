@@ -26,17 +26,11 @@ const RouterApp = () => {
     chat_rooms_created: [],
   })
   const [authenticated, setAuthenticated] = React.useState(false)
-  const [currentRoom, setCurrentRoom] = React.useState(false)
   const { token, setToken } = useToken()
 
-  console.log(currentRoom)
   React.useEffect(() => {
     if (dataUser.name) {
       setAuthenticated(true)
-    }
-
-    if (dataUser.room) {
-      setCurrentRoom(true)
     }
   }, [dataUser])
 
@@ -46,9 +40,7 @@ const RouterApp = () => {
         if (!data) return
         setDataUser(data.user)
       })
-      .catch((error) => {
-        console.log(error)
-      })
+      .catch(console.log)
   }, [token])
 
   return (
@@ -64,7 +56,7 @@ const RouterApp = () => {
             {!authenticated ? (
               <Redirect to={'/login'} />
             ) : (
-              <Home userData={dataUser} setCurrentRoom={setCurrentRoom} />
+              <Home userData={dataUser} />
             )}
           </Route>
           <Route path='/register'>
@@ -80,7 +72,6 @@ const RouterApp = () => {
           <Route path='/select-room'>
             <SelectRoom
               listChatRooms={dataUser.chat_rooms_created}
-              setCurrentRoom={setCurrentRoom}
               setDataUser={setDataUser}
             />
           </Route>

@@ -7,8 +7,6 @@ function Main({ userData, setDataUser, currentRoom, setCurrentRoom }) {
   const [toHaveRoom, setToHaveRoom] = React.useState(false)
 
   React.useEffect(() => {
-    console.log(userData)
-
     if (userData.room && currentRoom) {
       setToHaveRoom(true)
       return

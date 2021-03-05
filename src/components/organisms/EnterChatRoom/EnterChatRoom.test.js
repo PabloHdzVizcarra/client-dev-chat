@@ -69,7 +69,6 @@ describe('test in EnterChatRoom component', () => {
        * @param {T} value
        */
       (value) => {
-        console.log('call function')
         return value
       },
     )
@@ -96,7 +95,6 @@ describe('test in EnterChatRoom component', () => {
        * @param {T} value
        */
       (value) => {
-        console.log('call function')
         return value
       },
     )

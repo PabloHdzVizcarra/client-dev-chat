@@ -2,13 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import HomeTemplate from '../../components/templates/home_template/HomeTemplate'
 
-const Home = ({ userData, setCurrentRoom }) => {
-  return <HomeTemplate userData={userData} setCurrentRoom={setCurrentRoom} />
+const Home = ({ userData }) => {
+  return <HomeTemplate userData={userData} />
 }
 
 Home.propTypes = {
   userData: PropTypes.object.isRequired,
-  setCurrentRoom: PropTypes.func.isRequired,
 }
 
 export default Home
