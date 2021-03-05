@@ -16,7 +16,7 @@ const Container = styled.div`
   margin-top: 10%;
 `
 
-function LoginTemplate({ onSubmit }) {
+function LoginTemplate({ onSubmit, errorMessage }) {
   const { values, errors, handleChange, handleSubmit, showError } = useFormV2(
     { email: '', password: '' },
     onSubmit,
@@ -25,6 +25,8 @@ function LoginTemplate({ onSubmit }) {
   return (
     <>
       <IconAndHeader />
+      {errorMessage ? <AlertError message={errorMessage} /> : null}
+
       <Disappear valueOf={true} in={showError}>
         <AlertError message={errors.email || errors.password} />
       </Disappear>
@@ -41,6 +43,7 @@ function LoginTemplate({ onSubmit }) {
 
 LoginTemplate.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string.isRequired,
 }
 
 export default LoginTemplate
